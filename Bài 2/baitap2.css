@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #c9a227;
+    padding: 30px; /* Tạo khoảng trống xung quanh lề trong */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    margin-bottom: 30px;
+}
+.content-text {
+    width: 60%;
+    float: left;
+}
+
+p {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.im {
+    float: right;
+    border: 4px solid white; 
+    box-sizing: border-box;
+}
