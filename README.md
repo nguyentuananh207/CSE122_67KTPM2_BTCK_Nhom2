@@ -1,5 +1,4 @@
 # Craftlink
-# Craftlink
 # CraftLink - Phân tích vai trò và bảng kiểm kê màn hình
 
 ## Mô hình nghiệp vụ
