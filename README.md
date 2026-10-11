@@ -11,7 +11,7 @@ CraftLink giải quyết khoảng cách giữa ý tưởng tùy biến của kh�
 
 Dự án có **15 tệp HTML**: `index.html` ở thư mục gốc và 14 trang trong `pages/`. Bảng dưới đây phân nhóm toàn bộ trang theo role/chức năng chính. Một số trang như Marketplace và chi tiết sản phẩm được dùng chung giữa khách vãng lai, khách hàng và người sáng tạo.
 
-Giao diện demo: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-toi
+Giao diện demo: https://www.figma.com/proto/cyNk9LOIg2sY7YexthVUEv/Untitled?node-id=0-1&t=mKQnhsYaIYtVsDoP-1
 
 ## Bảng phân chia giao diện
 
@@ -60,6 +60,7 @@ Giao diện demo: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-
 - **Thành viên 2 (SV2):** Toàn bộ luồng Khách hàng và Trang chủ (5 tệp: `index.html`, `product-detail.html`, `buyer-marketplace.html`, `buyer-custom-brief.html`, `buyer-orders.html`), hệ thống CSS Design System, Form Validation (`validation.js`) và tích hợp trọn gói **AI Brief Builder**.
 - **Thành viên 3 (SV3):** Toàn bộ luồng Người sáng tạo, Đăng nhập và Báo cáo (5 tệp: `login.html`, `maker-listing-management.html`, `maker-brief-inbox.html`, `maker-proposal-editor.html`, `moderator-report-center.html`), cấu trúc `ai-modal.css`, quản lý dữ liệu luồng Maker và tích hợp trọn gói **AI Style Matcher**.
 - Mỗi sinh viên cần ghi rõ tên nhánh cá nhân, lịch sử commit, yêu cầu hợp nhất (PR) do Leader duyệt, và quay đủ số lượng video OBS tương ứng cho 5 màn hình phần mình phụ trách trong bảng quản lý nhóm.
+- Phân chia công việc: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-toi
 # CraftLink
 
 Frontend prototype cho đề tài BTL-11 - CraftLink, sàn sản phẩm sáng tạo tùy biến.
