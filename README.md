@@ -11,6 +11,8 @@ CraftLink giải quyết khoảng cách giữa ý tưởng tùy biến của kh�
 
 Dự án có **15 tệp HTML**: `index.html` ở thư mục gốc và 14 trang trong `pages/`. Bảng dưới đây phân nhóm toàn bộ trang theo role/chức năng chính. Một số trang như Marketplace và chi tiết sản phẩm được dùng chung giữa khách vãng lai, khách hàng và người sáng tạo.
 
+Giao diện demo: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-toi
+
 ## Bảng phân chia giao diện
 
 | Role | Màn hình | Tệp | Nghiệp vụ / trạng thái chính | AI |
