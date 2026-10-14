@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftLink - Admin</title>
+    <link rel="stylesheet" href="../../css/base/variables.css">
+    <link rel="stylesheet" href="../../css/base/reset.css">
+    <link rel="stylesheet" href="../../css/base/typography.css">
+    <link rel="stylesheet" href="../../css/components/buttons.css">
+    <link rel="stylesheet" href="../../css/components/badges.css">
+    <link rel="stylesheet" href="../../css/components/cards.css">
+    <link rel="stylesheet" href="../../css/components/tables.css">
+    <link rel="stylesheet" href="../../css/layout/header.css">
+    <link rel="stylesheet" href="../../css/layout/footer.css">
+    <link rel="stylesheet" href="../../css/layout/sidebar.css">
+    <link rel="stylesheet" href="../../css/pages/dashboard.css">
+</head>
+
+<body class="page-admin" data-page="admin-platform-dashboard">
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar" aria-label="Điều hướng khu quản trị">
+        <a class="sidebar_brand" href="../../index.html">
+            <span class="sidebar_logo" aria-hidden="true">
+                <img src="../../assets/images/logoCraftlink.png" alt="ảnh logo">
+            </span>
+            <span class="sidebar__brand-name">CraftLink</span>
+        </a>
+
+        <div class="sidebar_group">
+            <p class="sidebar_label">Không gian làm việc</p>
+            <span class="pill pill--light">Quản trị viên</span>
+
+            <nav class="nav" aria-label="Khu quản trị">
+                <a class="nav_item nav_item--active" href="admin-platform-dashboard.html" aria-current="page">Tổng quan
+                    nền tảng</a>
+                <a class="nav_item" href="admin-category-management.html">Danh mục sản phẩm</a>
+                <a class="nav_item" href="admin-user-management.html">Quản lý tài khoản</a>
+                <a class="nav_item" href="../moderator/moderator-moderation-queue.html">Nhật ký hệ thống</a>
+            </nav>
+
+            <hr class="sidebar_divider">
+
+            <nav class="nav" aria-label="Liên kết hỗ trợ">
+                <a class="nav_item" href="../moderator/moderator-content-guidelines.html">Hướng dẫn sử dụng</a>
+                <a class="nav_item" href="../../index.html">Trở về trang bày <span class="nav__ext"
+                        aria-hidden="true">↗</span></a>
+            </nav>
+        </div>
+
+        <div class="sidebar_footer">
+            <p class="sidebar_user">Quang Huy</p>
+            <p class="sidebar_user-meta">Quản trị viên · <a href="../auth/login.html">Đăng xuất</a></p>
+            <p class="sidebar_user-note">Chỉ hiển thị tác vụ theo quyền.</p>
+        </div>
+    </aside>
+
+    <!-- ================= KHUNG TRANG ================= -->
+    <div class="shell">
+        <header class="topbar">
+            <button class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar"
+                aria-expanded="false">
+                <img src="../../assets/icons/menu.svg" alt="" >
+            </button>
+
+            <nav class="breadcrumb" aria-label="Đường dẫn">
+                <span class="breadcrumb_item">Quản trị viên</span>
+                <span class="breadcrumb_sep" aria-hidden="true">/</span>
+                <span class="breadcrumb_item breadcrumb_item--current" aria-current="page">Tổng quan nền tảng</span>
+            </nav>
+
+            <div class="topbar_actions">
+                <button class="icon-btn" aria-label="Thông báo">
+                    <img src="../../assets/icons/bell.svg" alt="" >
+                    <span class="icon-btn_dot" aria-hidden="true"></span>
+                </button>
+                <time class="topbar_date" datetime="2026-10-04">04/10/2026</time>
+                <span class="user-pill">
+                    <span class="user-pill_avatar" aria-hidden="true">QH</span>
+                    Quang Huy
+                </span>
+            </div>
+        </header>
+
+        <main class="content" id="main">
+
+            <!-- ===== Đầu trang ===== -->
+            <section class="page-head">
+                <div class="page-head_text">
+                    <p class="eyebrow">Quản trị viên</p>
+                    <h1 class="page-title">Nhìn toàn cảnh, ưu tiên đúng việc</h1>
+                    <p class="page-sub">Tình trạng trưng bày, đơn hàng và kiểm duyệt · 28/09–04/10/2026</p>
+                </div>
+                <div class="page-head_actions">
+                    <span class="pill pill--muted">Dữ liệu mẫu · BTL-11</span>
+                    <button class="select-btn" id="periodBtn" type="button" aria-label="Chọn khoảng thời gian">
+                        <span data-period-label>7 ngày gần đây</span>
+                        <img src="../../assets/icons/chevron-down.svg" alt="" >
+                    </button>
+                </div>
+            </section>
+
+            <div class="banner banner--info" role="note">
+                <img class="banner_icon" src="../../assets/icons/info.svg" alt="" >
+                <p class="banner_text">Toàn bộ KPI, biểu đồ và nhật ký trên màn hình là dữ liệu mẫu cho BTL-11, không
+                    phản ánh hoạt động thực tế.</p>
+            </div>
+
+            <!-- ===== KPI ===== -->
+            <section class="kpi-grid" aria-label="Chỉ số nền tảng">
+                <article class="kpi">
+                    <p class="kpi_label">Listing công khai</p>
+                    <p class="kpi_value">57</p>
+                    <p class="kpi_note">8 listing đang chờ duyệt</p>
+                </article>
+                <article class="kpi">
+                    <p class="kpi_label">Đơn đang thực hiện</p>
+                    <p class="kpi_value">18</p>
+                    <p class="kpi_note">4 đang chờ duyệt bản mẫu</p>
+                </article>
+                <article class="kpi">
+                    <p class="kpi_label">Báo cáo đang mở</p>
+                    <p class="kpi_value">08</p>
+                    <p class="kpi_note">2 có mức ưu tiên cao</p>
+                </article>
+                <article class="kpi">
+                    <p class="kpi_label">Tài khoản hoạt động</p>
+                    <p class="kpi_value">126</p>
+                    <p class="kpi_note">4 nhóm quyền trên hệ thống</p>
+                </article>
+            </section>
+
+            <!-- ===== Biểu đồ + Tình trạng ===== -->
+            <section class="grid grid--dashboard">
+                <article class="card">
+                    <h2 class="card_title">Hoạt động theo thời gian</h2>
+                    <p class="card_sub">Số brief và listing mới · Dữ liệu mô phỏng</p>
+
+                    <ul class="legend">
+                        <li class="legend_item legen_item--brief"><span class="legend_line"
+                                aria-hidden="true"></span>Brief mới</li>
+                        <li class="legend_item legend_item--listing"><span class="legend_line"
+                                aria-hidden="true"></span>Listing mới</li>
+                    </ul>
+
+                    <div class="chart" id="activityChart" data-chart="activity-line" data-src="CL.data.activity"
+                        role="img"
+                        aria-label="Biểu đồ đường thể hiện số brief mới và listing mới từ 28/09 đến 04/10/2026"></div>
+                </article>
+
+                <article class="card">
+                    <h2 class="card_title">Tình trạng nền tảng</h2>
+
+                    <div class="status-list">
+                        <div class="status-item">
+                            <div class="status-item_body">
+                                <h3 class="status-item_title">Listing</h3>
+                                <p class="status-item_text">57 đã duyệt · 8 chờ · 3 bổ sung</p>
+                            </div>
+                            <span class="badge badge--danger">Cần duyệt</span>
+                        </div>
+
+                        <div class="status-item">
+                            <h3 class="status-item_title">Đơn hàng</h3>
+                            <p class="status-item_text">18 đang thực hiện · 24 hoàn thành<br>4 chờ bản mẫu · 2 đã hủy
+                            </p>
+                        </div>
+
+                        <div class="status-item">
+                            <h3 class="status-item_title">Kiểm duyệt</h3>
+                            <p class="status-item_text">5 báo cáo mới · 3 đang xử lý<br>Ưu tiên: 2 cao / 4 vừa / 2 thấp
+                            </p>
+                        </div>
+                    </div>
+
+                    <a class="btn btn--outline btn--block" href="../moderator/moderator-moderation-queue.html">
+                        Mở công cụ quản trị
+                        <img src="../../assets/icons/arrow-right.svg" alt="" >
+                    </a>
+                </article>
+            </section>
+
+            <!-- ===== Hàng đợi + Công cụ ===== -->
+            <section class="grid grid--dashboard">
+                <article class="card">
+                    <h2 class="card_title">Hàng đợi cần chú ý</h2>
+
+                    <div class="panel">
+                        <div class="panel_head panel_head--queue" role="presentation">
+                            <span>Đối tượng</span><span>Cần xử lý</span><span>Phụ trách</span><span>Mở</span>
+                        </div>
+
+                        <div class="panel_row">
+                            <p class="row-id">RP-014 · LS-032</p>
+                            <p class="row-meta">
+                                <span>Đối chiếu nguồn ảnh</span>
+                                <span class="row-meta_sep" aria-hidden="true">·</span>
+                                <span>Thu Hà</span>
+                                <a class="link-arrow" href="../moderator/moderator-report-center.html">
+                                    Xem báo cáo <img src="../../assets/icons/arrow-right.svg" alt="" >
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="panel_row">
+                            <p class="row-id">LS-018 · Mộc Studio</p>
+                            <p class="row-meta">
+                                <span>Duyệt listing mới</span>
+                                <span class="row-meta_sep" aria-hidden="true">·</span>
+                                <span>Thu Hà</span>
+                                <a class="link-arrow" href="../moderator/moderator-moderation-queue.html">
+                                    Xem listing <img src="../../assets/icons/arrow-right.svg" alt="" >
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="panel_row">
+                            <p class="row-id">CAT-003</p>
+                            <p class="row-meta">
+                                <span>4 listing cần chuyển</span>
+                                <span class="row-meta_sep" aria-hidden="true">·</span>
+                                <span>Quang Huy</span>
+                                <a class="link-arrow" href="admin-category-management.html">
+                                    Mở danh mục <img src="../../assets/icons/arrow-right.svg" alt="" >
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="panel_row">
+                            <p class="row-id">U-082 · Xưởng Sao</p>
+                            <p class="row-meta">
+                                <span>Kiểm tra đình chỉ</span>
+                                <span class="row-meta_sep" aria-hidden="true">·</span>
+                                <span>Quang Huy</span>
+                                <a class="link-arrow" href="admin-user-management.html">
+                                    Mở tài khoản <img src="../../assets/icons/arrow-right.svg" alt="" >
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h2 class="card_title">Công cụ quản trị</h2>
+
+                    <div class="tool-list">
+                        <a class="tool-btn" href="admin-category-management.html">
+                            Quản lý danh mục
+                            <img class="tool-btn_arrow" src="../../assets/icons/arrow-right.svg" alt="">
+                        </a>
+                        <a class="tool-btn" href="admin-user-management.html">
+                            Quản lý tài khoản
+                            <img class="tool-btn_arrow" src="../../assets/icons/arrow-right.svg" alt="" >
+                        </a>
+                        <a class="tool-btn" href="../moderator/moderator-moderation-queue.html">
+                            Nhật ký hệ thống
+                            <img class="tool-btn_arrow" src="../../assets/icons/arrow-right.svg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="banner banner--note" role="note">
+                        <img class="banner_icon" src="../../assets/icons/info.svg" alt="" >
+                        <p class="banner_text">Duyệt listing và xử lý báo cáo theo quy trình kiểm duyệt; quyền quản trị
+                            không hiện trong không gian guest.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ===== Nhật ký hệ thống ===== -->
+            <section class="card">
+                <h2 class="card_title">Nhật ký hệ thống mới nhất</h2>
+
+                <div class="panel">
+                    <div class="panel_head panel_head--log" role="presentation">
+                        <span>Thời gian</span><span>Người xử lý</span><span>Hành động</span><span>Đối tượng</span>
+                    </div>
+
+                    <div class="panel_row">
+                        <p class="row-id">04/10/2026 · 09:40</p>
+                        <p class="row-meta">
+                            <span>Thu Hà</span>
+                            <span class="row-meta_sep" aria-hidden="true">·</span>
+                            <span>Mở kiểm tra listing</span>
+                            <a class="link-accent" href="../moderator/moderator-moderation-queue.html">LS-018</a>
+                        </p>
+                    </div>
+
+                    <div class="panel_row">
+                        <p class="row-id">04/10/2026 · 09:20</p>
+                        <p class="row-meta">
+                            <span>Mộc Studio</span>
+                            <span class="row-meta_sep" aria-hidden="true">·</span>
+                            <span>Bổ sung nguồn ảnh</span>
+                            <a class="link-accent" href="../moderator/moderator-report-center.html">RP-014</a>
+                        </p>
+                    </div>
+
+                    <div class="panel_row">
+                        <p class="row-id">04/10/2026 · 08:30</p>
+                        <p class="row-meta">
+                            <span>Quang Huy</span>
+                            <span class="row-meta_sep" aria-hidden="true">·</span>
+                            <span>Chuyển 4 listing sang danh mục khác</span>
+                            <a class="link-accent" href="admin-category-management.html">CAT-003</a>
+                        </p>
+                    </div>
+
+                    <div class="panel_row">
+                        <p class="row-id">03/10/2026 · 17:05</p>
+                        <p class="row-meta">
+                            <span>Quang Huy</span>
+                            <span class="row-meta_sep" aria-hidden="true">·</span>
+                            <span>Đình chỉ tài khoản người bán</span>
+                            <a class="link-accent" href="admin-user-management.html">U-082</a>
+                        </p>
+                    </div>
+
+                    <div class="panel_row">
+                        <p class="row-id">03/10/2026 · 15:12</p>
+                        <p class="row-meta">
+                            <span>Hệ thống</span>
+                            <span class="row-meta_sep" aria-hidden="true">·</span>
+                            <span>Tự động sao lưu dữ liệu mẫu</span>
+                            <span class="link-accent">SYS-BK</span>
+                        </p>
+                    </div>
+                </div>
+
+                <footer class="page-foot">
+                    <span>CraftLink · BTL-11 · Bản dựng frontend demo cho khu Quản trị viên.</span>
+                    <span>Cập nhật lần cuối: 04/10/2026 · 09:40</span>
+                </footer>
+            </section>
+
+        </main>
+    </div>
+
+    <div data-footer></div>
+
+    <script src="../../js/modules/storage.js"></script>
+    <script src="../../js/modules/ui-utils.js"></script>
+    <script src="../../js/modules/validation.js"></script>
+    <script src="../../js/modules/ai-services.js"></script>
+    <script src="../../js/pages/mock-data.js"></script>
+    <script src="../../js/pages/buyer.js"></script>
+    <script src="../../js/pages/maker.js"></script>
+    <script src="../../js/pages/admin.js"></script>
+    <script src="../../js/pages/main.js"></script>
+</body>
+
+</html>
