@@ -83,7 +83,7 @@ Session demo được lưu trong `localStorage` với key `craftlinkSession`; n�
 ## Cấu trúc thư mục mô-đun
 
 ```text
-project-root/
+CRAFTLINK/
 ├── README.md
 ├── index.html
 ├── pages/
