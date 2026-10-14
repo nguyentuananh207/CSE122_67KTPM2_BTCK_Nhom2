@@ -54,7 +54,7 @@ Giao diện demo: https://www.figma.com/proto/cyNk9LOIg2sY7YexthVUEv/Untitled?no
 | Danh sách / bảng | Có | Không áp dụng | Có placeholder | Có | Có lọc rỗng qua search |
 | Moderation / report | Có | Không áp dụng | Có thể mở rộng | Có toast hành động | Badge trạng thái |
 
-## Phân công gợi ý cho nhóm 3
+## Phân công cho nhóm 3 thành viên
 
 - **Leader (SV1):** Toàn bộ luồng vận hành Quản trị / Kiểm duyệt (5 tệp: `admin-platform-dashboard.html`, `admin-category-management.html`, `admin-user-management.html`, `moderator-moderation-queue.html`, `moderator-content-guidelines.html`), khung hệ thống `main.js`/`ui-utils.js`, điều phối Git Merge và tích hợp trọn gói **AI Revision Summarizer**.
 - **Thành viên 2 (SV2):** Toàn bộ luồng Khách hàng và Trang chủ (5 tệp: `index.html`, `product-detail.html`, `buyer-marketplace.html`, `buyer-custom-brief.html`, `buyer-orders.html`), hệ thống CSS Design System, Form Validation (`validation.js`) và tích hợp trọn gói **AI Brief Builder**.
