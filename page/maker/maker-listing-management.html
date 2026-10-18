@@ -5,104 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Bài Đăng - E-Commerce</title>
 
-    <!-- CSS dùng chung -->
+    <!-- CSS dùng chung cho cả dự án -->
     <link rel="stylesheet" href="../../css/base.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <!-- CSS riêng của khu vực Maker -->
     <link rel="stylesheet" href="../../css/pages/maker.css">
 </head>
+<!--
+    data-page: tên trang, để JS biết đang ở trang nào.
+    data-role-required: quyền được vào trang này. JS sẽ kiểm tra,
+    nếu người đăng nhập không phải "maker" thì đưa về trang login.
+-->
 <body data-page="maker-listing" data-role-required="maker">
 
-    <!-- ===== HEADER DÙNG CHUNG CHO CÁC TRANG MAKER ===== -->
-    <header class="app-header">
-        <div class="app-header__brand">
-            <a href="maker-listing-management.html" class="app-header__logo">E-Commerce</a>
+    <!-- ===== ĐẦU TRANG (giống nhau ở mọi trang Maker) ===== -->
+    <header class="dau-trang">
+        <div class="dau-trang__thuong-hieu">
+            <a href="maker-listing-management.html" class="dau-trang__logo">E-Commerce</a>
         </div>
 
-        <nav class="app-nav" aria-label="Điều hướng Maker">
-            <a href="maker-listing-management.html" class="app-nav__link app-nav__link--active">Bài đăng của tôi</a>
-            <a href="maker-brief-inbox.html" class="app-nav__link">Hộp thư Brief</a>
-            <a href="maker-proposal-editor.html" class="app-nav__link">Soạn báo giá</a>
+        <nav class="thanh-dieu-huong">
+            <a href="maker-listing-management.html" class="thanh-dieu-huong__lien-ket thanh-dieu-huong__lien-ket--dang-chon">Bài đăng của tôi</a>
+            <a href="maker-brief-inbox.html" class="thanh-dieu-huong__lien-ket">Hộp thư Brief</a>
+            <a href="maker-proposal-editor.html" class="thanh-dieu-huong__lien-ket">Soạn báo giá</a>
         </nav>
 
-        <div class="app-header__user">
-            <span id="current-user-name" class="app-header__username">Maker</span>
-            <button type="button" id="btn-logout" class="btn btn--outline btn--sm">Đăng xuất</button>
+        <div class="dau-trang__nguoi-dung">
+            <!-- JS sẽ điền tên người đang đăng nhập vào đây -->
+            <span id="current-user-name" class="dau-trang__ten-nguoi-dung">Maker</span>
+            <button type="button" id="btn-logout" class="nut nut--vien nut--nho">Đăng xuất</button>
         </div>
     </header>
 
     <!-- ===== NỘI DUNG CHÍNH ===== -->
-    <main class="page-container">
+    <main class="khung-trang">
 
-        <!-- Tiêu đề trang + nút thêm bài -->
-        <section class="page-heading">
-            <div class="page-heading__text">
-                <h1 class="page-heading__title">Quản Lý Bài Đăng</h1>
-                <p class="page-heading__desc">Quản lý các sản phẩm và dịch vụ bạn đang cung cấp: thêm bài mới, ẩn hoặc hiện bài đăng.</p>
+        <!-- Tiêu đề trang và nút thêm bài -->
+        <section class="tieu-de-trang">
+            <div class="tieu-de-trang__noi-dung">
+                <h1 class="tieu-de-trang__ten">Quản Lý Bài Đăng</h1>
+                <p class="tieu-de-trang__mo-ta">Thêm bài mới, ẩn hoặc hiện các bài đăng của bạn.</p>
             </div>
-            <button type="button" id="btn-open-listing-form" class="btn btn--primary">+ Thêm bài mới</button>
+            <button type="button" id="btn-open-listing-form" class="nut nut--chinh">+ Thêm bài mới</button>
         </section>
 
-        <!-- Thanh lọc trạng thái -->
-        <section class="toolbar" aria-label="Bộ lọc bài đăng">
-            <div class="toolbar__filters">
-                <button type="button" class="chip chip--active" data-filter="all">Tất cả</button>
-                <button type="button" class="chip" data-filter="visible">Đang hiển thị</button>
-                <button type="button" class="chip" data-filter="hidden">Đang ẩn</button>
+        <!-- Nút lọc theo trạng thái (data-filter để JS biết lọc kiểu nào) -->
+        <section class="thanh-cong-cu">
+            <div class="thanh-cong-cu__bo-loc">
+                <button type="button" class="the-loc the-loc--dang-chon" data-filter="all">Tất cả</button>
+                <button type="button" class="the-loc" data-filter="visible">Đang hiển thị</button>
+                <button type="button" class="the-loc" data-filter="hidden">Đang ẩn</button>
             </div>
-            <div class="toolbar__count">
+            <div class="thanh-cong-cu__so-luong">
                 <span id="listing-count">0</span> bài đăng
             </div>
         </section>
 
-        <!-- Danh sách bài đăng: JS render các .listing-card vào đây -->
-        <section id="listing-list" class="listing-grid" aria-live="polite">
+        <!-- Danh sách bài đăng: JS sẽ tạo các thẻ và đưa vào đây -->
+        <section id="listing-list" class="luoi-bai-dang">
 
-            <!-- Mẫu 1 thẻ bài đăng (khuôn cho JS render, dùng làm demo tĩnh) -->
-            <article class="listing-card" data-listing-id="L001" data-status="visible">
-                <div class="listing-card__thumb">
+            <!-- Thẻ mẫu để xem giao diện. JS sẽ tạo thẻ giống thế này cho mỗi bài. -->
+            <article class="the-bai-dang" data-listing-id="L001" data-status="visible">
+                <div class="the-bai-dang__anh">
                     <img src="../../assets/images/listing-placeholder.jpg" alt="Ảnh bài đăng">
-                    <span class="badge badge--success">Đang hiển thị</span>
+                    <span class="nhan nhan--thanh-cong">Đang hiển thị</span>
                 </div>
-                <div class="listing-card__body">
-                    <h3 class="listing-card__title">Kệ trang trí gỗ phong cách tối giản</h3>
-                    <p class="listing-card__category">Danh mục: Đồ trang trí</p>
-                    <p class="listing-card__style">Phong cách: Tối giản</p>
-                    <p class="listing-card__meta">Thời gian hoàn thành: 7 ngày · Nhận làm theo yêu cầu</p>
-                    <p class="listing-card__price">Từ 450.000đ</p>
+                <div class="the-bai-dang__noi-dung">
+                    <h3 class="the-bai-dang__tieu-de">Kệ trang trí gỗ phong cách tối giản</h3>
+                    <p class="the-bai-dang__danh-muc">Danh mục: Đồ trang trí</p>
+                    <p class="the-bai-dang__phong-cach">Phong cách: Tối giản</p>
+                    <p class="the-bai-dang__thong-tin">Hoàn thành trong 7 ngày · Nhận làm theo yêu cầu</p>
+                    <p class="the-bai-dang__gia">Từ 450.000đ</p>
                 </div>
-                <div class="listing-card__actions">
-                    <button type="button" class="btn btn--outline btn--sm" data-action="toggle-visibility">Ẩn bài</button>
-                    <button type="button" class="btn btn--outline btn--sm" data-action="edit">Sửa</button>
+                <div class="the-bai-dang__thao-tac">
+                    <button type="button" class="nut nut--vien nut--nho" data-action="toggle-visibility">Ẩn bài</button>
                 </div>
             </article>
 
         </section>
-
-        <!-- Trạng thái rỗng: JS bỏ thuộc tính hidden khi chưa có bài -->
-        <section id="listing-empty" class="empty-state" hidden>
-            <p class="empty-state__text">Bạn chưa có bài đăng nào.</p>
-            <button type="button" class="btn btn--primary" data-action="open-form">Tạo bài đăng đầu tiên</button>
-        </section>
     </main>
 
-    <!-- ===== MODAL THÊM BÀI MỚI ===== -->
-    <div id="listing-modal" class="modal" hidden>
-        <div class="modal__overlay" data-action="close-modal"></div>
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="listing-modal-title">
-            <div class="modal__header">
-                <h2 id="listing-modal-title" class="modal__title">Thêm bài đăng mới</h2>
-                <button type="button" class="modal__close" data-action="close-modal" aria-label="Đóng">&times;</button>
+    <!-- ===== HỘP THOẠI THÊM BÀI MỚI (ẩn sẵn, JS bật lên khi bấm nút) ===== -->
+    <div id="listing-modal" class="hop-thoai" hidden>
+        <div class="hop-thoai__lop-phu" data-action="close-modal"></div>
+        <div class="hop-thoai__khung">
+            <div class="hop-thoai__dau">
+                <h2 class="hop-thoai__tieu-de">Thêm bài đăng mới</h2>
+                <button type="button" class="hop-thoai__dong" data-action="close-modal">&times;</button>
             </div>
 
             <form id="listing-form" action="#" method="POST">
-                <div class="modal__body">
-                    <div class="form-group">
+                <div class="hop-thoai__than">
+                    <div class="nhom-truong">
                         <label for="listing-title">Tiêu đề</label>
                         <input type="text" id="listing-title" name="title" placeholder="Nhập tiêu đề bài đăng..." required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="nhom-truong">
                         <label for="listing-category">Danh mục</label>
                         <select id="listing-category" name="category" required>
                             <option value="">-- Chọn danh mục --</option>
@@ -114,7 +113,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="nhom-truong">
                         <label for="listing-style">Phong cách</label>
                         <select id="listing-style" name="style" required>
                             <option value="">-- Chọn phong cách --</option>
@@ -126,48 +125,45 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="listing-material">Chất liệu</label>
-                        <input type="text" id="listing-material" name="material" placeholder="Ví dụ: gỗ sồi, vải cotton...">
-                    </div>
-
-                    <div class="form-group">
+                    <div class="nhom-truong">
                         <label for="listing-price">Giá từ (VNĐ)</label>
-                        <input type="number" id="listing-price" name="price" min="0" step="1000" placeholder="Ví dụ: 450000" required>
+                        <input type="number" id="listing-price" name="price" min="0" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="nhom-truong">
                         <label for="listing-leadtime">Thời gian hoàn thành (ngày)</label>
-                        <input type="number" id="listing-leadtime" name="leadtime" min="1" placeholder="Ví dụ: 7" required>
+                        <input type="number" id="listing-leadtime" name="leadtime" min="1" required>
                     </div>
 
-                    <div class="form-group form-group--inline">
+                    <div class="nhom-truong nhom-truong--cung-hang">
                         <input type="checkbox" id="listing-custom" name="acceptCustom">
                         <label for="listing-custom">Nhận làm theo yêu cầu của khách (Brief)</label>
                     </div>
 
-                    <div class="form-group">
+                    <div class="nhom-truong">
                         <label for="listing-description">Mô tả</label>
-                        <textarea id="listing-description" name="description" rows="4" placeholder="Mô tả ngắn về sản phẩm hoặc dịch vụ của bạn..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="listing-image">Ảnh đại diện (URL)</label>
-                        <input type="text" id="listing-image" name="image" placeholder="Dán đường dẫn ảnh...">
+                        <textarea id="listing-description" name="description" rows="4"></textarea>
                     </div>
                 </div>
 
-                <div class="modal__footer">
-                    <button type="button" class="btn btn--outline" data-action="close-modal">Hủy</button>
-                    <button type="submit" class="btn btn--primary">Đăng bài</button>
+                <div class="hop-thoai__chan">
+                    <button type="button" class="nut nut--vien" data-action="close-modal">Hủy</button>
+                    <button type="submit" class="nut nut--chinh">Đăng bài</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- JS: thứ tự nạp quan trọng (dữ liệu → lưu trữ → logic trang) -->
+    <!--
+        Thứ tự nạp JS rất quan trọng:
+        1. mock-data.js : dữ liệu mẫu (phải có trước)
+        2. storage.js   : hàm lưu và đọc dữ liệu (cần dữ liệu mẫu)
+        3. auth.js      : đăng nhập, đăng xuất, kiểm tra quyền
+        4. maker.js     : xử lý riêng cho trang Maker (cần cả 3 file trên)
+    -->
     <script src="../../js/mock-data.js"></script>
     <script src="../../js/modules/storage.js"></script>
+    <script src="../../js/modules/auth.js"></script>
     <script src="../../js/pages/maker.js"></script>
 </body>
 </html>
