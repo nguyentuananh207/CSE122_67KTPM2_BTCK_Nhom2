@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bài Đăng - E-Commerce</title>
+
+    <!-- CSS dùng chung -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <!-- CSS riêng của khu vực Maker -->
+    <link rel="stylesheet" href="../../css/pages/maker.css">
+</head>
+<body data-page="maker-listing" data-role-required="maker">
+
+    <!-- ===== HEADER DÙNG CHUNG CHO CÁC TRANG MAKER ===== -->
+    <header class="app-header">
+        <div class="app-header__brand">
+            <a href="maker-listing-management.html" class="app-header__logo">E-Commerce</a>
+        </div>
+
+        <nav class="app-nav" aria-label="Điều hướng Maker">
+            <a href="maker-listing-management.html" class="app-nav__link app-nav__link--active">Bài đăng của tôi</a>
+            <a href="maker-brief-inbox.html" class="app-nav__link">Hộp thư Brief</a>
+            <a href="maker-proposal-editor.html" class="app-nav__link">Soạn báo giá</a>
+        </nav>
+
+        <div class="app-header__user">
+            <span id="current-user-name" class="app-header__username">Maker</span>
+            <button type="button" id="btn-logout" class="btn btn--outline btn--sm">Đăng xuất</button>
+        </div>
+    </header>
+
+    <!-- ===== NỘI DUNG CHÍNH ===== -->
+    <main class="page-container">
+
+        <!-- Tiêu đề trang + nút thêm bài -->
+        <section class="page-heading">
+            <div class="page-heading__text">
+                <h1 class="page-heading__title">Quản Lý Bài Đăng</h1>
+                <p class="page-heading__desc">Quản lý các sản phẩm và dịch vụ bạn đang cung cấp: thêm bài mới, ẩn hoặc hiện bài đăng.</p>
+            </div>
+            <button type="button" id="btn-open-listing-form" class="btn btn--primary">+ Thêm bài mới</button>
+        </section>
+
+        <!-- Thanh lọc trạng thái -->
+        <section class="toolbar" aria-label="Bộ lọc bài đăng">
+            <div class="toolbar__filters">
+                <button type="button" class="chip chip--active" data-filter="all">Tất cả</button>
+                <button type="button" class="chip" data-filter="visible">Đang hiển thị</button>
+                <button type="button" class="chip" data-filter="hidden">Đang ẩn</button>
+            </div>
+            <div class="toolbar__count">
+                <span id="listing-count">0</span> bài đăng
+            </div>
+        </section>
+
+        <!-- Danh sách bài đăng: JS render các .listing-card vào đây -->
+        <section id="listing-list" class="listing-grid" aria-live="polite">
+
+            <!-- Mẫu 1 thẻ bài đăng (khuôn cho JS render, dùng làm demo tĩnh) -->
+            <article class="listing-card" data-listing-id="L001" data-status="visible">
+                <div class="listing-card__thumb">
+                    <img src="../../assets/images/listing-placeholder.jpg" alt="Ảnh bài đăng">
+                    <span class="badge badge--success">Đang hiển thị</span>
+                </div>
+                <div class="listing-card__body">
+                    <h3 class="listing-card__title">Kệ trang trí gỗ phong cách tối giản</h3>
+                    <p class="listing-card__category">Danh mục: Đồ trang trí</p>
+                    <p class="listing-card__style">Phong cách: Tối giản</p>
+                    <p class="listing-card__meta">Thời gian hoàn thành: 7 ngày · Nhận làm theo yêu cầu</p>
+                    <p class="listing-card__price">Từ 450.000đ</p>
+                </div>
+                <div class="listing-card__actions">
+                    <button type="button" class="btn btn--outline btn--sm" data-action="toggle-visibility">Ẩn bài</button>
+                    <button type="button" class="btn btn--outline btn--sm" data-action="edit">Sửa</button>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Trạng thái rỗng: JS bỏ thuộc tính hidden khi chưa có bài -->
+        <section id="listing-empty" class="empty-state" hidden>
+            <p class="empty-state__text">Bạn chưa có bài đăng nào.</p>
+            <button type="button" class="btn btn--primary" data-action="open-form">Tạo bài đăng đầu tiên</button>
+        </section>
+    </main>
+
+    <!-- ===== MODAL THÊM BÀI MỚI ===== -->
+    <div id="listing-modal" class="modal" hidden>
+        <div class="modal__overlay" data-action="close-modal"></div>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="listing-modal-title">
+            <div class="modal__header">
+                <h2 id="listing-modal-title" class="modal__title">Thêm bài đăng mới</h2>
+                <button type="button" class="modal__close" data-action="close-modal" aria-label="Đóng">&times;</button>
+            </div>
+
+            <form id="listing-form" action="#" method="POST">
+                <div class="modal__body">
+                    <div class="form-group">
+                        <label for="listing-title">Tiêu đề</label>
+                        <input type="text" id="listing-title" name="title" placeholder="Nhập tiêu đề bài đăng..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-category">Danh mục</label>
+                        <select id="listing-category" name="category" required>
+                            <option value="">-- Chọn danh mục --</option>
+                            <option value="thoi-trang">Thời trang</option>
+                            <option value="phu-kien">Phụ kiện</option>
+                            <option value="do-gia-dung">Đồ gia dụng</option>
+                            <option value="trang-tri">Đồ trang trí</option>
+                            <option value="khac">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-style">Phong cách</label>
+                        <select id="listing-style" name="style" required>
+                            <option value="">-- Chọn phong cách --</option>
+                            <option value="toi-gian">Tối giản</option>
+                            <option value="hien-dai">Hiện đại</option>
+                            <option value="co-dien">Cổ điển</option>
+                            <option value="vintage">Vintage</option>
+                            <option value="bac-au">Bắc Âu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-material">Chất liệu</label>
+                        <input type="text" id="listing-material" name="material" placeholder="Ví dụ: gỗ sồi, vải cotton...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-price">Giá từ (VNĐ)</label>
+                        <input type="number" id="listing-price" name="price" min="0" step="1000" placeholder="Ví dụ: 450000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-leadtime">Thời gian hoàn thành (ngày)</label>
+                        <input type="number" id="listing-leadtime" name="leadtime" min="1" placeholder="Ví dụ: 7" required>
+                    </div>
+
+                    <div class="form-group form-group--inline">
+                        <input type="checkbox" id="listing-custom" name="acceptCustom">
+                        <label for="listing-custom">Nhận làm theo yêu cầu của khách (Brief)</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-description">Mô tả</label>
+                        <textarea id="listing-description" name="description" rows="4" placeholder="Mô tả ngắn về sản phẩm hoặc dịch vụ của bạn..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="listing-image">Ảnh đại diện (URL)</label>
+                        <input type="text" id="listing-image" name="image" placeholder="Dán đường dẫn ảnh...">
+                    </div>
+                </div>
+
+                <div class="modal__footer">
+                    <button type="button" class="btn btn--outline" data-action="close-modal">Hủy</button>
+                    <button type="submit" class="btn btn--primary">Đăng bài</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS: thứ tự nạp quan trọng (dữ liệu → lưu trữ → logic trang) -->
+    <script src="../../js/mock-data.js"></script>
+    <script src="../../js/modules/storage.js"></script>
+    <script src="../../js/pages/maker.js"></script>
+</body>
+</html>
