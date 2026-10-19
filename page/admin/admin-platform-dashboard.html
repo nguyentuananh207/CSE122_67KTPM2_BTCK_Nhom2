@@ -19,11 +19,12 @@
 </head>
 
 <body class="page-admin" data-page="admin-platform-dashboard">
+    <div id="thanh_dieu_huong">
     <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
 
     <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar" id="sidebar" aria-label="Điều hướng khu quản trị">
-        <a class="sidebar_brand" href="../../index.html">
+        <a class="sidebar_brand" href="../../page/index.html">
             <span class="sidebar_logo" aria-hidden="true">
                 <img src="../../assets/images/logoCraftlink.png" alt="ảnh logo" width="60" height="60">
             </span>
@@ -32,10 +33,10 @@
 
         <div class="sidebar_group">
             <p class="sidebar_label">Không gian làm việc</p>
-            <span class="pill pill--light">Quản trị viên</span>
+            <span class="pill pill-light">Quản trị viên</span>
 
             <nav class="nav" aria-label="Khu quản trị">
-                <a class="nav_item nav_item--active" href="admin-platform-dashboard.html" aria-current="page">Tổng quan
+                <a class="nav_item nav_item-active" href="admin-platform-dashboard.html" aria-current="page">Tổng quan
                     nền tảng</a>
                 <a class="nav_item" href="admin-category-management.html">Danh mục sản phẩm</a>
                 <a class="nav_item" href="admin-user-management.html">Quản lý tài khoản</a>
@@ -46,7 +47,7 @@
 
             <nav class="nav" aria-label="Liên kết hỗ trợ">
                 <a class="nav_item" href="../moderator/moderator-content-guidelines.html">Hướng dẫn sử dụng</a>
-                <a class="nav_item" href="../../index.html">Trở về trang bày <span class="nav__ext"
+                <a class="nav_item" href="../../page/index.html">Trở về trang bày <span class="nav_ext"
                         aria-hidden="true">↗</span></a>
             </nav>
         </div>
@@ -56,15 +57,15 @@
             <p class="sidebar_user-meta">Quản trị viên · <a href="../auth/login.html">Đăng xuất</a></p>
             <p class="sidebar_user-note">Chỉ hiển thị tác vụ theo quyền.</p>
         </div>
+        </div>
     </aside>
 
     <!-- ================= KHUNG TRANG ================= -->
-    <div class="shell">
+    <div class="shell" id="main">
         <header class="topbar">
-            <button class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar"
-                aria-expanded="false">
-                <img src="../../assets/icons/menu.svg" alt="" >
-            </button>
+            <a class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar" aria-expanded="false" href="#thanh_dieu_huong">
+                <img src="../../assets/icons/menu.svg" alt="" width="21" height="21">
+             </a>
 
             <nav class="breadcrumb" aria-label="Đường dẫn">
                 <span class="breadcrumb_item">Quản trị viên</span>
@@ -72,9 +73,15 @@
                 <span class="breadcrumb_item breadcrumb_item--current" aria-current="page">Tổng quan nền tảng</span>
             </nav>
 
-            <div class="topbar_actions">
+            
+        </header>
+
+        <main class="content" >
+
+            <!-- ===== Đầu trang ===== -->
+             <div class="topbar_actions">
                 <button class="icon-btn" aria-label="Thông báo">
-                    <img src="../../assets/icons/bell.svg" alt="" >
+                    <img src="../../assets/icons/bell.svg" alt="ảnh logo" >
                     <span class="icon-btn_dot" aria-hidden="true"></span>
                 </button>
                 <time class="topbar_date" datetime="2026-10-04">04/10/2026</time>
@@ -83,11 +90,6 @@
                     Quang Huy
                 </span>
             </div>
-        </header>
-
-        <main class="content" id="main">
-
-            <!-- ===== Đầu trang ===== -->
             <section class="page-head">
                 <div class="page-head_text">
                     <p class="eyebrow">Quản trị viên</p>

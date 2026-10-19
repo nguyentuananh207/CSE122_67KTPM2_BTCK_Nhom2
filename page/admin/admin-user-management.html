@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="../../css/pages/dashboard.css">
 </head>
 <body class="page-admin" data-page="admin-user-management">
+  <div id="thanh_dieu_huong">
 <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
 
 <!-- ================= SIDEBAR ================= -->
 <aside class="sidebar" id="sidebar" aria-label="Điều hướng khu quản trị">
-  <a class="sidebar__brand" href="../../page/index.html">
+  <a class="sidebar_brand" href="../../page/index.html">
     <span class="sidebar_logo" aria-hidden="true">
       <img src="../../assets/images/logoCraftlink.png" alt="logo dự án" width="60" height="60">
     </span>
@@ -41,7 +42,7 @@
       <a class="nav_item" href="../../page/moderator/moderator-moderation-queue.html">Nhật ký hệ thống</a>
     </nav>
 
-    <hr class="sidebar__divider">
+    <hr class="sidebar_divider">
 
     <nav class="nav" aria-label="Liên kết hỗ trợ">
       <a class="nav_item" href="../moderator/moderator-content-guidelines.html">Hướng dẫn sử dụng</a>
@@ -54,14 +55,15 @@
     <p class="sidebar_user-meta">Quản trị viên · <a href="../auth/login.html">Đăng xuất</a></p>
     <p class="sidebar_user-note">Chỉ hiển thị tác vụ theo quyền.</p>
   </div>
+</div>
 </aside>
 
 <!-- ================= KHUNG TRANG ================= -->
-<div class="shell">
+<div class="shell" id="main">
   <header class="topbar">
-    <button class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar" aria-expanded="false">
-      <img src="../../assets/icons/menu.svg" alt="" width="21" height="21">
-    </button>
+    <a class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar" aria-expanded="false" href="#thanh_dieu_huong">
+      <img src="../../assets/icons/menu.svg" alt="" width="21" height="21" >
+    </a>
 
     <nav class="breadcrumb" aria-label="Đường dẫn">
       <span class="breadcrumb_item">Quản trị viên</span>
