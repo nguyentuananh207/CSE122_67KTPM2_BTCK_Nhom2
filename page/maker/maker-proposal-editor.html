@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soạn báo giá | CraftLink Maker</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/ai-modal.css">
+  <link rel="stylesheet" href="../../css/pages/proposal-editor.css">
+</head>
+<body class="page-proposal">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../../index.html" class="logo">CraftLink</a>
+    <nav class="main-nav">
+      <a href="maker-listing-management.html">Bài đăng của tôi</a>
+      <a href="maker-brief-inbox.html">Hộp thư Brief</a>
+      <a href="maker-proposal-editor.html" class="active">Soạn báo giá</a>
+    </nav>
+    <div class="header-actions">
+      <span id="currentUser" class="user-chip">Maker</span>
+      <button type="button" id="btnLogout" class="btn btn-outline">Đăng xuất</button>
+    </div>
+  </header>
+
+  <main class="container proposal-layout">
+
+    <div class="page-heading">
+      <h1>Soạn báo giá cho khách</h1>
+      <p>Điền giá, thời gian hoàn thành và cam kết của bạn, rồi gửi lại cho khách hàng.</p>
+    </div>
+
+    <div class="proposal-grid">
+
+      <!-- CỘT TRÁI: FORM BÁO GIÁ -->
+      <section class="card proposal-form-card">
+        <form id="proposalForm" novalidate>
+
+          <div class="form-group">
+            <label for="proposalTitle">Tiêu đề báo giá <span class="required">*</span></label>
+            <input type="text" id="proposalTitle" name="title" placeholder="VD: Thiết kế logo thương hiệu gốm thủ công" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="proposalPrice">Giá đề xuất (VNĐ) <span class="required">*</span></label>
+              <input type="number" id="proposalPrice" name="price" min="0" step="1000" placeholder="2000000" required>
+            </div>
+            <div class="form-group">
+              <label for="proposalDays">Thời gian hoàn thành (ngày) <span class="required">*</span></label>
+              <input type="number" id="proposalDays" name="days" min="1" placeholder="7" required>
+            </div>
+            <div class="form-group">
+              <label for="proposalRevisions">Số lần chỉnh sửa</label>
+              <select id="proposalRevisions" name="revisions">
+                <option value="1">1 lần</option>
+                <option value="2" selected>2 lần</option>
+                <option value="3">3 lần</option>
+                <option value="unlimited">Không giới hạn</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="proposalScope">Phạm vi công việc <span class="required">*</span></label>
+            <textarea id="proposalScope" name="scope" rows="5" placeholder="Mô tả những gì bạn sẽ giao: số bản thiết kế, định dạng file, quy trình làm việc..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="proposalMessage">Lời nhắn gửi khách</label>
+            <textarea id="proposalMessage" name="message" rows="3" placeholder="Giới thiệu ngắn vì sao bạn phù hợp với yêu cầu này"></textarea>
+          </div>
+
+          <div class="form-group commitment-box">
+            <label class="checkbox-label">
+              <input type="checkbox" id="proposalCommit" name="commit" required>
+              <span>Tôi cam kết hoàn thành đúng thời hạn đã nêu và đúng phạm vi công việc ở trên.</span>
+            </label>
+          </div>
+
+          <p id="proposalError" class="form-error" role="alert" hidden></p>
+
+          <div class="form-actions">
+            <button type="button" id="btnSaveDraft" class="btn btn-outline">Lưu nháp</button>
+            <button type="submit" id="btnSendProposal" class="btn btn-primary">Gửi báo giá cho khách</button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- CỘT PHẢI: THÔNG TIN BRIEF -->
+      <aside class="proposal-sidebar">
+
+        <section class="card brief-summary" id="briefSummary">
+          <h2>Yêu cầu của khách</h2>
+          <dl class="brief-info">
+            <dt>Khách hàng</dt>
+            <dd id="briefBuyer">--</dd>
+            <dt>Tên dự án</dt>
+            <dd id="briefTitle">--</dd>
+            <dt>Ngân sách</dt>
+            <dd id="briefBudget">--</dd>
+            <dt>Hạn mong muốn</dt>
+            <dd id="briefDeadline">--</dd>
+            <dt>Phong cách yêu cầu</dt>
+            <dd id="briefStyle">--</dd>
+          </dl>
+          <p id="briefDescription" class="brief-description"></p>
+        </section>
+
+        <section class="card match-summary">
+          <h2>Độ phù hợp AI Style Matcher</h2>
+          <div class="match-score">
+            <span id="matchPercent">--%</span>
+          </div>
+          <button type="button" id="btnViewMatch" class="btn btn-outline btn-block">Xem phân tích chi tiết</button>
+        </section>
+
+        <section class="card proposal-preview">
+          <h2>Tóm tắt báo giá</h2>
+          <ul class="preview-list">
+            <li><span>Giá</span> <strong id="previewPrice">0 đ</strong></li>
+            <li><span>Thời gian</span> <strong id="previewDays">0 ngày</strong></li>
+            <li><span>Chỉnh sửa</span> <strong id="previewRevisions">2 lần</strong></li>
+          </ul>
+        </section>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- AI MODAL (dùng khung chung ai-modal.css) -->
+  <div id="aiModal" class="ai-modal" hidden>
+    <div class="ai-modal__backdrop" data-close-modal></div>
+    <div class="ai-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+      <header class="ai-modal__header">
+        <h3 id="aiModalTitle">Phân tích độ phù hợp</h3>
+        <button type="button" class="ai-modal__close" data-close-modal aria-label="Đóng">&times;</button>
+      </header>
+      <div class="ai-modal__body" id="aiModalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 CraftLink Marketplace</p>
+  </footer>
+
+  <script src="../../js/mock-data.js"></script>
+  <script src="../../js/modules/storage.js"></script>
+  <script src="../../js/modules/ai-services.js"></script>
+  <script src="../../js/pages/maker.js"></script>
+</body>
+</html>
