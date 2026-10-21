@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yêu cầu tùy biến · CraftLink</title>
+</head>
+<link rel="stylesheet" href="../../css/base/variables.css">
+    <link rel="stylesheet" href="../../css/base/reset.css">
+    <link rel="stylesheet" href="../../css/base/typography.css">
+    <link rel="stylesheet" href="../../css/components/buttons.css">
+    <link rel="stylesheet" href="../../css/components/badges.css">
+    <link rel="stylesheet" href="../../css/components/cards.css">
+    <link rel="stylesheet" href="../../css/components/tables.css">
+    <link rel="stylesheet" href="../../css/layout/header.css">
+    <link rel="stylesheet" href="../../css/layout/footer.css">
+    <link rel="stylesheet" href="../../css/layout/sidebar.css">
+    <link rel="stylesheet" href="../../css/pages/dashboard.css">
+<body>
+
+    <!-- Sidebar -->
+    <aside class="side">
+        <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html" class="brand">
+            <span class="brand-logo"></span>
+            <span class="brand-name">CraftLink</span>
+        </a>
+        <p class="ws-label">Không gian làm việc</p>
+        <span class="ws-chip">Khách hàng</span>
+
+        <nav class="nav" aria-label="Điều hướng chính">
+            <a href="buyer-marketplace.html">Khám phá</a>
+            <a href="buyer-favorites.html">Yêu thích</a>
+            <a href="buyer-custom-brief.html" aria-current="page">Yêu cầu tùy biến</a>
+            <a href="buyer-orders.html">Đơn &amp; yêu cầu</a>
+            <hr>
+            <a href="">Hướng dẫn sử dụng</a>
+            <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html">Trở về trưng bày</a>
+        </nav>
+
+        <div class="me">
+            <b>Minh Anh</b>
+            <small>Khách hàng · Đăng xuất</small>
+        </div>
+    </aside>
+
+    <div class="main">
+        <!-- Topbar -->
+        <header class="top">
+            <span class="breadcrumb">Khách hàng / Yêu cầu tùy biến</span>
+            <div class="top-right">
+                <button type="button" aria-label="Thông báo">Thông báo</button>
+                <time id="today">20/10/2026</time>
+                <span class="pill">Minh Anh</span>
+            </div>
+        </header>
+
+        <main class="wrap">
+            <!-- Tiêu đề trang -->
+            <div class="head">
+                <div>
+                    <h1>Mô tả món đồ bạn muốn đặt làm</h1>
+                    <p>Viết brief càng rõ, maker càng dễ gửi proposal sát nhu cầu. Trợ lý AI bên cạnh sẽ giúp bạn hoàn
+                        thiện từng phần.</p>
+                </div>
+                <span class="pill">Bản nháp chưa gửi</span>
+            </div>
+
+            <div class="layout">
+
+                <!-- Form brief -->
+                <form class="card" id="brief" novalidate>
+
+                    <section class="sec">
+                        <h2>Bạn cần làm gì?</h2>
+                        <p class="hint">Tên ngắn gọn và loại sản phẩm giúp maker lọc đúng yêu cầu.</p>
+
+                        <div class="f">
+                            <label for="title">Tên yêu cầu *</label>
+                            <input type="text" id="title" placeholder="Ví dụ: Bộ 4 cốc khắc tên cho đám cưới">
+                            <span class="err">Hãy đặt tên cho yêu cầu.</span>
+                        </div>
+
+                        <div class="grid2">
+                            <div class="f">
+                                <label for="type">Loại sản phẩm *</label>
+                                <select id="type">
+                                    <option value="">Chọn loại sản phẩm</option>
+                                    <option>Gốm &amp; sứ</option>
+                                    <option>Đồ gỗ</option>
+                                    <option>Đồ da</option>
+                                    <option>Thêu &amp; dệt</option>
+                                    <option>Tranh &amp; trang trí</option>
+                                    <option>Trang sức</option>
+                                    <option>Khác</option>
+                                </select>
+                                <span class="err">Chọn loại sản phẩm.</span>
+                            </div>
+                            <div class="f">
+                                <label for="qty">Số lượng</label>
+                                <input type="number" id="qty" min="1" value="1">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sec">
+                        <h2>Ý tưởng của bạn</h2>
+                        <p class="hint">Kể món đồ dùng để làm gì, dành cho ai, và điều bạn không muốn xuất hiện.</p>
+
+                        <div class="f">
+                            <label for="desc">Mô tả chi tiết *</label>
+                            <textarea id="desc" rows="6" maxlength="1200"
+                                placeholder="Ví dụ: Tôi cần 4 cốc gốm làm quà cưới, khắc tên từng người ở đáy cốc, màu men trầm…"></textarea>
+                            <div class="count"><span id="cnt">0</span>/1200</div>
+                            <span class="err">Mô tả cần ít nhất 30 ký tự để maker hiểu ý bạn.</span>
+                        </div>
+
+                        <fieldset class="f" id="styles">
+                            <legend>Phong cách</legend>
+                            <label><input type="checkbox" name="style" value="Tối giản"> Tối giản</label>
+                            <label><input type="checkbox" name="style" value="Vintage"> Vintage</label>
+                            <label><input type="checkbox" name="style" value="Thủ công mộc mạc"> Thủ công mộc
+                                mạc</label>
+                            <label><input type="checkbox" name="style" value="Hiện đại"> Hiện đại</label>
+                            <label><input type="checkbox" name="style" value="Nhiều màu sắc"> Nhiều màu sắc</label>
+                            <label><input type="checkbox" name="style" value="Truyền thống Việt"> Truyền thống
+                                Việt</label>
+                        </fieldset>
+
+                        <div class="grid2">
+                            <div class="f">
+                                <label for="mat">Chất liệu mong muốn</label>
+                                <input type="text" id="mat" placeholder="Gốm men tro, gỗ sồi, da bò…">
+                            </div>
+                            <div class="f">
+                                <label for="size">Kích thước</label>
+                                <input type="text" id="size" placeholder="Ví dụ: cao 9 cm, đường kính 8 cm">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="sec">
+                        <h2>Ảnh tham khảo</h2>
+                        <p class="hint">Ảnh mẫu, bản phác tay hoặc món đồ bạn thích. Tối đa 5 ảnh.</p>
+
+                        <div class="f">
+                            <label for="file">Chọn ảnh từ máy</label>
+                            <input type="file" id="file" accept="image/*" multiple>
+                        </div>
+                        <div class="thumbs" id="thumbs"><!-- ảnh xem trước thêm vào đây --></div>
+                    </section>
+
+                    <section class="sec">
+                        <h2>Ngân sách &amp; thời gian</h2>
+                        <p class="hint">Khoảng ngân sách giúp maker báo giá thực tế hơn.</p>
+
+                        <div class="grid2">
+                            <div class="f">
+                                <label for="bmin">Ngân sách từ (₫)</label>
+                                <input type="number" id="bmin" min="0" step="10000" placeholder="300000">
+                            </div>
+                            <div class="f">
+                                <label for="bmax">Đến (₫)</label>
+                                <input type="number" id="bmax" min="0" step="10000" placeholder="800000">
+                            </div>
+                        </div>
+
+                        <div class="f">
+                            <label for="due">Cần nhận hàng trước</label>
+                            <input type="date" id="due">
+                        </div>
+                    </section>
+
+                    <section class="sec">
+                        <h2>Gửi cho ai?</h2>
+                        <label class="radio">
+                            <input type="radio" name="to" value="open" checked>
+                            <span><b>Mở cho mọi maker phù hợp</b><small>Nhận nhiều proposal để so sánh giá và phong
+                                    cách.</small></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="to" value="pick">
+                            <span><b>Chọn maker cụ thể</b><small>Chỉ gửi cho người bạn đã yêu thích hoặc từng làm
+                                    việc.</small></span>
+                        </label>
+                    </section>
+
+                    <div class="actions">
+                        <a href="buyer-orders.html">Hủy</a>
+                        <div>
+                            <button type="button" id="save">Lưu nháp</button>
+                            <button type="submit">Gửi yêu cầu</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Trợ lý AI -->
+                <aside class="ai" aria-label="Trợ lý AI">
+                    <div class="ai-h">
+                        <h2>Trợ lý AI</h2>
+                        <p>Kiểm tra brief và gợi ý phần còn thiếu.</p>
+                        <label for="bar">Độ đầy đủ của brief: <b id="pct">0%</b></label>
+                        <progress id="bar" value="0" max="100"></progress>
+                    </div>
+
+                    <div class="quick">
+                        <button type="button" data-act="review">Kiểm tra brief</button>
+                        <button type="button" data-act="rewrite">Viết lại mô tả</button>
+                        <button type="button" data-act="budget">Gợi ý ngân sách</button>
+                        <button type="button" data-act="questions">Câu hỏi maker hay hỏi</button>
+                    </div>
+
+                    <div class="log" id="log" aria-live="polite">
+                        <div class="msg">Xin chào! Hãy nhập vài dòng ý tưởng, tôi sẽ giúp bạn biến nó thành một brief
+                            maker dễ hiểu.</div>
+                    </div>
+
+                    <form class="ask" id="ask">
+                        <input type="text" id="q" placeholder="Hỏi AI về yêu cầu của bạn…" aria-label="Câu hỏi cho AI">
+                        <button type="submit">Gửi</button>
+                    </form>
+
+                    <p class="note">Gợi ý của AI chỉ mang tính tham khảo. Bạn quyết định nội dung cuối cùng trước khi
+                        gửi.</p>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+.dangxuat{
+  padding: 5px;
+  background-color: #c38739;
+  border-radius: 8px;
+  color: white;
+}
+.sidebar_user-meta{
+  padding: 5px 0px 5px 5px;
+  background-color: #99cc2c;
+  border-radius: 8px;
+  display: inline-block;
+  display: flow-root;
+  
+}
+.tool-btn{
+    border-radius: 8px;
+    border:1px solid gray;
+    width: 170px;
+    width: min 100px;;
+    padding: 10px;
+}
+.select-btn{
+    border-radius: 8px;
+    border:1px solid gray;
+    padding: 10px;
+    background-color: #eefcc4;
+
+}
