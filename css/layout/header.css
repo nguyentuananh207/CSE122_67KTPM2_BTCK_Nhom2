@@ -1,0 +1,164 @@
+/**
+ * CraftLink – Header Component
+ */
+.brand,header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h, 72px);
+  box-sizing: border-box;
+  background-color: rgba(233, 243, 99, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--clr-border, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 var(--space-xl, 24px);
+}
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading, Arial, sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-primary, #6d4aff);
+}
+
+.header-brand img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-nav a {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--clr-text-muted, #64748b);
+  padding: 0.5rem 0.25rem;
+  position: relative;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  color: var(--clr-primary, #6d4aff);
+}
+
+.header-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--clr-primary, #6d4aff);
+  border-radius: 2px;
+}
+
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background-color: #f7f3ee;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.user-chip-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--clr-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+body {
+  padding-top: var(--header-h, 72px);
+}
+
+/* WORKSPACE SWITCHER DROPDOWN */
+.workspace-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.workspace-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #ffffff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  width: 290px;
+  z-index: 10000;
+  padding: 0.5rem 0;
+}
+
+.workspace-dropdown.show {
+  display: block;
+}
+
+.role-switch-header {
+  padding: 0.45rem 0.85rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--clr-border-light);
+}
+
+.role-switch-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--clr-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.role-switch-item:hover {
+  background-color: #f7f3ee;
+}
+
+.role-switch-item.active {
+  background-color: #faf0e6;
+  font-weight: 700;
+}

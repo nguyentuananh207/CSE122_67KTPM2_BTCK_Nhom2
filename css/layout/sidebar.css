@@ -1,0 +1,122 @@
+body.page-admin .skip-link {
+  position: fixed;
+  top: -4rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: #a0de67;
+  color: #1f2937;
+}
+.sidebar {
+  position: fixed;
+  height: var(--header-h, 72px);
+  box-sizing: border-box;
+  background-color: rgba(235, 238, 165, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--clr-border, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 var(--space-xl, 24px);
+  z-index: 1000;
+}
+
+body.page-admin .skip-link:focus {
+  top: 0.5rem;
+}
+
+body.page-admin #thanh_dieu_huong {
+  grid-column: 1;
+  min-width: 0;
+  position: relative;
+}
+
+body.page-admin .sidebar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: calc(100vh - var(--header-h, 72px));
+  padding: 1.5rem 1rem;
+  background: #bbdc72;
+  border-right: 1px solid #e5e7eb;
+}
+
+body.page-admin .sidebar_brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  color: #263238;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body.page-admin .sidebar_logo img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+body.page-admin .sidebar_brand-name {
+  overflow-wrap: anywhere;
+}
+
+body.page-admin .sidebar_group {
+  min-width: 0;
+}
+
+body.page-admin .sidebar_label {
+  margin: 0 0 0.75rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+body.page-admin .sidebar .nav {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+
+body.page-admin .sidebar .nav_item {
+  display: block;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem;
+  color: #334155;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+body.page-admin .sidebar .nav_item:hover,
+body.page-admin .sidebar .nav_item-active {
+  background: #eefcc4;
+  color: #95a113;
+}
+
+body.page-admin .sidebar_divider {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+body.page-admin .sidebar_footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+}
+
+body.page-admin .sidebar_footer p {
+  margin: 0.25rem 0;
+}
