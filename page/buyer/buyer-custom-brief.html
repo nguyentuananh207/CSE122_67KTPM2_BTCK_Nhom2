@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Tạo yêu cầu tuỳ biến (Custom Brief)</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KHÁCH HÀNG: CHẶN KHÁCH VÃNG LAI -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Bạn đang là khách vãng lai! Vui lòng đăng nhập tài khoản Khách hàng để tạo yêu cầu tuỳ biến.");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="buyer-brief">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <a href="buyer-custom-brief.html" class="active">Yêu cầu tuỳ biến</a>
+      <a href="buyer-orders.html">Đơn & Yêu cầu</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="app-main" style="margin-left: 0; max-width: 1200px; margin: 0 auto; padding-top: 1.5rem;">
+    
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+      🛒 Không gian làm việc: Khách hàng (Buyer)
+    </div>
+
+    <div class="breadcrumb">
+      <a href="buyer-marketplace.html">Khách hàng</a>
+      <span class="breadcrumb-separator">/</span>
+      <span>Tạo yêu cầu tuỳ biến</span>
+    </div>
+
+    <div class="section-header">
+      <h1>Khởi tạo yêu cầu chế tác theo mong muốn</h1>
+      <p>Cung cấp ý tưởng ban đầu của bạn. Công cụ <strong>AI Brief Builder</strong> sẽ giúp hoàn thiện các thông số kỹ thuật để nghệ nhân hiểu chuẩn xác nhất.</p>
+    </div>
+
+    <div class="brief-layout">
+      <!-- FORM NHẬP BRIEF -->
+      <section class="brief-form-section">
+        <form id="brief-form" novalidate>
+          <div class="form-group">
+            <label for="title">Tiêu đề yêu cầu <span class="required">*</span></label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="VD: Bộ cốc gốm mộc khắc tên kỷ niệm 5 năm ngày cưới" required />
+          </div>
+
+          <div class="form-group">
+            <label for="category">Danh mục chế tác <span class="required">*</span></label>
+            <select id="category" name="category" class="form-control" required>
+              <option value="">— Đang nạp danh mục... —</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Khoảng ngân sách dự kiến (VND) <span class="required">*</span></label>
+            <input type="number" id="budget" name="budget" class="form-control" placeholder="1000000" min="50000" step="10000" required />
+            <small class="text-muted">Ngân sách giúp hệ thống đề xuất những nghệ nhân có bảng giá phù hợp nhất.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Mô tả chi tiết mong muốn <span class="required">*</span></label>
+            <textarea id="description" name="description" class="form-control" placeholder="Mô tả về kích thước, màu men/màu da, chất liệu yêu thích hoặc nội dung muốn khắc tên..." style="min-height: 140px;" required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap;">
+            <button type="submit" class="btn btn-primary btn-lg">
+              🚀 Gửi yêu cầu tới Nghệ nhân
+            </button>
+            <button type="button" id="btn-ai-brief" class="btn btn-outline btn-lg" style="border-color: var(--clr-primary); color: var(--clr-primary);">
+              🤖 AI Brief Builder (Gợi ý chuẩn hóa)
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- SIDEBAR BRIEF DRAFTS & TIPS -->
+      <aside class="brief-sidebar">
+        <div class="card">
+          <h3 style="margin-bottom: 0.75rem; font-size: 1.1rem;">Bản brief đã lưu của bạn</h3>
+          <div id="brief-drafts"></div>
+        </div>
+
+        <div class="guideline-tip-box">
+          <strong>💡 Mẹo gửi brief hiệu quả:</strong>
+          <ul style="padding-left: 1rem; margin-top: 0.5rem; line-height: 1.5; font-size: 0.8rem;">
+            <li>Ghi rõ kích thước ước chừng (dài x rộng x cao).</li>
+            <li>Nêu mục đích sử dụng (trưng bày, làm quà tặng, sử dụng hàng ngày).</li>
+            <li>Thời gian bạn cần nhận hàng để nghệ nhân sắp xếp lịch lò nung/khâu da.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+  </main>
+
+  <!-- AI MODAL -->
+  <div class="modal" id="ai-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-modal-close aria-label="Đóng">✕</button>
+      <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--clr-primary);">🤖 AI Brief Builder</h2>
+      <div id="ai-result"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center; margin-top: 3rem;">
+    &copy; 2026 CraftLink – Nhóm 2 CSE122.
+  </footer>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initCustomBrief } from "../../js/pages/buyer.js";
+
+    if (requireRole(["buyer", "admin"])) {
+      initCustomBrief();
+    }
+  </script>
+</body>
+</html>

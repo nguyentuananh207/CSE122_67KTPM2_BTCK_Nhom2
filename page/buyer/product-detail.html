@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Chi tiết sản phẩm thủ công</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-page="product-detail">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <a href="buyer-custom-brief.html">Yêu cầu tuỳ biến</a>
+      <a href="buyer-orders.html">Đơn & Yêu cầu</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="app-main" style="margin-left: 0; max-width: 1200px; margin: 0 auto; padding-top: 1.5rem;">
+    
+    <div class="breadcrumb">
+      <a href="../index.html">Trang chủ</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <span class="breadcrumb-separator">/</span>
+      <span>Chi tiết tác phẩm</span>
+    </div>
+
+    <!-- PRODUCT DETAIL CONTAINER (Nạp qua buyer.js) -->
+    <div id="product-detail"></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center; margin-top: 3rem;">
+    &copy; 2026 CraftLink – Nhóm 2 CSE122.
+  </footer>
+
+  <script type="module">
+    import "../../js/main.js";
+    import { initProductDetail } from "../../js/pages/buyer.js";
+    initProductDetail();
+  </script>
+</body>
+</html>

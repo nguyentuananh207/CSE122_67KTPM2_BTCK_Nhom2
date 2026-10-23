@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Quản lý Danh mục sản phẩm (Admin)</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN ADMIN -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || session.role !== "admin") {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Chỉ Quản trị viên mới được phép truy cập Quản lý Danh mục!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="admin-categories">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="admin-platform-dashboard.html" class="active">Không gian Quản trị</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR ADMIN -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">👑 Quản trị viên điều hành</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
+
+        <nav class="sidebar-nav">
+          <a href="admin-platform-dashboard.html" class="sidebar-link">
+            <span>📊</span> Tổng quan nền tảng
+          </a>
+          <a href="admin-category-management.html" class="sidebar-link active">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="../moderator/moderator-moderation-queue.html" class="sidebar-link">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="../moderator/moderator-report-center.html" class="sidebar-link">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="../moderator/moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Quản trị viên</div>
+        <div class="sidebar-footer-role">Admin điều hành</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Quản trị viên</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Quản lý danh mục</span>
+      </div>
+
+      <div class="section-header">
+        <h1>Phân loại & Danh mục ngành hàng thủ công</h1>
+        <p>Thêm mới danh mục hoặc lưu trữ các phân nhánh sản phẩm trên hệ thống.</p>
+      </div>
+
+      <div class="category-management-layout">
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; font-size: 1.15rem;">+ Thêm danh mục mới</h3>
+          <form id="cat-form">
+            <div class="form-group">
+              <label for="cat-name">Tên danh mục <span class="required">*</span></label>
+              <input type="text" id="cat-name" name="name" class="form-control" placeholder="VD: Thủy tinh thổi thủ công" required />
+            </div>
+
+            <div class="form-group">
+              <label for="cat-slug">Đường dẫn tĩnh (Slug)</label>
+              <input type="text" id="cat-slug" name="slug" class="form-control" placeholder="VD: thuy-tinh-thoi" />
+            </div>
+
+            <div class="form-group">
+              <label for="cat-icon">Biểu tượng Icon (Emoji)</label>
+              <input type="text" id="cat-icon" name="icon" class="form-control" placeholder="🏺 hoặc 💎" value="🏺" />
+            </div>
+
+            <div class="form-group">
+              <label for="cat-desc">Mô tả tóm tắt</label>
+              <textarea id="cat-desc" name="description" class="form-control" placeholder="Đặc trưng chất liệu, nghệ nhân tiêu biểu..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Lưu danh mục mới
+            </button>
+          </form>
+        </div>
+
+        <div class="table-wrapper category-table-wrapper">
+          <table class="category-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Icon</th>
+                <th>Tên danh mục</th>
+                <th>Slug</th>
+                <th>Số tác phẩm</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="cat-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initCategoryManagement } from "../../js/pages/admin.js";
+
+    if (requireRole(["admin"])) {
+      initCategoryManagement();
+    }
+  </script>
+</body>
+</html>

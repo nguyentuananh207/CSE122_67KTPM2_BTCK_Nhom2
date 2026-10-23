@@ -1,0 +1,621 @@
+/**
+ * CraftLink – Master Stylesheet
+ * Kết nối toàn bộ module CSS và các tiện ích dùng chung
+ */
+
+/* ── Base ── */
+@import "base/variables.css";
+@import "base/reset.css";
+@import "base/typography.css";
+
+/* ── Components ── */
+@import "components/buttons.css";
+@import "components/badges.css";
+@import "components/cards.css";
+@import "components/forms.css";
+@import "components/tables.css";
+@import "components/ai-modal.css";
+
+/* ── Layout ── */
+@import "layout/header.css";
+@import "layout/sidebar.css";
+@import "layout/footer.css";
+
+/* ── Pages ── */
+@import "pages/marketplace.css";
+@import "pages/brief-custom.css";
+@import "pages/dashboard.css";
+
+/* ===================== Global Utilities & Helpers ===================== */
+
+/* Toast Container */
+.toast-container {
+  position: fixed;
+  top: calc(var(--header-h) + 1rem);
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 260px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-success {
+  background-color: var(--clr-success);
+}
+
+.toast-error {
+  background-color: var(--clr-danger);
+}
+
+.toast-info {
+  background-color: var(--clr-info);
+}
+
+.toast-warning {
+  background-color: var(--clr-warning);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--clr-text-muted);
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  max-width: 360px;
+  margin: 0 auto 1.25rem;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: var(--space-lg);
+}
+
+.section-header h1,
+.section-header h2 {
+  margin-bottom: 0.25rem;
+}
+
+.section-header p {
+  color: var(--clr-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--clr-text-light);
+  margin-bottom: var(--space-md);
+}
+
+.breadcrumb a {
+  color: var(--clr-text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--clr-primary);
+}
+
+.breadcrumb-separator {
+  color: var(--clr-border);
+}
+
+/* Auth Pages Styling */
+.auth-wrapper {
+  min-height: calc(100vh - var(--header-h) - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--clr-border-light);
+  margin-bottom: 1.5rem;
+  gap: 0.25rem;
+}
+
+.auth-tab-btn {
+  flex: 1 1 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--clr-text-muted);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.auth-tab-btn:hover {
+  color: var(--clr-primary);
+}
+
+.auth-tab-btn:focus-visible,
+.role-option:focus-visible {
+  outline: 3px solid rgba(141, 73, 37, 0.35);
+  outline-offset: 2px;
+}
+
+.auth-tab-btn.active {
+  color: var(--clr-primary);
+}
+
+.auth-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--clr-primary);
+}
+
+.auth-panel {
+  display: none;
+}
+
+.auth-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.role-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.role-option {
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.5rem;
+  min-height: 100px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: var(--clr-surface);
+  font-family: inherit;
+}
+
+.role-option:hover {
+  border-color: var(--clr-primary-light);
+  background-color: #faf7f2;
+}
+
+.role-option.selected {
+  border-color: var(--clr-primary);
+  background-color: rgba(141, 73, 37, 0.08);
+  box-shadow: 0 0 0 2px rgba(141, 73, 37, 0.2);
+}
+
+.role-option .role-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.role-option .role-title {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  display: block;
+}
+
+.demo-credentials-box {
+  background: #fdfaf6;
+  border: 1px dashed var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.825rem;
+}
+
+.demo-credentials-title {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.demo-credentials-hint {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.demo-credentials-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.demo-credentials-table {
+  min-width: 470px;
+  font-size: 0.78rem;
+  text-align: left;
+}
+
+.demo-credentials-table th,
+.demo-credentials-table td {
+  padding: 0.5rem 0.4rem;
+  border-bottom: 1px solid var(--clr-border-light);
+  vertical-align: top;
+}
+
+.demo-credentials-table th {
+  color: var(--clr-text-muted);
+  font-weight: 700;
+}
+
+.demo-credentials-table td:first-child {
+  font-weight: 600;
+}
+
+.demo-credentials-table code {
+  color: var(--clr-primary-dark);
+  font-family: Consolas, "Courier New", monospace;
+  white-space: nowrap;
+}
+
+.demo-credentials-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+button:focus-visible,
+.cat-btn:focus-visible,
+.copy-btn:focus-visible,
+.cart-qty-btn:focus-visible,
+.modal-close:focus-visible {
+  outline: 3px solid rgba(141, 73, 37, 0.35);
+  outline-offset: 2px;
+}
+
+/* ===================== SHOPPING CART & QR CHECKOUT STYLES ===================== */
+
+/* Header Cart Button */
+.header-cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: #f7f3ee;
+  border: 1.5px solid var(--clr-border);
+  color: var(--clr-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.header-cart-btn:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background-color: rgba(141, 73, 37, 0.06);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--clr-primary);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(141, 73, 37, 0.4);
+}
+
+/* Cart Page Layout */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.cart-items-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--clr-border-light);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--clr-border);
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  margin-bottom: 0.25rem;
+}
+
+.cart-item-maker {
+  font-size: 0.825rem;
+  color: var(--clr-text-muted);
+}
+
+.cart-item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-top: 0.25rem;
+}
+
+.cart-qty-controls {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--clr-surface);
+}
+
+.cart-qty-btn {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--clr-text);
+  cursor: pointer;
+  background: #fdfaf6;
+  transition: var(--transition);
+}
+
+.cart-qty-btn:hover {
+  background: #f1ede8;
+}
+
+.cart-qty-val {
+  width: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Order Summary Box */
+.order-summary-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.925rem;
+  color: var(--clr-text-muted);
+}
+
+.summary-row.total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  padding-top: 1rem;
+  border-top: 1px dashed var(--clr-border);
+  margin-top: 1rem;
+}
+
+.summary-row.total .total-amount {
+  color: var(--clr-primary);
+}
+
+/* QR Prepayment Section */
+.qr-checkout-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.payment-method-card {
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: var(--clr-surface);
+}
+
+.payment-method-card:hover {
+  border-color: var(--clr-primary-light);
+  background-color: #fdfaf6;
+}
+
+.payment-method-card.selected {
+  border-color: var(--clr-primary);
+  background-color: rgba(141, 73, 37, 0.04);
+  box-shadow: 0 0 0 2px rgba(141, 73, 37, 0.15);
+}
+
+.qr-box {
+  background: #ffffff;
+  border: 2px dashed var(--clr-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.qr-image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--clr-border);
+  padding: 0.5rem;
+  background: #ffffff;
+}
+
+.bank-info-table {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.bank-info-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--clr-border-light);
+}
+
+.copy-btn {
+  min-height: 34px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: #faf6f0;
+  border: 1px solid var(--clr-border);
+  cursor: pointer;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: var(--clr-primary);
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+.badge-paid {
+  background-color: var(--clr-success-bg);
+  color: var(--clr-success);
+}
+
+.badge-prepaid_deposit {
+  background-color: var(--clr-warning-bg);
+  color: var(--clr-warning);
+}
+
+@media (max-width: 850px) {
+  .cart-layout,
+  .qr-checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .auth-tabs {
+    flex-direction: column;
+    border-bottom: 0;
+    gap: 0.35rem;
+  }
+
+  .auth-tab-btn {
+    flex: 0 0 auto;
+    border: 1px solid var(--clr-border-light);
+    border-radius: var(--radius-sm);
+  }
+
+  .auth-tab-btn.active {
+    background: #faf6f0;
+    border-color: var(--clr-border);
+  }
+
+  .auth-tab-btn.active::after {
+    display: none;
+  }
+
+  .role-selector-grid {
+    grid-template-columns: 1fr;
+  }
+}

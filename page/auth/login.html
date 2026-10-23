@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Đăng nhập & Chọn Không gian làm việc</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-page="auth-login">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+    </nav>
+    <div id="header-auth">
+      <a href="../index.html" class="btn btn-outline btn-sm">← Về trang chủ</a>
+    </div>
+  </header>
+
+  <!-- AUTH WRAPPER -->
+  <main class="auth-wrapper">
+    <div class="auth-card">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.85rem; color: var(--clr-primary); margin-bottom: 0.35rem;">Chào mừng bạn đến với CraftLink</h2>
+        <p class="text-muted" style="font-size: 0.9rem;">Đăng nhập để tiếp tục sử dụng CraftLink</p>
+      </div>
+
+      <!-- TABS -->
+      <div class="auth-tabs" role="tablist" aria-label="Tùy chọn tài khoản">
+        <button type="button" class="auth-tab-btn active" id="auth-tab-login" role="tab" aria-selected="true" aria-controls="tab-login" tabindex="0" data-tab="tab-login">Đăng nhập</button>
+        <button type="button" class="auth-tab-btn" id="auth-tab-register" role="tab" aria-selected="false" aria-controls="tab-register" tabindex="-1" data-tab="tab-register">Đăng ký</button>
+        <button type="button" class="auth-tab-btn" id="auth-tab-password" role="tab" aria-selected="false" aria-controls="tab-password" tabindex="-1" data-tab="tab-password">Đổi / Quên mật khẩu</button>
+      </div>
+
+      <!-- 1. TAB ĐĂNG NHẬP -->
+      <div class="auth-panel active" id="tab-login" role="tabpanel" aria-labelledby="auth-tab-login">
+        <form id="form-login">
+          <div class="form-group">
+            <label for="login-username">Tài khoản / Email <span class="required">*</span></label>
+            <input type="text" id="login-username" name="username" class="form-control" placeholder="Nhập username hoặc email..." autocomplete="username" required />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Mật khẩu <span class="required">*</span></label>
+            <input type="password" id="login-password" name="password" class="form-control" placeholder="Nhập mật khẩu..." autocomplete="current-password" required />
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem;">
+            <label class="form-check">
+              <input type="checkbox" checked /> Ghi nhớ phiên đăng nhập
+            </label>
+            <a href="#" class="text-primary" id="link-forgot-pass">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            👉 Vào Không gian làm việc
+          </button>
+        </form>
+
+        <!-- DEMO ACCOUNT DETAILS -->
+        <div class="demo-credentials-box">
+          <h3 class="demo-credentials-title">Tài khoản dùng thử</h3>
+          <p class="demo-credentials-hint">Nhập email và mật khẩu vào biểu mẫu đăng nhập.</p>
+          <div class="demo-credentials-table-wrap">
+            <table class="demo-credentials-table">
+              <thead>
+                <tr>
+                  <th scope="col">Chức năng</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Mật khẩu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Quản trị viên 1</td><td><code>admin1@craftlink.vn</code></td><td><code>admin123</code></td></tr>
+                <tr><td>Quản trị viên 2</td><td><code>admin2@craftlink.vn</code></td><td><code>admin123</code></td></tr>
+                <tr><td>Người sáng tạo</td><td><code>maker1@craftlink.vn</code></td><td><code>maker123</code></td></tr>
+                <tr><td>Khách hàng</td><td><code>buyer1@craftlink.vn</code></td><td><code>buyer123</code></td></tr>
+                <tr><td>Kiểm duyệt viên</td><td><code>mod1@craftlink.vn</code></td><td><code>mod123</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TAB THÊM TÀI KHOẢN (ĐĂNG KÝ) -->
+      <div class="auth-panel" id="tab-register" role="tabpanel" aria-labelledby="auth-tab-register">
+        <form id="form-register">
+          <div class="form-group">
+            <label for="reg-name">Họ và tên <span class="required">*</span></label>
+            <input type="text" id="reg-name" name="name" class="form-control" placeholder="VD: Nguyễn Văn An" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Địa chỉ Email <span class="required">*</span></label>
+            <input type="email" id="reg-email" name="email" class="form-control" placeholder="VD: an.nguyen@craftlink.vn" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-phone">Số điện thoại liên hệ</label>
+            <input type="tel" id="reg-phone" name="phone" class="form-control" placeholder="0987654321" />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-role">Không gian làm việc đăng ký <span class="required">*</span></label>
+            <select id="reg-role" name="role" class="form-control" required>
+              <option value="buyer">🛒 Khách hàng (Mua và đặt làm đồ thủ công tùy biến)</option>
+              <option value="maker">🎨 Người sáng tạo (Nghệ nhân / Xưởng chế tác)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Mật khẩu mới <span class="required">*</span></label>
+            <input type="password" id="reg-password" name="password" class="form-control" placeholder="Tối thiểu 6 ký tự..." required />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            Tạo tài khoản & Mở không gian làm việc
+          </button>
+        </form>
+      </div>
+
+      <!-- 3. TAB ĐỔI MẬT KHẨU / QUÊN MẬT KHẨU -->
+      <div class="auth-panel" id="tab-password" role="tabpanel" aria-labelledby="auth-tab-password">
+        <form id="form-change-password">
+          <div class="form-group">
+            <label for="change-email">Email tài khoản cần đổi mật khẩu <span class="required">*</span></label>
+            <input type="email" id="change-email" name="email" class="form-control" placeholder="Nhập email của bạn..." required />
+          </div>
+
+          <div class="form-group">
+            <label for="old-password">Mật khẩu hiện tại (hoặc để trống nếu quên)</label>
+            <input type="password" id="old-password" name="oldPassword" class="form-control" placeholder="Mật khẩu cũ..." />
+          </div>
+
+          <div class="form-group">
+            <label for="new-password">Mật khẩu mới <span class="required">*</span></label>
+            <input type="password" id="new-password" name="newPassword" class="form-control" placeholder="Nhập mật khẩu mới..." required />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Xác nhận mật khẩu mới <span class="required">*</span></label>
+            <input type="password" id="confirm-password" name="confirmPassword" class="form-control" placeholder="Nhập lại mật khẩu mới..." required />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Cập nhật mật khẩu
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center;">
+    &copy; 2026 CraftLink – Nền tảng thương mại & sáng tạo đồ thủ công tùy biến.
+  </footer>
+
+  <script type="module">
+    import { StorageService } from "../../js/modules/storage.js";
+    import { showToast } from "../../js/modules/ui-utils.js";
+    import { setSession } from "../../js/main.js";
+
+    // Đường dẫn chính xác từ page/auth/ tới Không gian làm việc của từng vai trò
+    const WORKSPACE_URLS = {
+      admin: "../admin/admin-platform-dashboard.html",
+      maker: "../maker/maker-listing-management.html",
+      buyer: "../buyer/buyer-marketplace.html",
+      moderator: "../moderator/moderator-moderation-queue.html"
+    };
+
+    // Chuyển Tab
+    const tabButtons = document.querySelectorAll(".auth-tab-btn");
+    const tabPanels = document.querySelectorAll(".auth-panel");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", String(b === btn));
+          b.tabIndex = b === btn ? 0 : -1;
+        });
+        tabPanels.forEach(p => p.classList.remove("active"));
+
+        btn.classList.add("active");
+        const targetId = btn.dataset.tab;
+        document.getElementById(targetId).classList.add("active");
+      });
+
+      btn.addEventListener("keydown", (e) => {
+        const currentIndex = Array.from(tabButtons).indexOf(btn);
+        let nextIndex = currentIndex;
+
+        if (e.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabButtons.length;
+        else if (e.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+        else if (e.key === "Home") nextIndex = 0;
+        else if (e.key === "End") nextIndex = tabButtons.length - 1;
+        else return;
+
+        e.preventDefault();
+        tabButtons[nextIndex].focus();
+        tabButtons[nextIndex].click();
+      });
+    });
+
+    document.getElementById("link-forgot-pass")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector('[data-tab="tab-password"]').click();
+    });
+
+    // 1. XỬ LÝ ĐĂNG NHẬP VÀO KHÔNG GIAN
+    document.getElementById("form-login").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const usernameInput = document.getElementById("login-username").value.trim().toLowerCase();
+      const passwordInput = document.getElementById("login-password").value.trim();
+
+      const users = StorageService.getList("users");
+      const matched = users.find(u =>
+        (u.username?.toLowerCase() === usernameInput || u.email.toLowerCase() === usernameInput) &&
+        u.password === passwordInput
+      );
+
+      if (!matched) {
+        showToast("Tên đăng nhập hoặc mật khẩu không chính xác!", "error");
+        return;
+      }
+
+      if (matched.status === "suspended") {
+        showToast("Tài khoản này đang bị tạm khóa bởi Quản trị viên!", "error");
+        return;
+      }
+
+      setSession(matched);
+      showToast("Đăng nhập thành công! Đang chuyển về trang chủ...", "success");
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 600);
+    });
+
+    // 2. XỬ LÝ ĐĂNG KÝ
+    document.getElementById("form-register").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name = fd.get("name").trim();
+      const email = fd.get("email").trim().toLowerCase();
+      const phone = fd.get("phone").trim();
+      const role = fd.get("role");
+      const password = fd.get("password").trim();
+
+      if (password.length < 6) {
+        showToast("Mật khẩu phải có tối thiểu 6 ký tự!", "warning");
+        return;
+      }
+
+      const users = StorageService.getList("users");
+      if (users.some(u => u.email.toLowerCase() === email)) {
+        showToast("Email này đã được đăng ký trong hệ thống!", "error");
+        return;
+      }
+
+      const roleLabelMap = {
+        buyer: "Khách hàng",
+        maker: "Người sáng tạo",
+        admin: "Quản trị viên"
+      };
+
+      const newUser = {
+        id: "usr-" + Date.now(),
+        username: email.split("@")[0],
+        email,
+        phone,
+        password,
+        name,
+        role,
+        roleLabel: roleLabelMap[role] || role,
+        status: "active",
+        joinedAt: new Date().toISOString()
+      };
+
+      StorageService.append("users", newUser);
+      setSession(newUser);
+      showToast("Đăng ký thành công! Đang chuyển đến Không gian làm việc...", "success");
+
+      setTimeout(() => {
+        window.location.href = WORKSPACE_URLS[role] || "../index.html";
+      }, 800);
+    });
+
+    // 3. XỬ LÝ ĐỔI MẬT KHẨU
+    document.getElementById("form-change-password").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const email = fd.get("email").trim().toLowerCase();
+      const newPassword = fd.get("newPassword").trim();
+      const confirmPassword = fd.get("confirmPassword").trim();
+
+      if (newPassword !== confirmPassword) {
+        showToast("Mật khẩu mới và mật khẩu xác nhận không khớp!", "error");
+        return;
+      }
+
+      if (newPassword.length < 6) {
+        showToast("Mật khẩu mới phải có ít nhất 6 ký tự!", "warning");
+        return;
+      }
+
+      const users = StorageService.getList("users");
+      const userIndex = users.findIndex(u => u.email.toLowerCase() === email);
+
+      if (userIndex === -1) {
+        showToast("Không tìm thấy tài khoản với email này!", "error");
+        return;
+      }
+
+      users[userIndex].password = newPassword;
+      StorageService.set("users", users);
+      showToast("Đổi mật khẩu thành công! Bạn có thể đăng nhập ngay.", "success");
+
+      setTimeout(() => {
+        document.querySelector('[data-tab="tab-login"]').click();
+        document.getElementById("login-username").value = users[userIndex].username || users[userIndex].email;
+        document.getElementById("login-password").value = newPassword;
+      }, 900);
+    });
+  </script>
+</body>
+</html>

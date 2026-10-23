@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Hộp thư Brief của Người sáng tạo</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN MAKER -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || (session.role !== "maker" && session.role !== "admin")) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Khu vực Hộp thư Brief dành riêng cho Người sáng tạo (Maker)!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="maker-briefs">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="maker-listing-management.html" class="active">Không gian Người sáng tạo</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">🎨 Người sáng tạo (Maker)</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Kênh Người sáng tạo</div>
+
+        <nav class="sidebar-nav">
+          <a href="maker-listing-management.html" class="sidebar-link">
+            <span>📦</span> Quản lý Listing
+          </a>
+          <a href="maker-brief-inbox.html" class="sidebar-link active">
+            <span>📥</span> Hộp thư Brief
+          </a>
+          <a href="maker-proposal-editor.html" class="sidebar-link">
+            <span>✍️</span> Soạn Proposal
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 1.5rem;">
+        <div class="sidebar-label">Tiện ích</div>
+        <nav class="sidebar-nav">
+          <a href="../moderator/moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+          <a href="../index.html" class="sidebar-link">
+            <span>↗</span> Xem gian hàng công khai
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Nghệ nhân</div>
+        <div class="sidebar-footer-role">Người sáng tạo</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Kênh Người sáng tạo</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Hộp thư Brief</span>
+      </div>
+
+      <div class="section-header">
+        <h1>Hộp thư yêu cầu tùy biến từ Khách hàng</h1>
+        <p>Xem các yêu cầu chế tác theo mong muốn riêng. Sử dụng tính năng <strong>AI Style Matcher</strong> để nhận diện độ phù hợp với phong cách của Xưởng trước khi gửi Proposal.</p>
+      </div>
+
+      <!-- BRIEF LIST CONTAINER -->
+      <div id="brief-list"></div>
+    </main>
+
+  </div>
+
+  <!-- MODAL AI STYLE MATCHER -->
+  <div class="modal" id="ai-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-modal-close>✕</button>
+      <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--clr-primary);">🤖 AI Style Matcher</h2>
+      <div id="ai-result"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initBriefInbox } from "../../js/pages/maker.js";
+
+    if (requireRole(["maker", "admin"])) {
+      initBriefInbox();
+    }
+  </script>
+</body>
+</html>

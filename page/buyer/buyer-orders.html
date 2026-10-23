@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Quản lý đơn hàng & Proposal</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KHÁCH HÀNG: CHẶN KHÁCH VÃNG LAI -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Bạn đang là khách vãng lai! Vui lòng đăng nhập để xem danh sách Đơn hàng & Proposal.");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="buyer-orders">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <a href="buyer-custom-brief.html">Yêu cầu tuỳ biến</a>
+      <a href="buyer-orders.html" class="active">Đơn & Yêu cầu</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="app-main" style="margin-left: 0; max-width: 1000px; margin: 0 auto; padding-top: 1.5rem;">
+    
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+      🛒 Không gian làm việc: Khách hàng (Buyer)
+    </div>
+
+    <div class="breadcrumb">
+      <a href="buyer-marketplace.html">Khách hàng</a>
+      <span class="breadcrumb-separator">/</span>
+      <span>Đơn hàng & Báo giá</span>
+    </div>
+
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1>Đơn hàng & Đề xuất từ Nghệ nhân</h1>
+        <p>Theo dõi các báo giá nhận được từ Maker, xác nhận tiến độ gia công và trạng thái nhận sản phẩm.</p>
+      </div>
+      <div>
+        <a href="buyer-custom-brief.html" class="btn btn-primary">+ Gửi yêu cầu mới</a>
+      </div>
+    </div>
+
+    <!-- ORDERS LIST CONTAINER -->
+    <div id="orders-list"></div>
+
+  </main>
+
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center; margin-top: 3rem;">
+    &copy; 2026 CraftLink – Nhóm 2 CSE122.
+  </footer>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initOrders } from "../../js/pages/buyer.js";
+
+    if (requireRole(["buyer", "admin"])) {
+      initOrders();
+    }
+  </script>
+</body>
+</html>

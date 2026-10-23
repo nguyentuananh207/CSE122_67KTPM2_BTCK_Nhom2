@@ -1,0 +1,51 @@
+body.page-proposal .container.proposal-layout,
+body.page-moderator:not(.moderator-workspace) .container.report-layout {
+  display: block;
+}
+
+body.page-moderator {
+  --header-h: 72px;
+}
+
+body.moderator-workspace {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  align-items: start;
+  min-height: 100vh;
+}
+
+body.moderator-workspace #thanh_dieu_huong:empty {
+  display: none;
+}
+
+body.moderator-workspace .page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+body.moderator-workspace .page-head_text {
+  flex: 1 1 20rem;
+}
+
+body.moderator-workspace .page-head_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+body.moderator-workspace .grid--queue {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  gap: 1.25rem;
+}
+
+body.moderator-workspace .guide-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
+  align-items: start;
+  gap: 1.25rem;
+}

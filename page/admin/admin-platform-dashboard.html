@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Bảng điều khiển nền tảng (Admin)</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN ADMIN -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || session.role !== "admin") {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Chỉ Quản trị viên mới được phép truy cập Bảng điều khiển!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="admin-dashboard">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="admin-platform-dashboard.html" class="active">Không gian Quản trị</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR ADMIN -->
+    <aside class="sidebar" id="sidebar">
+      <!-- KHỐI KHÔNG GIAN LÀM VIỆC NỔI BẬT -->
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">👑 Quản trị viên điều hành</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
+
+        <nav class="sidebar-nav">
+          <a href="admin-platform-dashboard.html" class="sidebar-link active">
+            <span>📊</span> Tổng quan nền tảng
+          </a>
+          <a href="admin-category-management.html" class="sidebar-link">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="../moderator/moderator-moderation-queue.html" class="sidebar-link">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="../moderator/moderator-report-center.html" class="sidebar-link">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="../moderator/moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Quản trị viên</div>
+        <div class="sidebar-footer-role">Admin điều hành</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Quản trị viên điều hành</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Tổng quan nền tảng</span>
+      </div>
+
+      <div class="dashboard-header">
+        <div>
+          <h1>Trung tâm dữ liệu & Điều hành hệ thống</h1>
+          <p>Nắm bắt đầy đủ toàn bộ chỉ số, hoạt động và dữ liệu mà Người mua, Người sáng tạo và Kiểm duyệt viên đưa vào.</p>
+        </div>
+        <div>
+          <span class="badge badge-success" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            ● Dữ liệu Realtime từ LocalStorage
+          </span>
+        </div>
+      </div>
+
+      <!-- KPI STATS GRID (NẮM BẮT HẾT CÁC THÔNG TIN) -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-users">0</div>
+            <div class="stat-label">Tổng người dùng trên sàn</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#f3e8ff; color:#7e22ce;">🎨</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-makers">0</div>
+            <div class="stat-label">Nghệ nhân (Maker)</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e0f2fe; color:#0369a1;">🛒</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-buyers">0</div>
+            <div class="stat-label">Khách hàng (Buyer)</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#fef3c7; color:#b45309;">📦</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-listings">0</div>
+            <div class="stat-label">Tác phẩm / Listing</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#dcfce7; color:#15803d;">✍️</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-briefs">0</div>
+            <div class="stat-label">Yêu cầu tùy biến (Brief)</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e0e7ff; color:#3730a3;">💰</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-revenue">0 ₫</div>
+            <div class="stat-label">Tổng giao dịch đơn hàng</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#fee2e2; color:#b91c1c;">📋</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-mod-pending">0</div>
+            <div class="stat-label">Listing chờ duyệt</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#ffedd5; color:#c2410c;">🚩</div>
+          <div class="stat-content">
+            <div class="stat-value" id="stat-reports">0</div>
+            <div class="stat-label">Báo cáo khiếu nại mở</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD PANELS -->
+      <div class="dashboard-panels">
+        <!-- RECENT ACTIVITIES FROM ALL ROLES -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <div class="panel-title">
+              <span>⚡</span> Hoạt động mới nhất từ Người mua & Người bán
+            </div>
+            <span class="badge badge-primary">Tự động đồng bộ</span>
+          </div>
+          <div class="activity-list" id="recent-activity-list"></div>
+        </div>
+
+        <!-- QUICK ADMIN ACTIONS -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <div class="panel-title">
+              <span>⚙️</span> Lối tắt điều hành
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="admin-category-management.html" class="btn btn-outline" style="justify-content: flex-start;">
+              📁 Quản lý danh mục & phân loại
+            </a>
+            <a href="admin-user-management.html" class="btn btn-outline" style="justify-content: flex-start;">
+              👥 Phân quyền & Khóa tài khoản
+            </a>
+            <a href="../moderator/moderator-moderation-queue.html" class="btn btn-outline" style="justify-content: flex-start;">
+              📋 Xem hàng chờ duyệt listing
+            </a>
+            <a href="../moderator/moderator-report-center.html" class="btn btn-outline" style="justify-content: flex-start;">
+              🚩 Giải quyết khiếu nại báo cáo
+            </a>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding: 1rem; background: #faf7f2; border-radius: var(--radius); font-size: 0.825rem; color: var(--clr-text-muted);">
+            👑 <strong>2 Tài khoản Quản trị viên điều hành:</strong>
+            <ul style="padding-left: 1rem; margin-top: 0.35rem; line-height: 1.5;">
+              <li><strong>Admin 1:</strong> Nguyễn Tuấn Anh (Tổng quản trị)</li>
+              <li><strong>Admin 2:</strong> Trần Quang Huy (Điều hành nội dung)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initDashboard } from "../../js/pages/admin.js";
+
+    if (requireRole(["admin"])) {
+      initDashboard();
+    }
+  </script>
+</body>
+</html>

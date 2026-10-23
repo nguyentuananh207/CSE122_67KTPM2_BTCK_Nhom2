@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Khám phá & Bộ sưu tập</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-page="buyer-marketplace">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="buyer-marketplace.html" class="active">Khám phá</a>
+      <a href="buyer-custom-brief.html">Yêu cầu tuỳ biến</a>
+      <a href="buyer-orders.html">Đơn & Yêu cầu</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="app-main" style="margin-left: 0; max-width: 1280px; margin: 0 auto;">
+    
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+      🛒 Không gian làm việc: Khách hàng (Buyer)
+    </div>
+
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1>Tìm chất riêng cho ý tưởng của bạn</h1>
+        <p>Duyệt các tác phẩm độc bản từ nghệ nhân hoặc gửi brief để đặt làm theo số đo và phong cách riêng.</p>
+      </div>
+      <div>
+        <a href="buyer-custom-brief.html" class="btn btn-primary">+ Tạo Brief mới</a>
+      </div>
+    </div>
+
+    <!-- SEARCH & CONTROLS -->
+    <div class="search-controls">
+      <div class="search-input-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="mp-search" class="form-control" placeholder="Tìm gốm, đồ da, trang sức hoặc nghệ nhân..." />
+      </div>
+      <div style="font-size: 0.85rem; color: var(--clr-text-muted);">
+        💡 Lọc nhanh theo danh mục bên dưới
+      </div>
+    </div>
+
+    <!-- CATEGORY SLIDER -->
+    <div class="cat-filter-wrapper">
+      <div id="cat-filter" class="cat-filter"></div>
+    </div>
+
+    <!-- LISTING GRID -->
+    <div id="listing-grid" class="listing-grid"></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center;">
+    &copy; 2026 CraftLink – Nhóm 2 CSE122.
+  </footer>
+
+  <script type="module">
+    import "../../js/main.js";
+    import { initMarketplace } from "../../js/pages/buyer.js";
+    initMarketplace();
+  </script>
+</body>
+</html>

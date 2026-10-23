@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Quy chuẩn nội dung & Tiêu chí chế tác</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KIỂM DUYỆT -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || (session.role !== "moderator" && session.role !== "admin")) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Khu vực Quy chuẩn nội dung dành riêng cho Kiểm duyệt viên (Moderator) và Admin!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="mod-guidelines">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">🛡️ Kiểm duyệt nội dung</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
+
+        <nav class="sidebar-nav">
+          <a href="../admin/admin-platform-dashboard.html" class="sidebar-link">
+            <span>📊</span> Tổng quan nền tảng
+          </a>
+          <a href="../admin/admin-category-management.html" class="sidebar-link">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="../admin/admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="moderator-moderation-queue.html" class="sidebar-link">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="moderator-report-center.html" class="sidebar-link">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="moderator-content-guidelines.html" class="sidebar-link active">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Kiểm duyệt viên</div>
+        <div class="sidebar-footer-role">Vận hành sàn</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Vận hành & Kiểm duyệt</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Quy chuẩn nội dung</span>
+      </div>
+
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1>Bộ quy chuẩn & Tiêu chí kiểm duyệt</h1>
+          <p>Thiết lập các tiêu chuẩn bắt buộc về hình ảnh, mô tả vật liệu và cam kết tùy biến dành cho nghệ nhân.</p>
+        </div>
+        <div>
+          <button id="btn-ai-summarize" class="btn btn-primary">
+            🤖 AI Revision Summarizer (Tóm tắt cập nhật)
+          </button>
+        </div>
+      </div>
+
+      <!-- GUIDELINES LIST CONTAINER -->
+      <div id="guidelines-list"></div>
+
+    </main>
+
+  </div>
+
+  <!-- AI MODAL -->
+  <div class="modal" id="ai-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-modal-close>✕</button>
+      <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--clr-primary);">🤖 AI Revision Summarizer</h2>
+      <div id="ai-result"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initContentGuidelines } from "../../js/pages/admin.js";
+
+    if (requireRole(["admin", "moderator"])) {
+      initContentGuidelines();
+    }
+  </script>
+</body>
+</html>

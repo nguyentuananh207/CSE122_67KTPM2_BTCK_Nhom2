@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Trung tâm giải quyết Báo cáo & Khiếu nại</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KIỂM DUYỆT -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || (session.role !== "moderator" && session.role !== "admin")) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Khu vực Trung tâm Báo cáo dành riêng cho Kiểm duyệt viên (Moderator) và Admin!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="mod-reports">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">🛡️ Kiểm duyệt nội dung</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
+
+        <nav class="sidebar-nav">
+          <a href="../admin/admin-platform-dashboard.html" class="sidebar-link">
+            <span>📊</span> Tổng quan nền tảng
+          </a>
+          <a href="../admin/admin-category-management.html" class="sidebar-link">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="../admin/admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="moderator-moderation-queue.html" class="sidebar-link">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="moderator-report-center.html" class="sidebar-link active">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Kiểm duyệt viên</div>
+        <div class="sidebar-footer-role">Vận hành sàn</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Vận hành & Kiểm duyệt</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Trung tâm báo cáo</span>
+      </div>
+
+      <div class="section-header">
+        <h1>Trung tâm tiếp nhận & Xử lý báo cáo vi phạm</h1>
+        <p>Giải quyết các phản ánh của người dùng về tính xác thực của sản phẩm thủ công hoặc hành vi gian lận.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Mã báo cáo</th>
+              <th>Loại đối tượng</th>
+              <th>Tiêu đề / Tên đối tượng bị khiếu nại</th>
+              <th>Lý do khiếu nại</th>
+              <th>Trạng thái</th>
+              <th>Thao tác xử lý</th>
+            </tr>
+          </thead>
+          <tbody id="report-tbody"></tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initReportCenter } from "../../js/pages/admin.js";
+
+    if (requireRole(["admin", "moderator"])) {
+      initReportCenter();
+    }
+  </script>
+</body>
+</html>
