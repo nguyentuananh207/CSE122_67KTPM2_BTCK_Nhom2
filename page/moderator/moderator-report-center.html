@@ -1,157 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trung tâm báo cáo | CraftLink Moderator</title>
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="../../css/pages/moderator-report.css">
-</head>
-<body class="page-moderator">
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <a href="../../index.html" class="logo">CraftLink</a>
-    <nav class="main-nav">
-      <a href="moderator-report-center.html" class="active">Trung tâm báo cáo</a>
-    </nav>
-    <div class="header-actions">
-      <span id="currentUser" class="user-chip">Kiểm duyệt viên</span>
-      <button type="button" id="btnLogout" class="btn btn-outline">Đăng xuất</button>
-    </div>
-  </header>
-
-  <main class="container report-layout">
-
-    <div class="page-heading">
-      <h1>Trung tâm báo cáo vi phạm</h1>
-      <p>Tiếp nhận và xử lý các báo cáo nội dung từ người dùng.</p>
-    </div>
-
-    <!-- THỐNG KÊ NHANH -->
-    <section class="stats-row" aria-label="Thống kê báo cáo">
-      <div class="card stat-card">
-        <span class="stat-label">Chờ xử lý</span>
-        <strong class="stat-value" id="statPending">0</strong>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trung tâm báo cáo | CraftLink Moderator</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body class="page-moderator">
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="../../index.html" class="logo">CraftLink</a>
+      <nav class="main-nav">
+        <a href="moderator-report-center.html" class="active"
+          >Trung tâm báo cáo</a
+        >
+      </nav>
+      <div class="header-actions">
+        <span id="currentUser" class="user-chip">Kiểm duyệt viên</span>
+        <button type="button" id="btnLogout" class="btn btn-outline">
+          Đăng xuất
+        </button>
       </div>
-      <div class="card stat-card">
-        <span class="stat-label">Đang xem xét</span>
-        <strong class="stat-value" id="statReviewing">0</strong>
-      </div>
-      <div class="card stat-card">
-        <span class="stat-label">Đã xử lý</span>
-        <strong class="stat-value" id="statResolved">0</strong>
-      </div>
-      <div class="card stat-card">
-        <span class="stat-label">Đã bỏ qua</span>
-        <strong class="stat-value" id="statDismissed">0</strong>
-      </div>
-    </section>
+    </header>
 
-    <!-- BỘ LỌC -->
-    <section class="card filter-bar">
-      <div class="form-group">
-        <label for="filterStatus">Trạng thái</label>
-        <select id="filterStatus">
-          <option value="all">Tất cả</option>
-          <option value="pending">Chờ xử lý</option>
-          <option value="reviewing">Đang xem xét</option>
-          <option value="resolved">Đã xử lý</option>
-          <option value="dismissed">Đã bỏ qua</option>
-        </select>
+    <main class="container report-layout">
+      <div class="page-heading">
+        <h1>Trung tâm báo cáo vi phạm</h1>
+        <p>Tiếp nhận và xử lý các báo cáo nội dung từ người dùng.</p>
       </div>
-      <div class="form-group">
-        <label for="filterType">Loại vi phạm</label>
-        <select id="filterType">
-          <option value="all">Tất cả</option>
-          <option value="spam">Spam / quảng cáo</option>
-          <option value="copyright">Vi phạm bản quyền</option>
-          <option value="inappropriate">Nội dung không phù hợp</option>
-          <option value="scam">Lừa đảo</option>
-        </select>
-      </div>
-      <div class="form-group form-group--grow">
-        <label for="searchReport">Tìm kiếm</label>
-        <input type="search" id="searchReport" placeholder="Mã báo cáo, tên bài đăng, người báo cáo...">
-      </div>
-    </section>
 
-    <div class="report-grid">
-
-      <!-- DANH SÁCH BÁO CÁO -->
-      <section class="card report-list-card">
-        <h2>Danh sách báo cáo</h2>
-        <div class="table-wrap">
-          <table class="report-table" id="reportTable">
-            <thead>
-              <tr>
-                <th>Mã</th>
-                <th>Nội dung bị báo cáo</th>
-                <th>Loại vi phạm</th>
-                <th>Người báo cáo</th>
-                <th>Ngày gửi</th>
-                <th>Trạng thái</th>
-              </tr>
-            </thead>
-            <tbody id="reportTableBody">
-              <!-- JS render từ mock-data.js. Mẫu 1 dòng: -->
-              <tr class="report-row" data-id="RP-001">
-                <td>RP-001</td>
-                <td>Bộ logo gốm Bát Tràng</td>
-                <td><span class="badge badge-warning">Bản quyền</span></td>
-                <td>buyer1</td>
-                <td>18/10/2026</td>
-                <td><span class="badge badge-pending">Chờ xử lý</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- THỐNG KÊ NHANH -->
+      <section class="stats-row" aria-label="Thống kê báo cáo">
+        <div class="card stat-card">
+          <span class="stat-label">Chờ xử lý</span>
+          <strong class="stat-value" id="statPending">0</strong>
         </div>
-        <p id="reportEmpty" class="empty-state" hidden>Không có báo cáo nào khớp bộ lọc hiện tại.</p>
+        <div class="card stat-card">
+          <span class="stat-label">Đang xem xét</span>
+          <strong class="stat-value" id="statReviewing">0</strong>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-label">Đã xử lý</span>
+          <strong class="stat-value" id="statResolved">0</strong>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-label">Đã bỏ qua</span>
+          <strong class="stat-value" id="statDismissed">0</strong>
+        </div>
       </section>
 
-      <!-- CHI TIẾT & XỬ LÝ -->
-      <aside class="card report-detail" id="reportDetail">
-        <h2>Chi tiết báo cáo</h2>
-        <p id="detailPlaceholder" class="empty-state">Chọn một báo cáo trong danh sách để xem chi tiết.</p>
-
-        <div id="detailContent" hidden>
-          <dl class="detail-info">
-            <dt>Mã báo cáo</dt>
-            <dd id="detailId">--</dd>
-            <dt>Nội dung bị báo cáo</dt>
-            <dd id="detailTarget">--</dd>
-            <dt>Chủ nội dung</dt>
-            <dd id="detailOwner">--</dd>
-            <dt>Loại vi phạm</dt>
-            <dd id="detailType">--</dd>
-            <dt>Người báo cáo</dt>
-            <dd id="detailReporter">--</dd>
-            <dt>Lý do người dùng nêu</dt>
-            <dd id="detailReason">--</dd>
-          </dl>
-
-          <div class="form-group">
-            <label for="moderatorNote">Ghi chú xử lý</label>
-            <textarea id="moderatorNote" rows="3" placeholder="Ghi lại căn cứ quyết định của bạn"></textarea>
-          </div>
-
-          <div class="action-group">
-            <button type="button" id="btnRemove" class="btn btn-danger">Gỡ nội dung</button>
-            <button type="button" id="btnWarn" class="btn btn-warning">Cảnh cáo chủ bài</button>
-            <button type="button" id="btnDismiss" class="btn btn-outline">Bỏ qua báo cáo</button>
-          </div>
+      <!-- BỘ LỌC -->
+      <section class="card filter-bar">
+        <div class="form-group">
+          <label for="filterStatus">Trạng thái</label>
+          <select id="filterStatus">
+            <option value="all">Tất cả</option>
+            <option value="pending">Chờ xử lý</option>
+            <option value="reviewing">Đang xem xét</option>
+            <option value="resolved">Đã xử lý</option>
+            <option value="dismissed">Đã bỏ qua</option>
+          </select>
         </div>
-      </aside>
+        <div class="form-group">
+          <label for="filterType">Loại vi phạm</label>
+          <select id="filterType">
+            <option value="all">Tất cả</option>
+            <option value="spam">Spam / quảng cáo</option>
+            <option value="copyright">Vi phạm bản quyền</option>
+            <option value="inappropriate">Nội dung không phù hợp</option>
+            <option value="scam">Lừa đảo</option>
+          </select>
+        </div>
+        <div class="form-group form-group--grow">
+          <label for="searchReport">Tìm kiếm</label>
+          <input
+            type="search"
+            id="searchReport"
+            placeholder="Mã báo cáo, tên bài đăng, người báo cáo..."
+          />
+        </div>
+      </section>
 
-    </div>
-  </main>
+      <div class="report-grid">
+        <!-- DANH SÁCH BÁO CÁO -->
+        <section class="card report-list-card">
+          <h2>Danh sách báo cáo</h2>
+          <div class="table-wrap">
+            <table class="report-table" id="reportTable">
+              <thead>
+                <tr>
+                  <th>Mã</th>
+                  <th>Nội dung bị báo cáo</th>
+                  <th>Loại vi phạm</th>
+                  <th>Người báo cáo</th>
+                  <th>Ngày gửi</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="reportTableBody">
+                <!-- JS render từ mock-data.js. Mẫu 1 dòng: -->
+                <tr class="report-row" data-id="RP-001">
+                  <td>RP-001</td>
+                  <td>Bộ logo gốm Bát Tràng</td>
+                  <td><span class="badge badge-warning">Bản quyền</span></td>
+                  <td>buyer1</td>
+                  <td>18/10/2026</td>
+                  <td><span class="badge badge-pending">Chờ xử lý</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="reportEmpty" class="empty-state" hidden>
+            Không có báo cáo nào khớp bộ lọc hiện tại.
+          </p>
+        </section>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 CraftLink Marketplace</p>
-  </footer>
+        <!-- CHI TIẾT & XỬ LÝ -->
+        <aside class="card report-detail" id="reportDetail">
+          <h2>Chi tiết báo cáo</h2>
+          <p id="detailPlaceholder" class="empty-state">
+            Chọn một báo cáo trong danh sách để xem chi tiết.
+          </p>
 
-  <script src="../../js/mock-data.js"></script>
-  <script src="../../js/modules/storage.js"></script>
-  <script src="../../js/pages/moderator.js"></script>
-</body>
+          <div id="detailContent" hidden>
+            <dl class="detail-info">
+              <dt>Mã báo cáo</dt>
+              <dd id="detailId">--</dd>
+              <dt>Nội dung bị báo cáo</dt>
+              <dd id="detailTarget">--</dd>
+              <dt>Chủ nội dung</dt>
+              <dd id="detailOwner">--</dd>
+              <dt>Loại vi phạm</dt>
+              <dd id="detailType">--</dd>
+              <dt>Người báo cáo</dt>
+              <dd id="detailReporter">--</dd>
+              <dt>Lý do người dùng nêu</dt>
+              <dd id="detailReason">--</dd>
+            </dl>
+
+            <div class="form-group">
+              <label for="moderatorNote">Ghi chú xử lý</label>
+              <textarea
+                id="moderatorNote"
+                rows="3"
+                placeholder="Ghi lại căn cứ quyết định của bạn"
+              ></textarea>
+            </div>
+
+            <div class="action-group">
+              <button type="button" id="btnRemove" class="btn btn-danger">
+                Gỡ nội dung
+              </button>
+              <button type="button" id="btnWarn" class="btn btn-warning">
+                Cảnh cáo chủ bài
+              </button>
+              <button type="button" id="btnDismiss" class="btn btn-outline">
+                Bỏ qua báo cáo
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 CraftLink Marketplace</p>
+    </footer>
+
+    <script src="../../js/mock-data.js"></script>
+    <script src="../../js/modules/storage.js"></script>
+    <script src="../../js/pages/moderator.js"></script>
+  </body>
 </html>

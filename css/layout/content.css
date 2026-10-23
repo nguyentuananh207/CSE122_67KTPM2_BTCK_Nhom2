@@ -1,0 +1,47 @@
+body:not(.page-admin) .main,
+body:not(.page-admin) .shell {
+  min-width: 0;
+}
+
+body:not(.page-admin) .wrap,
+body:not(.page-admin) .content,
+body:not(.page-admin) .khung-trang,
+body:not(.page-admin) .container.proposal-layout,
+body:not(.page-admin) .container.report-layout {
+  width: min(100% - 2rem, 1200px);
+  margin: 0 auto;
+  padding-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+body:not(.page-admin) .head,
+body:not(.page-admin) .page-header,
+body:not(.page-admin) .page-head,
+body:not(.page-admin) .tieu-de-trang,
+body:not(.page-admin) .page-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+body:not(.page-admin) .eyebrow {
+  color: var(--craft-primary);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body.moderator-workspace > .shell {
+  grid-column: 2;
+  min-width: 0;
+}
+
+body.moderator-workspace .content {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 2.5rem);
+}

@@ -1,0 +1,20 @@
+/* Shared stylesheet entry point. Keep imports ordered to preserve cascade. */
+@import url("./base/variables.css");
+@import url("./layout/header.css");
+@import url("./layout/sidebar.css");
+@import url("./base/reset.css");
+@import url("./base/typography.css");
+@import url("./layout/topbar.css");
+@import url("./layout/content.css");
+@import url("./layout/grids.css");
+@import url("./components/buttons.css");
+@import url("./components/cards.css");
+@import url("./components/badges.css");
+@import url("./components/forms.css");
+@import url("./components/tables.css");
+@import url("./components/ai-modal.css");
+@import url("./layout/footer.css");
+@import url("./pages/marketplace.css");
+@import url("./pages/brief-custom.css");
+@import url("./pages/workspaces.css");
+@import url("./layout/responsive.css");

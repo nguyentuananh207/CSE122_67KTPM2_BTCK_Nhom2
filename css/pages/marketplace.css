@@ -1,0 +1,92 @@
+body:not(.page-admin) .product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  gap: clamp(1rem, 4vw, 3rem);
+}
+
+body:not(.page-admin) .gallery-main img,
+body:not(.page-admin) .product-media img,
+body:not(.page-admin) .the-bai-dang__anh img {
+  display: block;
+  width: 100%;
+  border-radius: var(--craft-radius);
+  object-fit: cover;
+}
+
+body:not(.page-admin) .gallery-main img {
+  aspect-ratio: 4 / 3;
+}
+
+body:not(.page-admin) .gallery-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+body:not(.page-admin) .gallery-thumbs img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+body.page-home .card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+body.page-home {
+  background: #fff;
+}
+
+body.page-home .container {
+  width: min(100% - 2rem, 1200px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body.page-home .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  background: #fff;
+}
+
+body.page-home .navbar-brand {
+  color: var(--craft-primary-dark);
+}
+
+body.page-home .btn-primary,
+body.page-home .btn-dark {
+  border-color: var(--craft-primary);
+  background: var(--craft-primary);
+  color: #fff;
+}
+
+body.page-home .btn-outline-secondary,
+body.page-home .btn-outline-dark {
+  border: 1px solid var(--craft-border);
+  background: #fff;
+  color: var(--craft-primary-dark);
+}
+
+body.page-home .btn-primary,
+body.page-home .btn-dark,
+body.page-home .btn-outline-dark,
+body.page-home .btn-outline-secondary {
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.9rem;
+}
+
+body.page-home .card {
+  overflow: hidden;
+  border-color: var(--craft-border);
+  border-radius: var(--craft-radius);
+}
+
+body.page-home footer {
+  padding: 2rem 1rem;
+  background: var(--craft-bg);
+}

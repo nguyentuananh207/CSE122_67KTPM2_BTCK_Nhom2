@@ -1,0 +1,28 @@
+body:not(.page-admin) .stats,
+body:not(.page-admin) .stats-row,
+body:not(.page-admin) .product-grid,
+body:not(.page-admin) .report-grid,
+body:not(.page-admin) .luoi-bai-dang,
+body:not(.page-admin) .sev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 1rem;
+}
+
+body:not(.page-admin) .layout,
+body:not(.page-admin) .detail-layout,
+body:not(.page-admin) .proposal-grid,
+body:not(.page-admin) .guide-layout,
+body:not(.page-admin) .style-matcher-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.9fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+body.page-proposal .proposal-grid,
+body.page-moderator .report-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+  gap: 1.25rem;
+}

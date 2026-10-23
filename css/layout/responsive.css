@@ -1,0 +1,87 @@
+@media (max-width: 800px) {
+  body:not(.page-admin) > .side,
+  body:not(.page-admin) .app-layout > .sidebar {
+    min-height: auto;
+  }
+
+  body:not(.page-admin) .layout,
+  body:not(.page-admin) .detail-layout,
+  body:not(.page-admin) .proposal-grid,
+  body:not(.page-admin) .proposal-layout,
+  body:not(.page-admin) .guide-layout,
+  body:not(.page-admin) .report-layout,
+  body:not(.page-admin) .style-matcher-layout,
+  body:not(.page-admin) .product {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.page-proposal .proposal-grid,
+  body.page-moderator .report-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.moderator-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.moderator-workspace > .sidebar,
+  body.moderator-workspace > .shell {
+    grid-column: 1;
+  }
+
+  body.moderator-workspace > .sidebar {
+    position: static;
+    min-height: auto;
+  }
+
+  body.moderator-workspace .sidebar_footer {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  body:not(.page-admin) .app-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body:not(.page-admin) > .side,
+  body:not(.page-admin) .app-layout > .sidebar {
+    position: static;
+    grid-column: 1;
+    min-height: auto;
+    padding: 1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--craft-border);
+  }
+
+  body:not(.page-admin) .main {
+    grid-column: 1;
+  }
+
+  body.page-buyer-orders,
+  body.page-buyer-brief {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.page-buyer-orders > .main,
+  body.page-buyer-brief > .main {
+    grid-column: 1;
+  }
+
+  body:not(.page-admin) .top,
+  body:not(.page-admin) .topbar,
+  body:not(.page-admin) .site-header,
+  body:not(.page-admin) .dau-trang {
+    position: static;
+    flex-wrap: wrap;
+  }
+
+  body:not(.page-admin) .wrap,
+  body:not(.page-admin) .content,
+  body:not(.page-admin) .khung-trang,
+  body:not(.page-admin) .container.proposal-layout,
+  body:not(.page-admin) .container.report-layout {
+    width: min(100% - 1.25rem, 1200px);
+    padding-top: 1rem;
+  }
+}

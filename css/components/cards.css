@@ -1,0 +1,21 @@
+body:not(.page-admin) .card,
+body:not(.page-admin) .stat,
+body:not(.page-admin) .product-card,
+body:not(.page-admin) .muc-brief,
+body:not(.page-admin) .the-bai-dang,
+body:not(.page-admin) .sev-card {
+  min-width: 0;
+  padding: 1.15rem;
+  border: 1px solid var(--craft-border);
+  border-radius: var(--craft-radius);
+  background: var(--craft-surface);
+  box-shadow: var(--craft-shadow);
+}
+
+body:not(.page-admin) .price,
+body:not(.page-admin) .product-price,
+body:not(.page-admin) .stat strong {
+  color: var(--craft-primary-dark);
+  font-size: 1.35rem;
+  font-weight: 750;
+}

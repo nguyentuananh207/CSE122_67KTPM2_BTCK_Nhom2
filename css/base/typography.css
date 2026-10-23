@@ -1,0 +1,56 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 0;
+  color: var(--craft-text);
+  background: var(--craft-bg);
+  font:
+    400 1rem/1.55 Inter,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+body:not(.page-admin) button,
+body:not(.page-admin) a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body:not(.page-admin) a {
+  color: var(--craft-primary);
+}
+
+body:not(.page-admin) h1,
+body:not(.page-admin) h2,
+body:not(.page-admin) h3,
+body:not(.page-admin) h4,
+body:not(.page-admin) p {
+  overflow-wrap: anywhere;
+}
+
+body:not(.page-admin) h1,
+body:not(.page-admin) h2,
+body:not(.page-admin) h3,
+body:not(.page-admin) h4 {
+  color: var(--craft-text);
+  line-height: 1.25;
+}
+
+body:not(.page-admin) .page-heading h1,
+body:not(.page-admin) .head h1,
+body:not(.page-admin) .page-head h1,
+body:not(.page-admin) .page-header h1,
+body:not(.page-admin) .tieu-de-trang h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
+:root {
+  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--craft-text);
+  background: var(--craft-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}

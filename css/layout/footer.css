@@ -1,0 +1,80 @@
+/**
+ * CraftLink – Footer Component
+ */
+.site-footer {
+  background-color: #27211d;
+  color: #c9bfb5;
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+  font-size: 0.9rem;
+  margin-top: auto;
+  border-top: 1px solid #3d352f;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer-brand h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-brand p {
+  color: #a4988c;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-base);
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: #a4988c;
+  font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: var(--space-lg);
+  border-top: 1px solid #3d352f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.825rem;
+  color: #827568;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
