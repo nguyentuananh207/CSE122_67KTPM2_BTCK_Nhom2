@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * CraftLink – Forms Component
  */
@@ -92,4 +93,54 @@ select.form-control {
 
 .input-error {
   border-color: var(--clr-danger) !important;
+=======
+body:not(.page-admin) button,
+body:not(.page-admin) input,
+body:not(.page-admin) select,
+body:not(.page-admin) textarea {
+  font: inherit;
+}
+
+body:not(.page-admin) input,
+body:not(.page-admin) select,
+body:not(.page-admin) textarea {
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--craft-border);
+  border-radius: 0.55rem;
+  background: var(--craft-surface);
+  color: var(--craft-text);
+}
+
+body:not(.page-admin) textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+body:not(.page-admin) .toolbar,
+body:not(.page-admin) .thanh-cong-cu,
+body:not(.page-admin) .filter-bar,
+body:not(.page-admin) .search-bar,
+body:not(.page-admin) .form-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+body:not(.page-admin) .form-group,
+body:not(.page-admin) .form-field,
+body:not(.page-admin) .f {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  margin-bottom: 1rem;
+}
+
+body:not(.page-admin) .form-group label,
+body:not(.page-admin) .form-field_label,
+body:not(.page-admin) .f label {
+  font-weight: 650;
+>>>>>>> 5c7a5bd90f4868bea732e55ffc0b3d151264ad32
 }

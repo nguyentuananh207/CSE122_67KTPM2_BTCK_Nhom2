@@ -1,294 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Danh mục sản phẩm — CraftLink</title>
-  <meta name="description"
-    content="Quản lý danh mục sản phẩm CraftLink: cây taxonomy cha / con, chỉnh sửa, vô hiệu hóa và lưu trữ có chuyển listing." />
-  <link rel="stylesheet" href="../../css/base/variables.css" />
-  <link rel="stylesheet" href="../../css/base/reset.css" />
-  <link rel="stylesheet" href="../../css/base/typography.css" />
-  <link rel="stylesheet" href="../../css/components/buttons.css" />
-  <link rel="stylesheet" href="../../css/components/badges.css" />
-  <link rel="stylesheet" href="../../css/components/cards.css" />
-  <link rel="stylesheet" href="../../css/components/tables.css" />
-  <link rel="stylesheet" href="../../css/layout/header.css" />
-  <link rel="stylesheet" href="../../css/layout/footer.css" />
-  <link rel="stylesheet" href="../../css/layout/sidebar.css" />
-  <link rel="stylesheet" href="../../css/pages/dashboard.css" />
+  <title>CraftLink – Quản lý Danh mục sản phẩm (Admin)</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN ADMIN -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || session.role !== "admin") {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Chỉ Quản trị viên mới được phép truy cập Quản lý Danh mục!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
+<body data-page="admin-categories">
 
-<body class="page-admin" data-page="admin-category-management">
-  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
 
-  <!-- ================= SIDEBAR ================= -->
-  <div id="thanh_dieu_huong">
-    <aside class="sidebar" id="sidebar" aria-label="Điều hướng khu quản trị">
-      <a class="sidebar_brand" href="../../page/index.html">
-        <span class="sidebar_logo" aria-hidden="true">
-          <img src="../../assets/images/logoCraftlink.png" alt="" width="60" height="60" />
-        </span>
-        <span class="sidebar_brand-name">CraftLink</span>
-      </a>
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="admin-platform-dashboard.html" class="active">Không gian Quản trị</a>
+    </nav>
 
-      <div class="sidebar_group">
-        <p class="sidebar_label">Không gian làm việc</p>
-        <span class="pill pill-light">Quản trị viên</span>
+    <div id="header-auth"></div>
+  </header>
 
-        <nav class="nav" aria-label="Khu quản trị">
-          <a class="nav_item" href="admin-platform-dashboard.html">Tổng quan nền tảng</a>
-          <a class="nav_item nav_item-active" href="admin-category-management.html" aria-current="page">Danh mục sản
-            phẩm</a>
-          <a class="nav_item" href="admin-user-management.html">Quản lý tài khoản</a>
-          <a class="nav_item" href="../moderator/moderator-moderation-queue.html">Nhật ký hệ thống</a>
-        </nav>
+  <div class="app-layout">
+    
+    <!-- SIDEBAR ADMIN -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">👑 Quản trị viên điều hành</div>
+      </div>
 
-        <hr class="sidebar_divider" />
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
 
-        <nav class="nav" aria-label="Liên kết hỗ trợ">
-          <a class="nav_item" href="../moderator/moderator-content-guidelines.html">Hướng dẫn sử dụng</a>
-          <a class="nav_item" href="../../page/index.html">Trở về trang bày
-            <span class="nav_ext" aria-hidden="true">↗</span></a>
+        <nav class="sidebar-nav">
+          <a href="admin-platform-dashboard.html" class="sidebar-link">
+            <span>📊</span> Tổng quan nền tảng
+          </a>
+          <a href="admin-category-management.html" class="sidebar-link active">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
         </nav>
       </div>
 
-      <div class="sidebar_footer">
-        <p class="sidebar_user">Quang Huy</p>
-        <p class="sidebar_user-meta">
-          Quản trị viên · <a href="../auth/login.html">Đăng xuất</a>
-        </p>
-        <p class="sidebar_user-note">Chỉ hiển thị tác vụ theo quyền.</p>
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="../moderator/moderator-moderation-queue.html" class="sidebar-link">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="../moderator/moderator-report-center.html" class="sidebar-link">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="../moderator/moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Quản trị viên</div>
+        <div class="sidebar-footer-role">Admin điều hành</div>
       </div>
     </aside>
-  </div>
 
-  <!-- ================= KHUNG TRANG ================= -->
-  <div class="shell" id="main">
-    <header class="topbar">
-      <a class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar"
-        aria-expanded="false" href="#thanh_dieu_huong">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round">
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </a>
-
-      <nav class="breadcrumb" aria-label="Đường dẫn">
-        <span class="breadcrumb_item">Quản trị viên</span>
-        <span class="breadcrumb_sep" aria-hidden="true">/</span>
-        <span class="breadcrumb_item breadcrumb_item--current" aria-current="page">Danh mục sản phẩm</span>
-      </nav>
-
-      <div class="topbar_actions">
-        <button class="icon-btn" aria-label="Thông báo">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-            <path d="M10 21h4"></path>
-          </svg>
-          <span class="icon-btn_dot" aria-hidden="true"></span>
-        </button>
-        <time class="topbar_date" datetime="2026-10-04">04/10/2026</time>
-        <span class="user-pill">Quang Huy</span>
-        <p class="sidebar_user-meta">
-          Quản trị viên · <a href="../auth/login.html">Đăng xuất</a>
-        </p>
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Quản trị viên</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Quản lý danh mục</span>
       </div>
-    </header>
 
-    <main class="content">
-      <!-- ===== Đầu trang ===== -->
-      <section class="page-head">
-        <div class="page-head_text">
-          <p class="eyebrow">Quản trị viên</p>
-          <h1 class="page-title">Sắp xếp để ý tưởng dễ được tìm thấy</h1>
-          <p class="page-sub">
-            Taxonomy cha / con · Không làm mất liên kết listing khi vô hiệu
-            hóa hoặc lưu trữ.
-          </p>
-        </div>
-        <div class="page-head_actions">
-          <span class="pill pill-muted">Dữ liệu mẫu · BTL-11</span>
-          <button class="btn btn-primary btn--icon" id="createCatBtn" type="button">
-            <span class="btn_plus" aria-hidden="true">+</span> Tạo danh mục
-          </button>
-        </div>
-      </section>
+      <div class="section-header">
+        <h1>Phân loại & Danh mục ngành hàng thủ công</h1>
+        <p>Thêm mới danh mục hoặc lưu trữ các phân nhánh sản phẩm trên hệ thống.</p>
+      </div>
 
-      <!-- ===== Tìm kiếm + lọc ===== -->
-      <section class="toolbar" aria-label="Tìm kiếm và lọc danh mục">
-        <div class="search">
-          <svg class="search_icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round">
-            <circle cx="11" cy="11" r="7"></circle>
-            <path d="m20 20-4-4"></path>
-          </svg>
-          <input class="search_input" id="searchInput" type="search" placeholder="Tìm tên hoặc mã danh mục..."
-            aria-label="Tìm tên hoặc mã danh mục" />
-        </div>
-
-        <button class="filter-btn" type="button" id="statusFilterBtn" data-value="all">
-          <span data-filter-label>Trạng thái: tất cả</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
-        </button>
-      </section>
-
-      <!-- ===== Cây danh mục + Form ===== -->
-      <section class="grid grid--cats">
-        <!-- Cột trái -->
-        <div class="grid_main">
-          <article class="card card--tree">
-            <div class="tree-head" aria-hidden="true">
-              <span class="tree-head_name">Danh mục cha / con</span>
-              <span class="tree-head_count">Listing mẫu</span>
-              <span class="tree-head_status">Trạng thái</span>
-              <span class="tree-head_actions">Thao tác</span>
-            </div>
-            <hr class="card_divider card_divider--tight" />
-            <ul class="tree" data-mount="tree" aria-label="Cây danh mục sản phẩm"></ul>
-          </article>
-
-          <article class="card">
-            <h2 class="card_title">Quy tắc cấu trúc</h2>
-            <ul class="rule-list">
-              <li>Danh mục con có một danh mục cha.</li>
-              <li>Tên không trùng trong cùng cấp.</li>
-              <li>Vô hiệu hóa ngăn chọn mới, không xoá listing cũ.</li>
-              <li>Lưu trữ danh mục đang dùng cần chuyển listing trước.</li>
-            </ul>
-            <span class="pill pill-muted">57 listing minh hoạ · Không phải số liệu vận hành</span>
-          </article>
-        </div>
-
-        <!-- Cột phải -->
-        <div class="grid_side">
-          <!-- Form chỉnh sửa -->
-          <article class="card" id="editCard">
-            <h2 class="card_title" id="editTitle">Chỉnh sửa CAT-003</h2>
-
-            <div class="form-field">
-              <label class="form-field_label" for="catName">Tên danh mục *</label>
-              <input class="input" id="catName" type="text" value="Đồ trang trí gốm" />
+      <div class="category-management-layout">
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; font-size: 1.15rem;">+ Thêm danh mục mới</h3>
+          <form id="cat-form">
+            <div class="form-group">
+              <label for="cat-name">Tên danh mục <span class="required">*</span></label>
+              <input type="text" id="cat-name" name="name" class="form-control" placeholder="VD: Thủy tinh thổi thủ công" required />
             </div>
 
-            <div class="form-field">
-              <label class="form-field_label" for="catParent">Danh mục cha</label>
-              <div class="select">
-                <select class="input" id="catParent"></select>
-              </div>
+            <div class="form-group">
+              <label for="cat-slug">Đường dẫn tĩnh (Slug)</label>
+              <input type="text" id="cat-slug" name="slug" class="form-control" placeholder="VD: thuy-tinh-thoi" />
             </div>
 
-            <div class="form-field">
-              <label class="form-field_label" for="catDesc">Mô tả</label>
-              <textarea class="input textarea" id="catDesc" rows="5">
-Sản phẩm gốm trang trí làm thủ công.</textarea>
+            <div class="form-group">
+              <label for="cat-icon">Biểu tượng Icon (Emoji)</label>
+              <input type="text" id="cat-icon" name="icon" class="form-control" placeholder="🏺 hoặc 💎" value="🏺" />
             </div>
 
-            <div class="form-field">
-              <label class="form-field_label" for="catStatus">Trạng thái</label>
-              <div class="select">
-                <select class="input" id="catStatus">
-                  <option value="active">Đang dùng</option>
-                  <option value="inactive">Vô hiệu hóa</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label for="cat-desc">Mô tả tóm tắt</label>
+              <textarea id="cat-desc" name="description" class="form-control" placeholder="Đặc trưng chất liệu, nghệ nhân tiêu biểu..." style="min-height: 80px;"></textarea>
             </div>
 
-            <div class="btn-row">
-              <button class="btn btn-primary" id="saveCatBtn" type="button">
-                Lưu thay đổi
-              </button>
-              <button class="btn btn-outline" id="cancelCatBtn" type="button">
-                Hủy
-              </button>
-            </div>
-
-            <hr class="card_divider card_divider--tight" />
-
-            <button class="btn btn-danger-ghost" id="deactivateBtn" type="button">
-              Vô hiệu hóa...
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Lưu danh mục mới
             </button>
-          </article>
-
-          <!-- Lưu trữ -->
-          <article class="card" id="archiveCard">
-            <h2 class="card_title">Chuẩn bị lưu trữ</h2>
-
-            <div class="banner banner--note" role="note">
-              <svg class="banner_icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 11v5"></path>
-                <path d="M12 8h.01"></path>
-              </svg>
-              <p class="banner_text" data-mount="archive-warning">
-                Danh mục này đang được 4 listing sử dụng. Cần chọn danh mục
-                thay thế trước khi lưu trữ.
-              </p>
-            </div>
-
-            <div class="form-field">
-              <label class="form-field_label" for="archiveTarget">Chuyển 4 listing sang *</label>
-              <div class="select">
-                <select class="input" id="archiveTarget"></select>
-              </div>
-              <p class="form-field_hint">
-                Chọn danh mục đang hoạt động. Các listing giữ nguyên ID và
-                lịch sử.
-              </p>
-            </div>
-
-            <p class="archive-list" data-mount="archive-listings">
-              Bình mini · LS-005 Lọ hoa men mộc · LS-011 Tượng gốm nhỏ ·
-              LS-026 Bình tròn · LS-030
-            </p>
-
-            <label class="check-line" for="archiveAck">
-              <input class="check-line_box" id="archiveAck" type="checkbox" />
-              <span>Tôi đã kiểm tra danh mục thay thế và tác động.</span>
-            </label>
-
-            <button class="btn btn-danger-ghost" id="archiveBtn" type="button" disabled>
-              Xem lại chuyển &amp; lưu trữ...
-            </button>
-
-            <p class="form-field_hint">
-              Chỉ xác nhận khi ô kiểm tra đã chọn. Thao tác có nhật ký; không
-              xoá sản phẩm.
-            </p>
-
-            <div class="confirm-row" id="archiveConfirm" hidden>
-              <p class="confirm-row_text" data-mount="archive-confirm-text">
-                Xác nhận chuyển listing và lưu trữ danh mục này?
-              </p>
-              <div class="btn-row">
-                <button class="btn btn-outline" id="archiveCancelBtn" type="button">
-                  Hủy
-                </button>
-                <button class="btn btn-primary" id="archiveConfirmBtn" type="button">
-                  Xác nhận
-                </button>
-              </div>
-            </div>
-          </article>
+          </form>
         </div>
-      </section>
+
+        <div class="table-wrapper category-table-wrapper">
+          <table class="category-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Icon</th>
+                <th>Tên danh mục</th>
+                <th>Slug</th>
+                <th>Số tác phẩm</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="cat-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
     </main>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="site-foot">
-      <p>CraftLink · BTL-11 / CSE122 · Nội dung và tài khoản minh hoạ</p>
-    </footer>
   </div>
 
-  <script src="../../js/mock-data.js" defer></script>
-  <script src="../../js/main.js" defer></script>
-  <script src="../../js/pages/admin-categories.js" defer></script>
-</body>
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initCategoryManagement } from "../../js/pages/admin.js";
 
+    if (requireRole(["admin"])) {
+      initCategoryManagement();
+    }
+  </script>
+</body>
 </html>

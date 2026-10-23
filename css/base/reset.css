@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * CraftLink – CSS Reset
  */
@@ -60,3 +61,44 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+=======
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body:not(.page-admin) header {
+  position: static;
+  inset: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body:not(.page-admin) img {
+  max-width: 100%;
+}
+
+body:not(.page-admin) :focus-visible {
+  outline: 3px solid rgb(217 150 91 / 40%);
+  outline-offset: 2px;
+}
+
+body:not(.page-admin) [hidden] {
+  display: none !important;
+}
+
+body:not(.page-admin) .hop-thoai[hidden],
+body:not(.page-admin) .hop-thoai-ai[hidden],
+body:not(.page-admin) .ai-modal[hidden] {
+  display: none !important;
+}
+>>>>>>> 5c7a5bd90f4868bea732e55ffc0b3d151264ad32

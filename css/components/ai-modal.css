@@ -1,0 +1,34 @@
+body:not(.page-admin) .hop-thoai,
+body:not(.page-admin) .hop-thoai-ai,
+body:not(.page-admin) .ai-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(30 25 20 / 55%);
+}
+
+body:not(.page-admin) .hop-thoai__lop-phu,
+body:not(.page-admin) .hop-thoai-ai__lop-phu,
+body:not(.page-admin) .ai-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(30 35 20 / 55%);
+}
+
+body:not(.page-admin) .hop-thoai__khung,
+body:not(.page-admin) .hop-thoai-ai__khung,
+body:not(.page-admin) .ai-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 680px);
+  max-height: min(90vh, 800px);
+  overflow: auto;
+  padding: 1.5rem;
+  border: 1px solid var(--craft-border);
+  border-radius: var(--craft-radius);
+  background: var(--craft-surface);
+  box-shadow: var(--craft-shadow);
+}

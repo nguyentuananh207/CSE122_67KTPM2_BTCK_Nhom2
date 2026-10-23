@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * CraftLink – Buttons Component
  */
@@ -107,4 +108,84 @@
   min-height: 40px;
   padding: 0.5rem;
   border-radius: 50%;
+=======
+.select-btn{
+    border-radius: 8px;
+    border:1px solid gray;
+    padding: 10px;
+    background-color: #eefcc4;
+
+}
+
+.tool-btn{
+    border-radius: 8px;
+    border:1px solid gray;
+    width: 170px;
+    width: min 100px;;
+    padding: 10px;
+}
+
+.dangxuat{
+  padding: 5px;
+  background-color: #c38739;
+  border-radius: 8px;
+  color: white;
+}
+
+body:not(.page-admin) .btn,
+body:not(.page-admin) .nut,
+body:not(.page-admin) .btn-primary,
+body:not(.page-admin) .btn-outline,
+body:not(.page-admin) .btn-login,
+body:not(.page-admin) .btn-register,
+body:not(.page-admin) .btn-notification {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  background: var(--craft-primary);
+  color: #fff;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+body:not(.page-admin) .btn:hover,
+body:not(.page-admin) .nut:hover,
+body:not(.page-admin) .btn-primary:hover {
+  transform: translateY(-1px);
+  background: var(--craft-primary-dark);
+}
+
+body:not(.page-admin) .btn-outline,
+body:not(.page-admin) .btn-login,
+body:not(.page-admin) .nut--vien {
+  border-color: var(--craft-border);
+  background: var(--craft-surface);
+  color: var(--craft-primary-dark);
+}
+
+body:not(.page-admin) .nut--chinh,
+body:not(.page-admin) .nut--ai {
+  background: var(--craft-primary);
+  color: #fff;
+}
+
+body:not(.page-admin) .btn-danger,
+body:not(.page-admin) .btn-danger-ghost {
+  background: #fff;
+  color: var(--craft-danger);
+}
+
+body:not(.page-admin) .btn-notification {
+  width: 2.5rem;
+  padding: 0.4rem;
+>>>>>>> 5c7a5bd90f4868bea732e55ffc0b3d151264ad32
 }

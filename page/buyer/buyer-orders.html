@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +7,7 @@
   <link rel="stylesheet" href="../../css/style.css" />
   <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KHÁCH HÀNG: CHẶN KHÁCH VÃNG LAI -->
   <script>
-    (function () {
+    (function() {
       try {
         var raw = localStorage.getItem("craftlink_session");
         var session = raw ? JSON.parse(raw) : null;
@@ -17,11 +16,10 @@
           sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Bạn đang là khách vãng lai! Vui lòng đăng nhập để xem danh sách Đơn hàng & Proposal.");
           window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
         }
-      } catch (e) { }
+      } catch(e) {}
     })();
   </script>
 </head>
-
 <body data-page="buyer-orders">
 
   <!-- HEADER -->
@@ -43,9 +41,8 @@
 
   <!-- MAIN -->
   <main class="app-main" style="margin-left: 0; max-width: 1000px; margin: 0 auto; padding-top: 1.5rem;">
-
-    <div
-      style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+    
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
       🛒 Không gian làm việc: Khách hàng (Buyer)
     </div>
 
@@ -55,8 +52,7 @@
       <span>Đơn hàng & Báo giá</span>
     </div>
 
-    <div class="section-header"
-      style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
       <div>
         <h1>Đơn hàng & Đề xuất từ Nghệ nhân</h1>
         <p>Theo dõi các báo giá nhận được từ Maker, xác nhận tiến độ gia công và trạng thái nhận sản phẩm.</p>
@@ -84,5 +80,4 @@
     }
   </script>
 </body>
-
 </html>

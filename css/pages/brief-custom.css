@@ -1,0 +1,23 @@
+body:not(.page-admin) .thanh-dieu-huong {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+body:not(.page-admin) .thanh-dieu-huong__lien-ket {
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  color: var(--craft-text);
+  text-decoration: none;
+}
+
+body:not(.page-admin) .thanh-dieu-huong__lien-ket--dang-chon {
+  background: #eef5d9;
+  color: var(--craft-primary-dark);
+  font-weight: 700;
+}
+
+body:not(.page-admin) .danh-sach-brief,
+body:not(.page-admin) .luoi-bai-dang {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}

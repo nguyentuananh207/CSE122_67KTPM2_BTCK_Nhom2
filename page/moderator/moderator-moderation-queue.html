@@ -1,193 +1,115 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hàng đợi duyệt — CraftLink</title>
-<meta name="description" content="Hàng đợi duyệt listing CraftLink: kiểm tra checklist chính sách, ghi lý do và quyết định duyệt, yêu cầu bổ sung hoặc từ chối.">
-<link rel="stylesheet" href="../../css/base/variables.css">
-    <link rel="stylesheet" href="../../css/base/reset.css">
-    <link rel="stylesheet" href="../../css/base/typography.css">
-    <link rel="stylesheet" href="../../css/components/buttons.css">
-    <link rel="stylesheet" href="../../css/components/badges.css">
-    <link rel="stylesheet" href="../../css/components/cards.css">
-    <link rel="stylesheet" href="../../css/components/tables.css">
-    <link rel="stylesheet" href="../../css/layout/header.css">
-    <link rel="stylesheet" href="../../css/layout/footer.css">
-    <link rel="stylesheet" href="../../css/layout/sidebar.css">
-    <link rel="stylesheet" href="../../css/pages/dashboard.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Hàng chờ kiểm duyệt sản phẩm</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KIỂM DUYỆT -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || (session.role !== "moderator" && session.role !== "admin")) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Khu vực dành riêng cho Kiểm duyệt viên (Moderator) và Admin!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
-<body class="page-moderator" data-page="moderator-listing-queue">
-  <div id="thanh_dieu_huong"></div>
-<a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+<body data-page="mod-queue">
 
-<!-- ================= SIDEBAR ================= -->
-<aside class="sidebar" id="sidebar" aria-label="Điều hướng khu kiểm duyệt">
-  <a class="sidebar_brand" href="../../page/index.html">
-    <span class="sidebar_logo" aria-hidden="true">
-      <img src="../../assets/images/logoCraftlink.png" alt="" width="60" height="60">
-    </span>
-    <span class="sidebar_brand-name">CraftLink</span>
-  </a>
-
-  <div class="sidebar_group">
-    <p class="sidebar_label">Không gian làm việc</p>
-    <span class="pill pill-light">Kiểm duyệt viên</span>
-
-    <nav class="nav" aria-label="Khu kiểm duyệt">
-      <a class="nav_item nav_item-active" href="moderator-moderation-queue.html" aria-current="page">Hàng đợi duyệt</a>
-      <a class="nav_item" href="moderator-report-center.html">Trung tâm báo cáo</a>
-      <a class="nav_item" href="moderator-content-guidelines.html">Hướng dẫn nội dung</a>
-    </nav>
-
-    <hr class="sidebar_divider">
-
-    <nav class="nav" aria-label="Liên kết hỗ trợ">
-      <a class="nav_item" href="../moderator/moderator-content-guidelines.html">Hướng dẫn sử dụng</a>
-      <a class="nav_item" href="../../page/index.html">Trở về trang bày <span class="nav_ext" aria-hidden="true">↗</span></a>
-    </nav>
-  </div>
-
-  <div class="sidebar_footer">
-    <p class="sidebar_user">Thu Hà</p>
-    <p class="sidebar_user-meta">Kiểm duyệt viên · <a href="../auth/login.html">Đăng xuất</a></p>
-    <p class="sidebar_user-note">Chỉ hiển thị tác vụ theo quyền.</p>
-  </div>
-</aside>
-
-<!-- ================= KHUNG TRANG ================= -->
-<div class="shell" id="main">
-  <header class="topbar">
-    <a class="icon-btn topbar_menu" id="menuBtn" aria-label="Mở menu điều hướng" aria-controls="sidebar" aria-expanded="false" href="#thanh_dieu_huong">
-      <img src="../../assets/icons/menu.svg" alt="" width="21" height="21">
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
     </a>
 
-    <nav class="breadcrumb" aria-label="Đường dẫn">
-      <span class="breadcrumb_item">Kiểm duyệt viên</span>
-      <span class="breadcrumb_sep" aria-hidden="true">/</span>
-      <span class="breadcrumb_item breadcrumb_item-current" aria-current="page">Hàng đợi duyệt</span>
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="moderator-moderation-queue.html" class="active">Không gian Kiểm duyệt</a>
     </nav>
 
-    <div class="topbar_actions">
-      <button class="icon-btn" aria-label="Thông báo">
-        <img src="../../assets/icons/bell.svg" alt="ảnh logo" width="21" height="21">
-        <span class="icon-btn_dot" aria-hidden="true"></span>
-      </button>
-      <time class="topbar_date" datetime="2026-10-04">04/10/2026</time>
-      <span class="user-pill">Thu Hà</span>
-    </div>
+    <div id="header-auth"></div>
   </header>
 
-  <main class="content" >
-
-    <!-- ===== Đầu trang ===== -->
-    <section class="page-head">
-      <div class="page-head_text">
-        <p class="eyebrow">Kiểm duyệt viên</p>
-        <h1 class="page-title">Duyệt nội dung, giữ chất lượng trưng bày</h1>
-        <p class="page-sub">Chỉ kiểm duyệt listing; không thay đổi tài khoản hay danh mục hệ thống.</p>
-      </div>
-      <div class="page-head_actions">
-        <span class="pill pill-muted">Dữ liệu mẫu · BTL-11</span>
-        <span class="pill pill-warn" data-mount="pending-pill">8 listing chờ duyệt</span>
-      </div>
-    </section>
-
-    <!-- ===== Tìm kiếm + lọc ===== -->
-    <section class="toolbar" aria-label="Tìm kiếm và lọc listing">
-      <div class="search">
-        <img class="search_icon" src="../../assets/icons/search.svg" alt="" width="20" height="20">
-        <input class="search_input" id="searchInput" type="search"
-               placeholder="Tìm listing hoặc người sáng tạo..."
-               aria-label="Tìm listing hoặc người sáng tạo">
+  <div class="app-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">🛡️ Kiểm duyệt nội dung</div>
       </div>
 
-      <button class="filter-btn" type="button" data-filter="category" data-value="all">
-        <span data-filter-label>Danh mục: tất cả</span>
-        <img src="../../assets/icons/chevron-down.svg" alt="" width="14" height="14">
-      </button>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Vận hành & Quản trị</div>
 
-      <button class="filter-btn" type="button" id="sortBtn" data-sort="asc">
-        <span data-sort-label>Cũ nhất trước</span>
-        <img src="../../assets/icons/chevron-down.svg" alt="" width="14" height="14">
-      </button>
-    </section>
-
-    <!-- ===== Chọn trạng thái ===== -->
-    <div class="chips" id="statusChips" role="tablist" aria-label="Lọc theo trạng thái kiểm duyệt"></div>
-
-    <!-- ===== Hàng đợi + Chi tiết ===== -->
-    <section class="grid grid--queue">
-
-      <!-- Cột trái: danh sách listing chờ xử lý -->
-      <div class="grid_main">
-        <div data-mount="queue"></div>
-      </div>
-
-      <!-- Cột phải: chi tiết + quyết định -->
-      <div class="grid_side">
-
-        <article class="card" id="detailCard">
-          <div data-mount="detail"></div>
-
-          <hr class="card_divider">
-
-          <h2 class="card_subtitle">Checklist · Chính sách V1.3</h2>
-          <ul class="checklist" data-mount="checklist"></ul>
-
-          <a class="btn btn-muted" href="moderator-content-guidelines.html">
-            Xem hướng dẫn nội dung <span aria-hidden="true">↗</span>
+        <nav class="sidebar-nav">
+          <a href="../admin/admin-platform-dashboard.html" class="sidebar-link">
+            <span>📊</span> Tổng quan nền tảng
           </a>
-        </article>
-
-        <!-- Quyết định kiểm duyệt -->
-        <article class="card">
-          <h2 class="card_title">Quyết định kiểm duyệt</h2>
-
-          <div class="form-field">
-            <label class="form-field_label" for="decisionNote">Lý do / ghi chú *</label>
-            <textarea class="input textarea" id="decisionNote" rows="3">Ảnh và mô tả đầy đủ, phù hợp chính sách nội dung V1.3.</textarea>
-            <p class="form-field_hint">Bắt buộc ghi lý do cho cả duyệt, từ chối và yêu cầu bổ sung.</p>
-          </div>
-
-          <div class="btn-row btn-row-decision">
-            <button class="btn btn-primary" id="approveBtn" type="button">Duyệt listing</button>
-            <button class="btn btn-outline" id="supplementBtn" type="button">Yêu cầu bổ sung</button>
-            <button class="btn btn-danger-ghost" id="rejectBtn" type="button">Từ chối...</button>
-          </div>
-
-          <div class="confirm-row" id="rejectConfirm" hidden>
-            <p class="confirm-row_text">Xác nhận từ chối listing này? Quyết định sẽ được lưu vào nhật ký.</p>
-            <div class="btn-row">
-              <button class="btn btn-muted" id="rejectCancelBtn" type="button">Hủy</button>
-              <button class="btn btn-primary" id="rejectConfirmBtn" type="button">Xác nhận từ chối</button>
-            </div>
-          </div>
-
-          <div class="banner banner-note" role="note">
-            <img class="banner_icon" src="../../assets/icons/info.svg" alt="" width="20" height="20">
-            <p class="banner_text">Quyết định lưu người xử lý, thời gian, phiên bản listing và lý do. Từ chối cần bước xác nhận; không xoá listing.</p>
-          </div>
-        </article>
-
-        <!-- Nhật ký listing -->
-        <article class="card">
-          <h2 class="card_title">Nhật ký listing</h2>
-          <ol class="log-list" data-mount="listing-log"></ol>
-        </article>
-
+          <a href="../admin/admin-category-management.html" class="sidebar-link">
+            <span>📁</span> Quản lý danh mục
+          </a>
+          <a href="../admin/admin-user-management.html" class="sidebar-link">
+            <span>👥</span> Quản lý tài khoản
+          </a>
+        </nav>
       </div>
-    </section>
-  </main>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-foot">
-    <p>CraftLink · BTL-11 / CSE122 · Nội dung và tài khoản minh hoạ</p>
-  </footer>
-</div>
+      <div class="sidebar-section" style="margin-top: 1rem;">
+        <div class="sidebar-label">Kiểm duyệt & Nội dung</div>
+        <nav class="sidebar-nav">
+          <a href="moderator-moderation-queue.html" class="sidebar-link active">
+            <span>📋</span> Hàng chờ duyệt
+          </a>
+          <a href="moderator-report-center.html" class="sidebar-link">
+            <span>🚩</span> Trung tâm báo cáo
+          </a>
+          <a href="moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+        </nav>
+      </div>
 
-<script src="../../js/mock-data.js" defer></script>
-<script src="../../js/main.js" defer></script>
-<script src="../../js/pages/moderator.js" defer></script>
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Kiểm duyệt viên</div>
+        <div class="sidebar-footer-role">Vận hành sàn</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Vận hành & Kiểm duyệt</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Hàng chờ duyệt sản phẩm</span>
+      </div>
+
+      <div class="section-header">
+        <h1>Hàng chờ kiểm duyệt sản phẩm thủ công</h1>
+        <p>Phê duyệt hoặc từ chối các tác phẩm mới do Người sáng tạo (Maker) đăng tải lên hệ thống trước khi chính thức mở bán.</p>
+      </div>
+
+      <!-- MODERATION QUEUE LIST CONTAINER -->
+      <div id="mod-list"></div>
+
+    </main>
+
+  </div>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initModerationQueue } from "../../js/pages/admin.js";
+
+    if (requireRole(["admin", "moderator"])) {
+      initModerationQueue();
+    }
+  </script>
 </body>
 </html>

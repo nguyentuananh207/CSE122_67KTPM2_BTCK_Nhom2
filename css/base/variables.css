@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * CraftLink – Design Tokens & Variables
  */
@@ -51,4 +52,20 @@
   /* Layout dimensions */
   --header-h: 70px;
   --sidebar-w: 260px;
+=======
+:root {
+  color-scheme: light;
+  --craft-primary: #718a25;
+  --craft-primary-dark: #4f641b;
+  --craft-accent: #a4c83f;
+  --craft-bg: #f8fafc;
+  --craft-surface: #fff;
+  --craft-text: #292521;
+  --craft-muted: #64748b;
+  --craft-border: #e2e8f0;
+  --craft-success: #24744b;
+  --craft-danger: #b43b3b;
+  --craft-radius: 0.75rem;
+  --craft-shadow: 0 8px 24px rgb(31 41 55 / 7%);
+>>>>>>> 5c7a5bd90f4868bea732e55ffc0b3d151264ad32
 }

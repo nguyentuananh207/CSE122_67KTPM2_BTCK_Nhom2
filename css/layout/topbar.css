@@ -1,0 +1,39 @@
+body:not(.page-admin) .top,
+body:not(.page-admin) .topbar,
+body:not(.page-admin) .site-header,
+body:not(.page-admin) .dau-trang {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding: 0.8rem clamp(1rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--craft-border);
+  background: rgb(255 255 255 / 95%);
+  box-shadow: 0 2px 12px rgb(50 39 28 / 4%);
+  backdrop-filter: blur(10px);
+}
+
+body:not(.page-admin) .breadcrumb,
+body:not(.page-admin) .top-right,
+body:not(.page-admin) .topbar-right,
+body:not(.page-admin) .actions,
+body:not(.page-admin) .header-actions,
+body:not(.page-admin) .dau-trang__nguoi-dung {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+body:not(.page-admin) .dau-trang {
+  flex-wrap: wrap;
+}
+
+body.moderator-workspace .topbar {
+  min-width: 0;
+}

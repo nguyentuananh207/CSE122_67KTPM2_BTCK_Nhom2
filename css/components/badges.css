@@ -1,0 +1,88 @@
+/**
+ * CraftLink – Badges Component
+ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background-color: rgba(141, 73, 37, 0.12);
+  color: var(--clr-primary);
+}
+
+.badge-custom {
+  background-color: var(--clr-warning-bg);
+  color: var(--clr-warning);
+}
+
+.badge-active {
+  background-color: var(--clr-success-bg);
+  color: var(--clr-success);
+}
+
+.badge-suspended,
+.badge-archived,
+.badge-rejected {
+  background-color: var(--clr-danger-bg);
+  color: var(--clr-danger);
+}
+
+.badge-pending,
+.badge-pending_review,
+.badge-draft {
+  background-color: var(--clr-warning-bg);
+  color: var(--clr-warning);
+}
+
+.badge-buyer {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.badge-maker {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+
+.badge-admin {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge-moderator {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.badge-match {
+  background-color: var(--clr-primary-light);
+  color: #ffffff;
+}
+
+.badge-proposal_sent {
+  background-color: var(--clr-info-bg);
+  color: var(--clr-info);
+}
+
+.badge-in_production {
+  background-color: var(--clr-warning-bg);
+  color: var(--clr-warning);
+}
+
+.badge-delivered {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.badge-completed {
+  background-color: var(--clr-success-bg);
+  color: var(--clr-success);
+}

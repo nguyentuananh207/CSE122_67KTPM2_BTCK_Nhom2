@@ -1,314 +1,119 @@
-body.page-admin {
-  --header-h: 72px;
+/**
+ * CraftLink – Admin & Platform Dashboard Page Styles
+ */
+.category-management-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
+  gap: 2rem;
   align-items: start;
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  color: #1f2937;
-  background: #f8fafc;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-body.page-admin,
-body.page-admin * {
-  box-sizing: border-box;
-}
-
-body.page-admin .shell {
-  grid-column: 2;
-  min-width: 0;
-  width: 100%;
-}
-
-body.page-admin .topbar {
+.category-management-layout > .card,
+.category-table-wrapper {
   min-width: 0;
 }
 
-body.page-admin .breadcrumb {
+.category-table {
+  min-width: 680px;
+}
+
+.dashboard-header {
   display: flex;
   align-items: center;
-  flex: 1 1 auto;
-  gap: 0.5rem;
-  min-width: 0;
-  color: #475569;
-  line-height: 1.4;
-}
-
-body.page-admin .breadcrumb_item {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-body.page-admin .breadcrumb_item--current,
-body.page-admin .breadcrumb_item-current {
-  color: #1f2937;
-  font-weight: 600;
-}
-
-body.page-admin .topbar_actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 0 0 auto;
-  min-width: 0;
-  color: #475569;
-  white-space: nowrap;
-}
-
-body.page-admin .icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex: 0 0 auto;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.625rem;
-  background: #fff;
-  color: inherit;
-}
-
-body.page-admin .icon-btn img,
-body.page-admin .icon-btn svg {
-  display: block;
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-body.page-admin .icon-btn_dot {
-  position: absolute;
-  top: 0.35rem;
-  right: 0.35rem;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: #ef4444;
-}
-
-body.page-admin .user-pill {
-  overflow-wrap: anywhere;
-}
-
-body.page-admin .content {
-  width: 100%;
-  min-width: 0;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 2rem clamp(1rem, 3vw, 2.5rem);
-}
-
-body.page-admin .page-head {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: var(--space-xl);
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.5rem;
 }
 
-body.page-admin .page-head_text {
-  flex: 1 1 20rem;
-  min-width: 0;
-}
-
-body.page-admin .page-head h1,
-body.page-admin .page-head p {
-  overflow-wrap: anywhere;
-}
-
-body.page-admin .page-head h1 {
-  margin: 0.25rem 0 0.5rem;
-  line-height: 1.25;
-}
-
-body.page-admin .page-head_actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-body.page-admin .toolbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-body.page-admin .search {
-  display: flex;
-  align-items: center;
-  flex: 1 1 18rem;
-  min-width: 0;
-}
-
-body.page-admin .search_input {
-  width: 100%;
-  min-width: 0;
-}
-
-body.page-admin .search_icon {
-  flex: 0 0 auto;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.5rem;
-  color: #64748b;
-}
-
-body.page-admin .filter-btn svg,
-body.page-admin .banner_icon {
-  flex: 0 0 auto;
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-body.page-admin .grid--cats {
+.stats-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(17rem, 0.9fr);
-  align-items: start;
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
 }
 
-body.page-admin .grid_main,
-body.page-admin .grid_side,
-body.page-admin .card {
-  min-width: 0;
+.dashboard-panels {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
 }
 
-body.page-admin .card {
-  margin-bottom: 1rem;
-  padding: 1.25rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
-  background: #fff;
+.panel-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
 }
 
-body.page-admin .card_title,
-body.page-admin .card p,
-body.page-admin .card li {
-  overflow-wrap: anywhere;
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--clr-border-light);
 }
 
-body.page-admin .site-foot {
-  padding: 1rem 2rem;
-  color: #64748b;
-  overflow-wrap: anywhere;
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--clr-border-light);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf6f0;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-time {
+  font-size: 0.75rem;
+  color: var(--clr-text-light);
+}
+
+@media (max-width: 950px) {
+  .dashboard-panels {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
-  body.page-admin {
-    grid-template-columns: 220px minmax(0, 1fr);
-  }
-
-  body.page-admin .topbar {
-    gap: 0.5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-
-  body.page-admin .topbar_actions {
-    gap: 0.4rem;
-  }
-
-  body.page-admin .grid--cats {
+  .category-management-layout {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
   }
-}
-
-@media (max-width: 680px) {
-  body.page-admin {
-    grid-template-columns: minmax(0, 1fr);
-    padding-top: 144px;
-  }
-
-  body.page-admin .topbar {
-    height: auto;
-    min-height: var(--header-h);
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  body.page-admin .header_logo {
-    flex: 0 0 auto;
-  }
-
-  body.page-admin .breadcrumb {
-    flex: 1 1 10rem;
-  }
-
-  body.page-admin .topbar_actions {
-    margin-left: auto;
-  }
-
-  body.page-admin #thanh_dieu_huong,
-  body.page-admin .shell {
-    grid-column: 1;
-  }
-
-  body.page-admin .sidebar {
-    min-height: auto;
-    padding: 1rem;
-  }
-
-  body.page-admin .sidebar_group .nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  body.page-admin .content {
-    padding-top: 1.25rem;
-  }
-}
-
-/* phần thống kê của admin */
-.kpi-grid{
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  gap:10px;
-  padding: 20px;
-}
-.kpi{
-  border-radius: 10px;
-  border: 2px solid gray;
-  width: 150px;
-  height: 100%;
-}
-.kpi_label{
-  font-size: 15px;
-}
-.kpi_value{
-  font-size: 30px;
-  font-weight: bolder;
-}
-.kpi_note{
-  font-size: 10px;
-}
-.banner{
-  font-size: 12px;
-  display: flex;
-  text-align: center;
-  border-radius: 8px;
-  background-color: #efd3d3;
-}
-.tool-list{
-  display: flex;
-  flex-direction: column;
-  gap:20px;
-
-}
-a{
-  text-decoration: none;
-}
-
-.admin-list{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap:20px;
 }
