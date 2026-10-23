@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +8,7 @@
   <link rel="stylesheet" href="../../css/style.css" />
   <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN KHÁCH HÀNG: CHẶN KHÁCH VÃNG LAI -->
   <script>
-    (function() {
+    (function () {
       try {
         var raw = localStorage.getItem("craftlink_session");
         var session = raw ? JSON.parse(raw) : null;
@@ -16,10 +17,11 @@
           sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Bạn đang là khách vãng lai! Vui lòng đăng nhập để tiến hành đặt hàng & thanh toán.");
           window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
         }
-      } catch(e) {}
+      } catch (e) { }
     })();
   </script>
 </head>
+
 <body data-page="buyer-checkout">
 
   <!-- HEADER -->
@@ -40,8 +42,9 @@
 
   <!-- MAIN -->
   <main class="app-main" style="margin-left: 0; max-width: 1100px; margin: 0 auto; padding-top: 1.5rem;">
-    
-    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+
+    <div
+      style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
       🛒 Không gian làm việc: Khách hàng (Buyer)
     </div>
 
@@ -53,7 +56,8 @@
 
     <div class="section-header">
       <h1>Thanh toán & Đặt cọc chế tác</h1>
-      <p>Quét mã QR bằng ứng dụng ngân hàng bất kỳ (VietQR) hoặc ví điện tử để hoàn tất thanh toán trước nhanh chóng và chính xác.</p>
+      <p>Quét mã QR bằng ứng dụng ngân hàng bất kỳ (VietQR) hoặc ví điện tử để hoàn tất thanh toán trước nhanh chóng và
+        chính xác.</p>
     </div>
 
     <div class="qr-checkout-layout">
@@ -64,16 +68,18 @@
           <h3 style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--clr-primary);">
             📍 Thông tin người nhận hàng
           </h3>
-          
+
           <div class="form-group">
             <label for="order-customer-name">Họ và tên người nhận <span class="required">*</span></label>
-            <input type="text" id="order-customer-name" class="form-control" placeholder="VD: Lê Phương Thảo" required />
+            <input type="text" id="order-customer-name" class="form-control" placeholder="VD: Lê Phương Thảo"
+              required />
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
               <label for="order-customer-phone">Số điện thoại liên hệ <span class="required">*</span></label>
-              <input type="tel" id="order-customer-phone" class="form-control" placeholder="0987654321" value="0934567890" required />
+              <input type="tel" id="order-customer-phone" class="form-control" placeholder="0987654321"
+                value="0934567890" required />
             </div>
             <div class="form-group">
               <label for="order-customer-email">Email nhận hóa đơn</label>
@@ -83,12 +89,15 @@
 
           <div class="form-group">
             <label for="order-customer-address">Địa chỉ nhận hàng chi tiết <span class="required">*</span></label>
-            <input type="text" id="order-customer-address" class="form-control" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/TP..." value="Tòa nhà Landmark 81, P.22, Q. Bình Thạnh, TP. Hồ Chí Minh" required />
+            <input type="text" id="order-customer-address" class="form-control"
+              placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/TP..."
+              value="Tòa nhà Landmark 81, P.22, Q. Bình Thạnh, TP. Hồ Chí Minh" required />
           </div>
 
           <div class="form-group" style="margin-bottom: 0;">
             <label for="order-customer-note">Ghi chú cho Nghệ nhân / Người giao hàng</label>
-            <textarea id="order-customer-note" class="form-control" placeholder="VD: Đóng gói hộp quà gỗ, giao trong giờ hành chính..." style="min-height: 70px;"></textarea>
+            <textarea id="order-customer-note" class="form-control"
+              placeholder="VD: Đóng gói hộp quà gỗ, giao trong giờ hành chính..." style="min-height: 70px;"></textarea>
           </div>
         </div>
 
@@ -141,36 +150,37 @@
       <!-- CỘT PHẢI: KHUNG QUÉT MÃ QR VIETQR THANH TOÁN -->
       <aside>
         <div class="qr-box" id="qr-payment-box">
-          <div style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--clr-primary); color: #fff; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem;">
+          <div
+            style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--clr-primary); color: #fff; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem;">
             QUÉT MÃ VIETQR ĐỂ THANH TOÁN
           </div>
-          
+
           <h2 style="font-size: 1.65rem; color: var(--clr-primary); margin-bottom: 0.25rem;" class="pay-amount-label">
             0 ₫
           </h2>
           <p class="text-muted" style="font-size: 0.825rem; margin-bottom: 1rem;">
-            Mở app ngân hàng bất kỳ (Vietcombank, MB, Techcombank, Momo...) để quét:
+            Quét mã bằng ứng dụng ngân hàng, sau đó nhập số tiền và nội dung chuyển khoản hiển thị bên dưới:
           </p>
 
-          <!-- ẢNH MÃ QR TẠO TỰ ĐỘNG THEO CHUẨN VIETQR -->
-          <img src="" alt="Mã VietQR thanh toán" id="vietqr-image" class="qr-image" />
+          <img src="../../assets/images/anhQr_thanhtoan.jpg" alt="Mã QR Vietcombank của Nguyễn Tuấn Anh"
+            id="vietqr-image" class="qr-image" />
 
           <!-- BẢNG THÔNG TIN CHUYỂN KHOẢN KÈM SAO CHÉP -->
           <table class="bank-info-table">
             <tr>
               <td class="text-muted">Ngân hàng:</td>
-              <td><strong>MBBank (Ngân hàng Quân Đội)</strong></td>
+              <td><strong>Vietcombank</strong></td>
             </tr>
             <tr>
               <td class="text-muted">Số tài khoản:</td>
               <td>
-                <strong id="qr-acc-text">0901234567</strong>
+                <strong id="qr-acc-text">QRGD000103818151801</strong>
                 <button class="copy-btn" id="btn-copy-acc">Sao chép</button>
               </td>
             </tr>
             <tr>
               <td class="text-muted">Chủ tài khoản:</td>
-              <td><strong>NGUYEN TUAN ANH - CRAFTLINK</strong></td>
+              <td><strong>NGUYEN TUAN ANH</strong></td>
             </tr>
             <tr>
               <td class="text-muted">Số tiền:</td>
@@ -188,7 +198,8 @@
             </tr>
           </table>
 
-          <div style="background: #faf6f0; border-radius: var(--radius); padding: 0.75rem; margin-top: 1rem; font-size: 0.8rem; text-align: left; color: var(--clr-text-muted);">
+          <div
+            style="background: #faf6f0; border-radius: var(--radius); padding: 0.75rem; margin-top: 1rem; font-size: 0.8rem; text-align: left; color: var(--clr-text-muted);">
             ✓ Hệ thống tự động ghi nhận thanh toán sau khi bạn chuyển khoản đúng cú pháp nội dung.
           </div>
 
@@ -211,4 +222,5 @@
     initCheckoutPage();
   </script>
 </body>
+
 </html>
