@@ -1,492 +1,386 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khám phá – CraftLink</title>
-    <link rel="stylesheet" href="../../css/style.css" />
-  </head>
+</head>
 
-  <body class="page-buyer page-buyer-marketplace">
+<body>
+
     <div class="app-layout">
-      <!-- ===== SIDEBAR ===== -->
-      <aside class="sidebar">
-        <a
-          href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html"
-          class="brand"
-        >
-          <span class="brand-logo"></span>
-          <span class="brand-name">CraftLink</span>
-        </a>
 
-        <div class="workspace">
-          <p class="workspace-label">Không gian làm việc</p>
-          <span class="workspace-badge">Khách hàng</span>
-        </div>
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+            <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html" class="brand">
+                <span class="brand-logo"></span>
+                <span class="brand-name">CraftLink</span>
+            </a>
 
-        <nav class="sidebar-nav" aria-label="Điều hướng khách hàng">
-          <ul>
-            <li>
-              <a
-                href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-marketplace.html"
-                aria-current="page"
-                >Khám phá</a
-              >
-            </li>
-            <li><a href="buyer-favorites.html">Yêu thích</a></li>
-            <li>
-              <a
-                href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-custom-brief.html"
-                >Yêu cầu tùy biến</a
-              >
-            </li>
-            <li>
-              <a
-                href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-orders.html"
-                >Đơn &amp; yêu cầu</a
-              >
-            </li>
-          </ul>
-        </nav>
-
-        <hr />
-
-        <ul class="sidebar-links">
-          <li><a href="">Hướng dẫn sử dụng</a></li>
-          <li>
-            <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html"
-              >Trở về trang bày ↗</a
-            >
-          </li>
-        </ul>
-
-        <div class="sidebar-user">
-          <p class="user-name">Minh Anh</p>
-          <p class="user-role">Khách hàng · <a href="">Đăng xuất</a></p>
-          <p class="user-note">Chỉ tiến thị tác vụ theo quyền.</p>
-        </div>
-      </aside>
-
-      <!-- ===== MAIN ===== -->
-      <div class="main">
-        <!-- Topbar -->
-        <header class="topbar">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="buyer-marketplace.html">Khách hàng</a> /
-            <span>Khám phá</span>
-          </nav>
-          <div class="topbar-right">
-            <button
-              type="button"
-              class="btn-notification"
-              aria-label="Thông báo"
-            >
-              🔔
-            </button>
-            <time id="login-time" class="login-time" datetime=""></time>
-            <span id="user-name-chip" class="user-chip"></span>
-          </div>
-        </header>
-
-        <main class="content">
-          <!-- Page header -->
-          <section class="page-header">
-            <div class="page-header-text">
-              <p class="eyebrow">Khách hàng</p>
-              <h1>Tìm chất riêng cho ý tưởng của bạn</h1>
-              <p class="subtitle">
-                Khám phá sản phẩm hoặc chọn người sáng tạo từ brief đã lưu.
-              </p>
+            <div class="workspace">
+                <p class="workspace-label">Không gian làm việc</p>
+                <span class="workspace-badge">Khách hàng</span>
             </div>
-            <div class="page-header-actions">
-              <span class="badge-data">Dữ liệu mẫu · BTL-11</span>
-              <a href="buyer-brief-new.html" class="btn btn-primary"
-                >+ Tạo brief mới</a
-              >
-            </div>
-          </section>
 
-          <!-- Search & advanced filter -->
-          <section class="search-section" aria-label="Tìm kiếm và bộ lọc">
-            <form
-              class="search-form"
-              action="buyer-marketplace.html"
-              method="get"
-            >
-              <div class="search-bar">
-                <label for="q" class="visually-hidden">Tìm kiếm</label>
-                <input
-                  type="search"
-                  id="q"
-                  name="q"
-                  placeholder="Tìm gốm, người sáng tạo hoặc phong cách..."
-                />
+            <nav class="sidebar-nav" aria-label="Điều hướng khách hàng">
+                <ul>
+                    <li><a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-marketplace.html"
+                            aria-current="page">Khám phá</a></li>
+                    <li><a href="buyer-favorites.html">Yêu thích</a></li>
+                    <li><a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-custom-brief.html">Yêu cầu
+                            tùy biến</a></li>
+                    <li><a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-orders.html">Đơn &amp; yêu
+                            cầu</a></li>
+                </ul>
+            </nav>
 
-                <button
-                  type="button"
-                  class="btn btn-outline"
-                  aria-expanded="false"
-                  aria-controls="advanced-filters"
-                >
-                  Danh mục ⌄
-                </button>
+            <hr>
 
-                <a href="" class="btn btn-outline">♡ Yêu thích · 3</a>
-                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-              </div>
-
-              <!-- Bộ lọc nâng cao -->
-              <div class="advanced-filters" id="advanced-filters">
-                <fieldset>
-                  <legend>Bộ lọc nâng cao</legend>
-
-                  <div class="filter-group">
-                    <label for="category">Danh mục</label>
-                    <select id="category" name="category">
-                      <option value="">Tất cả danh mục</option>
-                      <option value="gom">Gốm</option>
-                      <option value="da">Đồ da</option>
-                      <option value="theu">Thêu</option>
-                      <option value="go">Đồ gỗ</option>
-                      <option value="det">Dệt may</option>
-                      <option value="khac">Khác</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <label for="material">Chất liệu</label>
-                    <select id="material" name="material">
-                      <option value="">Tất cả chất liệu</option>
-                      <option value="stoneware">Stoneware</option>
-                      <option value="da-bo">Da bò</option>
-                      <option value="soi">Sợi</option>
-                      <option value="go">Gỗ</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <label for="style">Phong cách</label>
-                    <select id="style" name="style">
-                      <option value="">Tất cả phong cách</option>
-                      <option value="moc">Mộc</option>
-                      <option value="toi-gian">Tối giản</option>
-                      <option value="co-dien">Cổ điển</option>
-                      <option value="hien-dai">Hiện đại</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <label for="customization">Hình thức tùy biến</label>
-                    <select id="customization" name="customization">
-                      <option value="">Tất cả</option>
-                      <option value="khac-ten">Khắc tên</option>
-                      <option value="dap-chu">Dập chữ</option>
-                      <option value="theu-ten">Thêu tên</option>
-                      <option value="chon-mau">Chọn màu</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <label for="location">Khu vực</label>
-                    <select id="location" name="location">
-                      <option value="">Toàn quốc</option>
-                      <option value="ha-noi">Hà Nội</option>
-                      <option value="da-nang">Đà Nẵng</option>
-                      <option value="hue">Huế</option>
-                      <option value="tp-hcm">TP. Hồ Chí Minh</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <span class="filter-label">Khoảng giá (₫)</span>
-                    <label for="price-min" class="visually-hidden"
-                      >Giá từ</label
-                    >
-                    <input
-                      type="number"
-                      id="price-min"
-                      name="price_min"
-                      min="0"
-                      step="10000"
-                      placeholder="Từ"
-                    />
-                    <span>–</span>
-                    <label for="price-max" class="visually-hidden"
-                      >Giá đến</label
-                    >
-                    <input
-                      type="number"
-                      id="price-max"
-                      name="price_max"
-                      min="0"
-                      step="10000"
-                      placeholder="Đến"
-                    />
-                  </div>
-
-                  <div class="filter-group">
-                    <label for="sort">Sắp xếp</label>
-                    <select id="sort" name="sort">
-                      <option value="relevance">Phù hợp nhất</option>
-                      <option value="newest">Mới nhất</option>
-                      <option value="price-asc">Giá tăng dần</option>
-                      <option value="price-desc">Giá giảm dần</option>
-                    </select>
-                  </div>
-
-                  <div class="filter-group">
-                    <label
-                      ><input type="checkbox" name="only_favorites" value="1" />
-                      Chỉ hiển thị yêu thích</label
-                    >
-                  </div>
-
-                  <div class="filter-actions">
-                    <button type="reset" class="btn btn-outline">
-                      Xóa bộ lọc
-                    </button>
-                    <button type="submit" class="btn btn-primary">
-                      Áp dụng
-                    </button>
-                  </div>
-                </fieldset>
-              </div>
-            </form>
-
-            <!-- Bộ lọc đang áp dụng -->
-            <div class="active-filters" aria-label="Bộ lọc đang áp dụng">
-              <!-- ví dụ: <span class="chip">Gốm <button type="button" aria-label="Bỏ lọc">×</button></span> -->
-            </div>
-          </section>
-
-          <!-- Product list -->
-          <section class="product-section" aria-label="Danh sách sản phẩm">
-            <p class="result-count">Hiển thị 3 sản phẩm</p>
-
-            <ul class="product-grid">
-              <li class="product-card">
-                <article>
-                  <div class="product-media">
-                    <a href="buyer-product-detail.html?id=1">
-                      <img
-                        src="../../assets/images/products/boc-coc-gom.jpg"
-                        alt="Bộ cốc gốm khắc tên"
-                      />
-                    </a>
-                    <button
-                      type="button"
-                      class="btn-favorite"
-                      aria-label="Thêm vào yêu thích"
-                      aria-pressed="false"
-                    >
-                      ♡
-                    </button>
-                  </div>
-                  <h2 class="product-title">
-                    <a href="buyer-product-detail.html?id=1"
-                      >Bộ cốc gốm khắc tên</a
-                    >
-                  </h2>
-                  <p class="product-maker">Mộc Studio • Hà Nội</p>
-                  <div class="product-footer">
-                    <p class="product-price">Từ 480.000 ₫</p>
-                    <span class="tag">Khắc tên · Chọn men</span>
-                  </div>
-                </article>
-              </li>
-
-              <li class="product-card">
-                <article>
-                  <div class="product-media">
-                    <a href="buyer-product-detail.html?id=2">
-                      <img
-                        src="../../assets/images/products/vi-da-khau-tay.jpg"
-                        alt="Ví da khâu tay"
-                      />
-                    </a>
-                    <button
-                      type="button"
-                      class="btn-favorite"
-                      aria-label="Thêm vào yêu thích"
-                      aria-pressed="false"
-                    >
-                      ♡
-                    </button>
-                  </div>
-                  <h2 class="product-title">
-                    <a href="buyer-product-detail.html?id=2">Ví da khâu tay</a>
-                  </h2>
-                  <p class="product-maker">Da Nâu • Đà Nẵng</p>
-                  <div class="product-footer">
-                    <p class="product-price">Từ 650.000 ₫</p>
-                    <span class="tag">Dập chữ · Chọn da</span>
-                  </div>
-                </article>
-              </li>
-
-              <li class="product-card">
-                <article>
-                  <div class="product-media">
-                    <a href="buyer-product-detail.html?id=3">
-                      <img
-                        src="../../assets/images/products/khung-theu-vuon-nho.jpg"
-                        alt="Khung thêu vườn nhỏ"
-                      />
-                    </a>
-                    <button
-                      type="button"
-                      class="btn-favorite"
-                      aria-label="Thêm vào yêu thích"
-                      aria-pressed="false"
-                    >
-                      ♡
-                    </button>
-                  </div>
-                  <h2 class="product-title">
-                    <a href="buyer-product-detail.html?id=3"
-                      >Khung thêu vườn nhỏ</a
-                    >
-                  </h2>
-                  <p class="product-maker">Sợi &amp; Hoa • Huế</p>
-                  <div class="product-footer">
-                    <p class="product-price">Từ 320.000 ₫</p>
-                    <span class="tag">Thêu tên · Chọn hoa</span>
-                  </div>
-                </article>
-              </li>
+            <ul class="sidebar-links">
+                <li><a href="">Hướng dẫn sử dụng</a></li>
+                <li><a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html">Trở về trang bày ↗</a></li>
             </ul>
 
-            <!-- Phân trang -->
-            <nav class="pagination" aria-label="Phân trang">
-              <a href="#" rel="prev" aria-disabled="true">‹ Trước</a>
-              <a href="#" aria-current="page">1</a>
-              <a href="#">2</a>
-              <a href="#" rel="next">Sau ›</a>
-            </nav>
-          </section>
-
-          <hr />
-
-          <!-- AI-2 · Style Matcher -->
-          <section class="style-matcher" aria-labelledby="ai2-title">
-            <header class="section-header">
-              <div>
-                <h2 id="ai2-title">AI-2 · Style Matcher</h2>
-                <p class="subtitle">
-                  Gợi ý để bạn cân nhắc, không thay bạn chọn maker.
-                </p>
-              </div>
-              <span class="badge-ai">AI mô phỏng</span>
-            </header>
-
-            <div class="style-matcher-layout">
-              <!-- Tiêu chí từ brief -->
-              <aside class="brief-criteria">
-                <h3>Tiêu chí từ brief BR-024</h3>
-                <span class="badge-status">Đầu vào đã lưu</span>
-
-                <img
-                  src="../../assets/images/briefs/br-024.jpg"
-                  alt="Ảnh tham khảo: Bộ 4 cốc gốm khắc tên"
-                />
-
-                <h4>Bộ 4 cốc gốm khắc tên</h4>
-                <dl class="criteria-list">
-                  <dt>Phong cách:</dt>
-                  <dd>mộc, tối giản</dd>
-                  <dt>Chất liệu:</dt>
-                  <dd>gốm stoneware</dd>
-                  <dt>Màu:</dt>
-                  <dd>kem &amp; xanh rêu</dd>
-                  <dt>Ngân sách:</dt>
-                  <dd>800.000–1.200.000 ₫</dd>
-                  <dt>Deadline:</dt>
-                  <dd>25/10/2026</dd>
-                </dl>
-
-                <div class="notice notice-warning" role="note">
-                  Gợi ý chỉ dựa trên thông tin công khai và dữ liệu mẫu. Maker
-                  cần xác nhận lịch nhận việc.
-                </div>
-
-                <a
-                  href="buyer-brief-edit.html?id=BR-024"
-                  class="btn btn-outline"
-                  >Sửa tiêu chí</a
-                >
-              </aside>
-
-              <!-- Kết quả gợi ý -->
-              <div class="matcher-results">
-                <div class="notice notice-success" role="status">
-                  Đã xử lý 4 tiêu chí. Kết quả mang tính tham khảo, không bảo
-                  đảm maker nhận brief hoặc giữ nguyên báo giá.
-                </div>
-
-                <ul class="matcher-list">
-                  <li class="matcher-card">
-                    <article>
-                      <img
-                        src="../../assets/images/makers/moc-studio.jpg"
-                        alt="Mộc Studio"
-                      />
-                      <div class="matcher-info">
-                        <h3>Mộc Studio</h3>
-                        <span class="badge-match"
-                          >Phù hợp phong cách &amp; chất liệu</span
-                        >
-                        <p>
-                          Gốm mộc, men xanh rêu và khắc tên. Giá mẫu 960.000 ₫
-                          nằm trong ngân sách.
-                        </p>
-                        <p class="note">Cần xác nhận ngày giao 25/10.</p>
-                      </div>
-                      <div class="matcher-actions">
-                        <button type="button" class="btn btn-primary">
-                          Chọn Mộc Studio
-                        </button>
-                        <a
-                          href="buyer-product-detail.html?maker=moc-studio"
-                          class="btn btn-outline"
-                          >Xem listing</a
-                        >
-                      </div>
-                    </article>
-                  </li>
-
-                  <li class="matcher-card">
-                    <article>
-                      <img
-                        src="../../assets/images/makers/gom-la.jpg"
-                        alt="Gốm Lá"
-                      />
-                      <div class="matcher-info">
-                        <h3>Gốm Lá</h3>
-                        <span class="badge-match">Phù hợp chất liệu</span>
-                        <p>
-                          Có stoneware và men kem; nhận tùy biến màu. Giá dự
-                          kiến cần báo lại.
-                        </p>
-                        <p class="note">Chưa có mẫu khắc tên công khai.</p>
-                      </div>
-                      <div class="matcher-actions">
-                        <button type="button" class="btn btn-primary">
-                          Chọn Gốm Lá
-                        </button>
-                        <a
-                          href="buyer-product-detail.html?maker=gom-la"
-                          class="btn btn-outline"
-                          >Xem listing</a
-                        >
-                      </div>
-                    </article>
-                  </li>
-                </ul>
-              </div>
+            <div class="sidebar-user">
+                <p class="user-name">Minh Anh</p>
+                <p class="user-role">Khách hàng · <a href="">Đăng xuất</a></p>
+                <p class="user-note">Chỉ tiến thị tác vụ theo quyền.</p>
             </div>
-          </section>
-        </main>
-      </div>
+        </aside>
+
+        <!-- ===== MAIN ===== -->
+        <div class="main">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\buyer\buyer-marketplace.html">Khách hàng</a>
+                    / <span>Khám phá</span>
+                </nav>
+                <header class="topbar">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="buyer-marketplace.html">Khách hàng</a> / <span>Khám phá</span>
+                    </nav>
+                    <div class="topbar-right">
+                        <button type="button" class="btn-notification" aria-label="Thông báo">🔔</button>
+                        <time id="login-time" class="login-time" datetime=""></time>
+                        <span id="user-name-chip" class="user-chip"></span>
+                    </div>
+                </header>
+
+                <main class="content">
+
+                    <!-- Page header -->
+                    <section class="page-header">
+                        <div class="page-header-text">
+                            <p class="eyebrow">Khách hàng</p>
+                            <h1>Tìm chất riêng cho ý tưởng của bạn</h1>
+                            <p class="subtitle">Khám phá sản phẩm hoặc chọn người sáng tạo từ brief đã lưu.</p>
+                        </div>
+                        <div class="page-header-actions">
+                            <span class="badge-data">Dữ liệu mẫu · BTL-11</span>
+                            <a href="buyer-brief-new.html" class="btn btn-primary">+ Tạo brief mới</a>
+                        </div>
+                    </section>
+
+                    <!-- Search & advanced filter -->
+                    <section class="search-section" aria-label="Tìm kiếm và bộ lọc">
+                        <form class="search-form" action="buyer-marketplace.html" method="get">
+
+                            <div class="search-bar">
+                                <label for="q" class="visually-hidden">Tìm kiếm</label>
+                                <input type="search" id="q" name="q"
+                                    placeholder="Tìm gốm, người sáng tạo hoặc phong cách...">
+
+                                <button type="button" class="btn btn-outline" aria-expanded="false"
+                                    aria-controls="advanced-filters">
+                                    Danh mục ⌄
+                                </button>
+
+                                <a href="" class="btn btn-outline">♡ Yêu thích · 3</a>
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+
+                            <!-- Bộ lọc nâng cao -->
+                            <div class="advanced-filters" id="advanced-filters">
+                                <fieldset>
+                                    <legend>Bộ lọc nâng cao</legend>
+
+                                    <div class="filter-group">
+                                        <label for="category">Danh mục</label>
+                                        <select id="category" name="category">
+                                            <option value="">Tất cả danh mục</option>
+                                            <option value="gom">Gốm</option>
+                                            <option value="da">Đồ da</option>
+                                            <option value="theu">Thêu</option>
+                                            <option value="go">Đồ gỗ</option>
+                                            <option value="det">Dệt may</option>
+                                            <option value="khac">Khác</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label for="material">Chất liệu</label>
+                                        <select id="material" name="material">
+                                            <option value="">Tất cả chất liệu</option>
+                                            <option value="stoneware">Stoneware</option>
+                                            <option value="da-bo">Da bò</option>
+                                            <option value="soi">Sợi</option>
+                                            <option value="go">Gỗ</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label for="style">Phong cách</label>
+                                        <select id="style" name="style">
+                                            <option value="">Tất cả phong cách</option>
+                                            <option value="moc">Mộc</option>
+                                            <option value="toi-gian">Tối giản</option>
+                                            <option value="co-dien">Cổ điển</option>
+                                            <option value="hien-dai">Hiện đại</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label for="customization">Hình thức tùy biến</label>
+                                        <select id="customization" name="customization">
+                                            <option value="">Tất cả</option>
+                                            <option value="khac-ten">Khắc tên</option>
+                                            <option value="dap-chu">Dập chữ</option>
+                                            <option value="theu-ten">Thêu tên</option>
+                                            <option value="chon-mau">Chọn màu</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label for="location">Khu vực</label>
+                                        <select id="location" name="location">
+                                            <option value="">Toàn quốc</option>
+                                            <option value="ha-noi">Hà Nội</option>
+                                            <option value="da-nang">Đà Nẵng</option>
+                                            <option value="hue">Huế</option>
+                                            <option value="tp-hcm">TP. Hồ Chí Minh</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <span class="filter-label">Khoảng giá (₫)</span>
+                                        <label for="price-min" class="visually-hidden">Giá từ</label>
+                                        <input type="number" id="price-min" name="price_min" min="0" step="10000"
+                                            placeholder="Từ">
+                                        <span>–</span>
+                                        <label for="price-max" class="visually-hidden">Giá đến</label>
+                                        <input type="number" id="price-max" name="price_max" min="0" step="10000"
+                                            placeholder="Đến">
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label for="sort">Sắp xếp</label>
+                                        <select id="sort" name="sort">
+                                            <option value="relevance">Phù hợp nhất</option>
+                                            <option value="newest">Mới nhất</option>
+                                            <option value="price-asc">Giá tăng dần</option>
+                                            <option value="price-desc">Giá giảm dần</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter-group">
+                                        <label><input type="checkbox" name="only_favorites" value="1"> Chỉ hiển thị yêu
+                                            thích</label>
+                                    </div>
+
+                                    <div class="filter-actions">
+                                        <button type="reset" class="btn btn-outline">Xóa bộ lọc</button>
+                                        <button type="submit" class="btn btn-primary">Áp dụng</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                        </form>
+
+                        <!-- Bộ lọc đang áp dụng -->
+                        <div class="active-filters" aria-label="Bộ lọc đang áp dụng">
+                            <!-- ví dụ: <span class="chip">Gốm <button type="button" aria-label="Bỏ lọc">×</button></span> -->
+                        </div>
+                    </section>
+
+                    <!-- Product list -->
+                    <section class="product-section" aria-label="Danh sách sản phẩm">
+                        <p class="result-count">Hiển thị 3 sản phẩm</p>
+
+                        <ul class="product-grid">
+
+                            <li class="product-card">
+                                <article>
+                                    <div class="product-media">
+                                        <a href="buyer-product-detail.html?id=1">
+                                            <img src="../../assets/images/products/boc-coc-gom.jpg"
+                                                alt="Bộ cốc gốm khắc tên">
+                                        </a>
+                                        <button type="button" class="btn-favorite" aria-label="Thêm vào yêu thích"
+                                            aria-pressed="false">♡</button>
+                                    </div>
+                                    <h2 class="product-title"><a href="buyer-product-detail.html?id=1">Bộ cốc gốm khắc
+                                            tên</a></h2>
+                                    <p class="product-maker">Mộc Studio • Hà Nội</p>
+                                    <div class="product-footer">
+                                        <p class="product-price">Từ 480.000 ₫</p>
+                                        <span class="tag">Khắc tên · Chọn men</span>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <li class="product-card">
+                                <article>
+                                    <div class="product-media">
+                                        <a href="buyer-product-detail.html?id=2">
+                                            <img src="../../assets/images/products/vi-da-khau-tay.jpg"
+                                                alt="Ví da khâu tay">
+                                        </a>
+                                        <button type="button" class="btn-favorite" aria-label="Thêm vào yêu thích"
+                                            aria-pressed="false">♡</button>
+                                    </div>
+                                    <h2 class="product-title"><a href="buyer-product-detail.html?id=2">Ví da khâu
+                                            tay</a></h2>
+                                    <p class="product-maker">Da Nâu • Đà Nẵng</p>
+                                    <div class="product-footer">
+                                        <p class="product-price">Từ 650.000 ₫</p>
+                                        <span class="tag">Dập chữ · Chọn da</span>
+                                    </div>
+                                </article>
+                            </li>
+
+                            <li class="product-card">
+                                <article>
+                                    <div class="product-media">
+                                        <a href="buyer-product-detail.html?id=3">
+                                            <img src="../../assets/images/products/khung-theu-vuon-nho.jpg"
+                                                alt="Khung thêu vườn nhỏ">
+                                        </a>
+                                        <button type="button" class="btn-favorite" aria-label="Thêm vào yêu thích"
+                                            aria-pressed="false">♡</button>
+                                    </div>
+                                    <h2 class="product-title"><a href="buyer-product-detail.html?id=3">Khung thêu vườn
+                                            nhỏ</a></h2>
+                                    <p class="product-maker">Sợi &amp; Hoa • Huế</p>
+                                    <div class="product-footer">
+                                        <p class="product-price">Từ 320.000 ₫</p>
+                                        <span class="tag">Thêu tên · Chọn hoa</span>
+                                    </div>
+                                </article>
+                            </li>
+
+                        </ul>
+
+                        <!-- Phân trang -->
+                        <nav class="pagination" aria-label="Phân trang">
+                            <a href="#" rel="prev" aria-disabled="true">‹ Trước</a>
+                            <a href="#" aria-current="page">1</a>
+                            <a href="#">2</a>
+                            <a href="#" rel="next">Sau ›</a>
+                        </nav>
+                    </section>
+
+                    <hr>
+
+                    <!-- AI-2 · Style Matcher -->
+                    <section class="style-matcher" aria-labelledby="ai2-title">
+                        <header class="section-header">
+                            <div>
+                                <h2 id="ai2-title">AI-2 · Style Matcher</h2>
+                                <p class="subtitle">Gợi ý để bạn cân nhắc, không thay bạn chọn maker.</p>
+                            </div>
+                            <span class="badge-ai">AI mô phỏng</span>
+                        </header>
+
+                        <div class="style-matcher-layout">
+
+                            <!-- Tiêu chí từ brief -->
+                            <aside class="brief-criteria">
+                                <h3>Tiêu chí từ brief BR-024</h3>
+                                <span class="badge-status">Đầu vào đã lưu</span>
+
+                                <img src="../../assets/images/briefs/br-024.jpg"
+                                    alt="Ảnh tham khảo: Bộ 4 cốc gốm khắc tên">
+
+                                <h4>Bộ 4 cốc gốm khắc tên</h4>
+                                <dl class="criteria-list">
+                                    <dt>Phong cách:</dt>
+                                    <dd>mộc, tối giản</dd>
+                                    <dt>Chất liệu:</dt>
+                                    <dd>gốm stoneware</dd>
+                                    <dt>Màu:</dt>
+                                    <dd>kem &amp; xanh rêu</dd>
+                                    <dt>Ngân sách:</dt>
+                                    <dd>800.000–1.200.000 ₫</dd>
+                                    <dt>Deadline:</dt>
+                                    <dd>25/10/2026</dd>
+                                </dl>
+
+                                <div class="notice notice-warning" role="note">
+                                    Gợi ý chỉ dựa trên thông tin công khai và dữ liệu mẫu. Maker cần xác nhận lịch nhận
+                                    việc.
+                                </div>
+
+                                <a href="buyer-brief-edit.html?id=BR-024" class="btn btn-outline">Sửa tiêu chí</a>
+                            </aside>
+
+                            <!-- Kết quả gợi ý -->
+                            <div class="matcher-results">
+                                <div class="notice notice-success" role="status">
+                                    Đã xử lý 4 tiêu chí. Kết quả mang tính tham khảo, không bảo đảm maker nhận brief
+                                    hoặc giữ nguyên báo giá.
+                                </div>
+
+                                <ul class="matcher-list">
+
+                                    <li class="matcher-card">
+                                        <article>
+                                            <img src="../../assets/images/makers/moc-studio.jpg" alt="Mộc Studio">
+                                            <div class="matcher-info">
+                                                <h3>Mộc Studio</h3>
+                                                <span class="badge-match">Phù hợp phong cách &amp; chất liệu</span>
+                                                <p>Gốm mộc, men xanh rêu và khắc tên. Giá mẫu 960.000 ₫ nằm trong ngân
+                                                    sách.</p>
+                                                <p class="note">Cần xác nhận ngày giao 25/10.</p>
+                                            </div>
+                                            <div class="matcher-actions">
+                                                <button type="button" class="btn btn-primary">Chọn Mộc Studio</button>
+                                                <a href="buyer-product-detail.html?maker=moc-studio"
+                                                    class="btn btn-outline">Xem listing</a>
+                                            </div>
+                                        </article>
+                                    </li>
+
+                                    <li class="matcher-card">
+                                        <article>
+                                            <img src="../../assets/images/makers/gom-la.jpg" alt="Gốm Lá">
+                                            <div class="matcher-info">
+                                                <h3>Gốm Lá</h3>
+                                                <span class="badge-match">Phù hợp chất liệu</span>
+                                                <p>Có stoneware và men kem; nhận tùy biến màu. Giá dự kiến cần báo lại.
+                                                </p>
+                                                <p class="note">Chưa có mẫu khắc tên công khai.</p>
+                                            </div>
+                                            <div class="matcher-actions">
+                                                <button type="button" class="btn btn-primary">Chọn Gốm Lá</button>
+                                                <a href="buyer-product-detail.html?maker=gom-la"
+                                                    class="btn btn-outline">Xem listing</a>
+                                            </div>
+                                        </article>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </main>
+        </div>
     </div>
-  </body>
+
+</body>
+
 </html>

@@ -1,373 +1,319 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Đơn &amp; yêu cầu · CraftLink</title>
-    <link rel="stylesheet" href="../../css/style.css" />
-  </head>
 
-  <body class="page-buyer page-buyer-orders">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đơn &amp; yêu cầu · CraftLink</title>
+</head>
+
+<body>
+
     <!-- Sidebar -->
     <aside class="side">
-      <a
-        href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html"
-        class="brand"
-      >
-        <span class="brand-logo"></span>
-        <span class="brand-name">CraftLink</span>
-      </a>
-      <p class="ws-label">Không gian làm việc</p>
-      <span class="ws-chip">Khách hàng</span>
+        <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html" class="brand">
+            <span class="brand-logo"></span>
+            <span class="brand-name">CraftLink</span>
+        </a>
+        <p class="ws-label">Không gian làm việc</p>
+        <span class="ws-chip">Khách hàng</span>
 
-      <nav class="nav" aria-label="Điều hướng chính">
-        <a href="buyer-marketplace.html">Khám phá</a>
-        <a href="buyer-favorites.html">Yêu thích</a>
-        <a href="buyer-custom-brief.html">Yêu cầu tùy biến</a>
-        <a href="buyer-orders.html" aria-current="page">Đơn &amp; yêu cầu</a>
-        <hr />
-        <a href="">Hướng dẫn sử dụng</a>
-        <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html"
-          >Trở về trưng bày</a
-        >
-      </nav>
+        <nav class="nav" aria-label="Điều hướng chính">
+            <a href="buyer-marketplace.html">Khám phá</a>
+            <a href="buyer-favorites.html">Yêu thích</a>
+            <a href="buyer-custom-brief.html">Yêu cầu tùy biến</a>
+            <a href="buyer-orders.html" aria-current="page">Đơn &amp; yêu cầu</a>
+            <hr>
+            <a href="">Hướng dẫn sử dụng</a>
+            <a href="C:\Users\Admin\CSE122_67KTPM2_BTCK_Nhom2\page\index.html">Trở về trưng bày</a>
+        </nav>
 
-      <div class="me">
-        <b>Minh Anh</b>
-        <small>Khách hàng · Đăng xuất</small>
-        <small>Chỉ hiển thị tác vụ theo quyền.</small>
-      </div>
+        <div class="me">
+            <b>Minh Anh</b>
+            <small>Khách hàng · Đăng xuất</small>
+            <small>Chỉ hiển thị tác vụ theo quyền.</small>
+        </div>
     </aside>
 
     <div class="main">
-      <!-- Topbar -->
-      <header class="top">
-        <span class="breadcrumb">Khách hàng / Đơn &amp; yêu cầu</span>
-        <div class="top-right">
-          <button type="button" aria-label="Thông báo">Thông báo</button>
-          <time datetime="2026-10-04">04/10/2026</time>
-          <span class="pill">Minh Anh</span>
-        </div>
-      </header>
-
-      <main class="wrap">
-        <!-- Tiêu đề trang -->
-        <div class="head">
-          <div>
-            <p class="eyebrow">Khách hàng</p>
-            <h1>Theo dõi những ý tưởng đang thành hình</h1>
-            <p>Brief, proposal và đơn hàng của Minh Anh trong một nơi.</p>
-          </div>
-          <div>
-            <span class="pill">Dữ liệu mẫu · BTL-11</span>
-            <a class="btn primary" href="buyer-custom-brief.html"
-              >+ Tạo yêu cầu mới</a
-            >
-          </div>
-        </div>
-
-        <!-- Thống kê nhanh -->
-        <section class="stats" aria-label="Thống kê">
-          <article class="stat">
-            <strong>01</strong>
-            <h2>Bản nháp</h2>
-            <p>Chưa gửi đến maker</p>
-          </article>
-          <article class="stat">
-            <strong>02</strong>
-            <h2>Chờ proposal</h2>
-            <p>Maker đang xem yêu cầu</p>
-          </article>
-          <article class="stat">
-            <strong>01</strong>
-            <h2>Đang thực hiện</h2>
-            <p>Chờ bạn duyệt bản mẫu</p>
-          </article>
-          <article class="stat">
-            <strong>02</strong>
-            <h2>Hoàn thành</h2>
-            <p>Chỉ lưu trữ, không hủy</p>
-          </article>
-        </section>
-
-        <!-- Tìm kiếm & lọc -->
-        <form class="toolbar" role="search" id="filter">
-          <label for="search">Tìm kiếm</label>
-          <input
-            type="search"
-            id="search"
-            placeholder="Tìm mã đơn, tên sản phẩm hoặc maker..."
-          />
-
-          <label for="range">Thời gian</label>
-          <select id="range">
-            <option value="all">Tất cả</option>
-            <option value="7">7 ngày qua</option>
-            <option value="30">30 ngày qua</option>
-            <option value="90">90 ngày qua</option>
-          </select>
-
-          <label><input type="checkbox" id="archived" /> Đã lưu trữ</label>
-        </form>
-
-        <!-- Tab trạng thái -->
-        <nav class="tabs" aria-label="Lọc theo trạng thái">
-          <button type="button" aria-pressed="true" data-status="all">
-            Tất cả · 7
-          </button>
-          <button type="button" aria-pressed="false" data-status="draft">
-            Nháp · 1
-          </button>
-          <button type="button" aria-pressed="false" data-status="pending">
-            Chờ proposal · 2
-          </button>
-          <button type="button" aria-pressed="false" data-status="active">
-            Đang thực hiện · 1
-          </button>
-          <button type="button" aria-pressed="false" data-status="done">
-            Hoàn thành · 2
-          </button>
-          <button type="button" aria-pressed="false" data-status="cancelled">
-            Đã hủy · 1
-          </button>
-        </nav>
-
-        <!-- Danh sách đơn & yêu cầu -->
-        <section class="card" aria-labelledby="list-title">
-          <h2 id="list-title" hidden>Danh sách đơn và yêu cầu</h2>
-          <table class="list">
-            <thead>
-              <tr>
-                <th scope="col">Mã / yêu cầu</th>
-                <th scope="col">Người sáng tạo</th>
-                <th scope="col">Cập nhật</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col">Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-status="active">
-                <th scope="row">OR-024 · Bộ 4 cốc khắc tên</th>
-                <td>Mộc Studio</td>
-                <td><time datetime="2026-10-04">04/10/2026</time></td>
-                <td>Chờ duyệt bản mẫu</td>
-                <td><a href="#order-OR-024">Mở chi tiết</a></td>
-              </tr>
-              <tr data-status="draft">
-                <th scope="row">BR-029 · Tranh gia đình</th>
-                <td>Nét Nhỏ</td>
-                <td><time datetime="2026-10-03">03/10/2026</time></td>
-                <td>Nháp · Chưa gửi</td>
-                <td><a href="buyer-custom-brief.html">Mở / Sửa nháp</a></td>
-              </tr>
-              <tr data-status="pending">
-                <th scope="row">BR-028 · Ví da dập tên</th>
-                <td>Da Nâu</td>
-                <td><time datetime="2026-10-02">02/10/2026</time></td>
-                <td>Chờ proposal</td>
-                <td>
-                  <a href="#proposals-BR-028">Mở</a> /
-                  <button type="button">Hủy yêu cầu...</button>
-                </td>
-              </tr>
-              <tr data-status="pending">
-                <th scope="row">BR-027 · Khung thêu hoa</th>
-                <td>Sợi &amp; Hoa</td>
-                <td><time datetime="2026-10-01">01/10/2026</time></td>
-                <td>Chờ proposal</td>
-                <td>
-                  <a href="#proposals-BR-027">Mở</a> /
-                  <button type="button">Hủy yêu cầu...</button>
-                </td>
-              </tr>
-              <tr data-status="done">
-                <th scope="row">OR-019 · Khay gỗ</th>
-                <td>Xưởng Gỗ An</td>
-                <td><time datetime="2026-09-25">25/09/2026</time></td>
-                <td>Hoàn thành</td>
-                <td>
-                  <a href="#order-OR-019">Mở</a> /
-                  <button type="button">Lưu trữ</button>
-                </td>
-              </tr>
-              <tr data-status="done">
-                <th scope="row">OR-016 · Bình gốm</th>
-                <td>Mộc Studio</td>
-                <td><time datetime="2026-09-20">20/09/2026</time></td>
-                <td>Hoàn thành</td>
-                <td>
-                  <a href="#order-OR-016">Mở</a> /
-                  <button type="button">Lưu trữ</button>
-                </td>
-              </tr>
-              <tr data-status="cancelled">
-                <th scope="row">BR-015 · Ví da nhỏ</th>
-                <td>Da Nâu</td>
-                <td><time datetime="2026-09-18">18/09/2026</time></td>
-                <td>Đã hủy · Theo yêu cầu</td>
-                <td>
-                  <a href="#order-BR-015">Mở</a> /
-                  <button type="button">Lưu trữ</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <!-- Phân trang -->
-        <div class="pager">
-          <p>Hiển thị 7 / 7 mục · Dữ liệu mẫu</p>
-          <nav aria-label="Phân trang">
-            <button type="button" disabled>← Trước</button>
-            <span aria-current="page">1</span>
-            <button type="button" disabled>Sau →</button>
-          </nav>
-        </div>
-
-        <!-- Lưu ý -->
-        <p class="notice" role="note">
-          Bạn chỉ có thể hủy yêu cầu chưa được chấp nhận theo điều kiện hiển
-          thị. Đơn hoàn thành không có tác vụ hủy; lưu trữ không xóa lịch sử.
-        </p>
-
-        <!-- Chi tiết: tiến độ đơn đang thực hiện -->
-        <section
-          class="detail"
-          id="order-OR-024"
-          aria-labelledby="progress-title"
-        >
-          <header>
-            <h2 id="progress-title">OR-024 · Bộ 4 cốc khắc tên</h2>
-            <p>
-              Mộc Studio · Cập nhật
-              <time datetime="2026-10-04">04/10/2026</time>
-            </p>
-            <span class="pill">Chờ duyệt bản mẫu</span>
-          </header>
-
-          <ol class="steps" aria-label="Tiến độ đơn hàng">
-            <li data-state="done">Đã chấp nhận proposal</li>
-            <li data-state="done">Đã thanh toán đặt cọc</li>
-            <li data-state="current">Bản mẫu chờ bạn duyệt</li>
-            <li data-state="todo">Đang sản xuất</li>
-            <li data-state="todo">Đang giao hàng</li>
-            <li data-state="todo">Hoàn thành</li>
-          </ol>
-
-          <article class="sample">
-            <h3>Bản mẫu từ maker</h3>
-            <figure>
-              <img src="" alt="Ảnh bản mẫu cốc khắc tên" />
-              <figcaption>Bản mẫu v1 · Gửi ngày 04/10/2026</figcaption>
-            </figure>
-            <p>Ghi chú từ maker: Men màu tro, khắc tên ở đáy cốc.</p>
-            <div class="actions">
-              <button type="button">Yêu cầu chỉnh sửa</button>
-              <button type="button">Duyệt bản mẫu</button>
+        <!-- Topbar -->
+        <header class="top">
+            <span class="breadcrumb">Khách hàng / Đơn &amp; yêu cầu</span>
+            <div class="top-right">
+                <button type="button" aria-label="Thông báo">Thông báo</button>
+                <time datetime="2026-10-04">04/10/2026</time>
+                <span class="pill">Minh Anh</span>
             </div>
-          </article>
+        </header>
 
-          <h3>Trao đổi với maker</h3>
-          <ul class="messages">
-            <li>
-              <b>Mộc Studio</b>
-              <time datetime="2026-10-04T09:30">04/10 09:30</time>
-              <p>Bản mẫu đã sẵn sàng để bạn xem.</p>
-            </li>
-          </ul>
-          <form class="msg-form">
-            <label for="msg">Nhắn cho maker</label>
-            <input type="text" id="msg" placeholder="Nhập tin nhắn..." />
-            <button type="submit">Gửi</button>
-          </form>
-        </section>
+        <main class="wrap">
 
-        <!-- Chi tiết: proposal cho BR-028 -->
-        <section
-          class="detail"
-          id="proposals-BR-028"
-          aria-labelledby="prop-28-title"
-        >
-          <header>
-            <h2 id="prop-28-title">BR-028 · Ví da dập tên</h2>
-            <p>Proposal nhận được: <b>1</b></p>
-          </header>
-
-          <details class="brief-summary">
-            <summary>Xem lại brief đã gửi</summary>
-            <dl>
-              <dt>Loại sản phẩm</dt>
-              <dd>Đồ da</dd>
-              <dt>Số lượng</dt>
-              <dd>1</dd>
-              <dt>Ngân sách</dt>
-              <dd>400.000₫ – 900.000₫</dd>
-              <dt>Cần nhận trước</dt>
-              <dd>30/10/2026</dd>
-              <dt>Mô tả</dt>
-              <dd>Ví da bò dập tên ở mặt trong, màu nâu trầm.</dd>
-            </dl>
-          </details>
-
-          <article class="proposal">
-            <header>
-              <h3>Proposal từ Da Nâu</h3>
-              <time datetime="2026-10-03">Gửi ngày 03/10/2026</time>
-            </header>
-            <dl>
-              <dt>Báo giá</dt>
-              <dd>650.000₫</dd>
-              <dt>Thời gian hoàn thành</dt>
-              <dd>10 ngày làm việc</dd>
-              <dt>Chất liệu đề xuất</dt>
-              <dd>Da bò thật, chỉ sáp</dd>
-              <dt>Đặt cọc</dt>
-              <dd>30%</dd>
-              <dt>Ghi chú</dt>
-              <dd>Có thể dập tên tối đa 12 ký tự.</dd>
-            </dl>
-            <div class="actions">
-              <button type="button">Nhắn cho maker</button>
-              <button type="button">Từ chối</button>
-              <button type="button">Chấp nhận proposal</button>
+            <!-- Tiêu đề trang -->
+            <div class="head">
+                <div>
+                    <p class="eyebrow">Khách hàng</p>
+                    <h1>Theo dõi những ý tưởng đang thành hình</h1>
+                    <p>Brief, proposal và đơn hàng của Minh Anh trong một nơi.</p>
+                </div>
+                <div>
+                    <span class="pill">Dữ liệu mẫu · BTL-11</span>
+                    <a class="btn primary" href="buyer-custom-brief.html">+ Tạo yêu cầu mới</a>
+                </div>
             </div>
-          </article>
-        </section>
 
-        <!-- Chi tiết: proposal cho BR-027 (chưa có) -->
-        <section
-          class="detail"
-          id="proposals-BR-027"
-          aria-labelledby="prop-27-title"
-        >
-          <header>
-            <h2 id="prop-27-title">BR-027 · Khung thêu hoa</h2>
-            <p>Proposal nhận được: <b>0</b></p>
-          </header>
-          <p class="empty">
-            Chưa có proposal. Maker đang xem yêu cầu của bạn, bạn sẽ nhận thông
-            báo khi có báo giá.
-          </p>
-        </section>
+            <!-- Thống kê nhanh -->
+            <section class="stats" aria-label="Thống kê">
+                <article class="stat">
+                    <strong>01</strong>
+                    <h2>Bản nháp</h2>
+                    <p>Chưa gửi đến maker</p>
+                </article>
+                <article class="stat">
+                    <strong>02</strong>
+                    <h2>Chờ proposal</h2>
+                    <p>Maker đang xem yêu cầu</p>
+                </article>
+                <article class="stat">
+                    <strong>01</strong>
+                    <h2>Đang thực hiện</h2>
+                    <p>Chờ bạn duyệt bản mẫu</p>
+                </article>
+                <article class="stat">
+                    <strong>02</strong>
+                    <h2>Hoàn thành</h2>
+                    <p>Chỉ lưu trữ, không hủy</p>
+                </article>
+            </section>
 
-        <!-- Hộp xác nhận hủy yêu cầu -->
-        <dialog id="cancel-dialog" aria-labelledby="cancel-title">
-          <form method="dialog">
-            <h2 id="cancel-title">Hủy yêu cầu này?</h2>
-            <p>
-              Maker sẽ không còn thấy yêu cầu của bạn. Lịch sử vẫn được giữ lại.
+            <!-- Tìm kiếm & lọc -->
+            <form class="toolbar" role="search" id="filter">
+                <label for="search">Tìm kiếm</label>
+                <input type="search" id="search" placeholder="Tìm mã đơn, tên sản phẩm hoặc maker...">
+
+                <label for="range">Thời gian</label>
+                <select id="range">
+                    <option value="all">Tất cả</option>
+                    <option value="7">7 ngày qua</option>
+                    <option value="30">30 ngày qua</option>
+                    <option value="90">90 ngày qua</option>
+                </select>
+
+                <label><input type="checkbox" id="archived"> Đã lưu trữ</label>
+            </form>
+
+            <!-- Tab trạng thái -->
+            <nav class="tabs" aria-label="Lọc theo trạng thái">
+                <button type="button" aria-pressed="true" data-status="all">Tất cả · 7</button>
+                <button type="button" aria-pressed="false" data-status="draft">Nháp · 1</button>
+                <button type="button" aria-pressed="false" data-status="pending">Chờ proposal · 2</button>
+                <button type="button" aria-pressed="false" data-status="active">Đang thực hiện · 1</button>
+                <button type="button" aria-pressed="false" data-status="done">Hoàn thành · 2</button>
+                <button type="button" aria-pressed="false" data-status="cancelled">Đã hủy · 1</button>
+            </nav>
+
+            <!-- Danh sách đơn & yêu cầu -->
+            <section class="card" aria-labelledby="list-title">
+                <h2 id="list-title" hidden>Danh sách đơn và yêu cầu</h2>
+                <table class="list">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã / yêu cầu</th>
+                            <th scope="col">Người sáng tạo</th>
+                            <th scope="col">Cập nhật</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-status="active">
+                            <th scope="row">OR-024 · Bộ 4 cốc khắc tên</th>
+                            <td>Mộc Studio</td>
+                            <td><time datetime="2026-10-04">04/10/2026</time></td>
+                            <td>Chờ duyệt bản mẫu</td>
+                            <td><a href="#order-OR-024">Mở chi tiết</a></td>
+                        </tr>
+                        <tr data-status="draft">
+                            <th scope="row">BR-029 · Tranh gia đình</th>
+                            <td>Nét Nhỏ</td>
+                            <td><time datetime="2026-10-03">03/10/2026</time></td>
+                            <td>Nháp · Chưa gửi</td>
+                            <td><a href="buyer-custom-brief.html">Mở / Sửa nháp</a></td>
+                        </tr>
+                        <tr data-status="pending">
+                            <th scope="row">BR-028 · Ví da dập tên</th>
+                            <td>Da Nâu</td>
+                            <td><time datetime="2026-10-02">02/10/2026</time></td>
+                            <td>Chờ proposal</td>
+                            <td><a href="#proposals-BR-028">Mở</a> / <button type="button">Hủy yêu cầu...</button></td>
+                        </tr>
+                        <tr data-status="pending">
+                            <th scope="row">BR-027 · Khung thêu hoa</th>
+                            <td>Sợi &amp; Hoa</td>
+                            <td><time datetime="2026-10-01">01/10/2026</time></td>
+                            <td>Chờ proposal</td>
+                            <td><a href="#proposals-BR-027">Mở</a> / <button type="button">Hủy yêu cầu...</button></td>
+                        </tr>
+                        <tr data-status="done">
+                            <th scope="row">OR-019 · Khay gỗ</th>
+                            <td>Xưởng Gỗ An</td>
+                            <td><time datetime="2026-09-25">25/09/2026</time></td>
+                            <td>Hoàn thành</td>
+                            <td><a href="#order-OR-019">Mở</a> / <button type="button">Lưu trữ</button></td>
+                        </tr>
+                        <tr data-status="done">
+                            <th scope="row">OR-016 · Bình gốm</th>
+                            <td>Mộc Studio</td>
+                            <td><time datetime="2026-09-20">20/09/2026</time></td>
+                            <td>Hoàn thành</td>
+                            <td><a href="#order-OR-016">Mở</a> / <button type="button">Lưu trữ</button></td>
+                        </tr>
+                        <tr data-status="cancelled">
+                            <th scope="row">BR-015 · Ví da nhỏ</th>
+                            <td>Da Nâu</td>
+                            <td><time datetime="2026-09-18">18/09/2026</time></td>
+                            <td>Đã hủy · Theo yêu cầu</td>
+                            <td><a href="#order-BR-015">Mở</a> / <button type="button">Lưu trữ</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Phân trang -->
+            <div class="pager">
+                <p>Hiển thị 7 / 7 mục · Dữ liệu mẫu</p>
+                <nav aria-label="Phân trang">
+                    <button type="button" disabled>← Trước</button>
+                    <span aria-current="page">1</span>
+                    <button type="button" disabled>Sau →</button>
+                </nav>
+            </div>
+
+            <!-- Lưu ý -->
+            <p class="notice" role="note">
+                Bạn chỉ có thể hủy yêu cầu chưa được chấp nhận theo điều kiện hiển thị. Đơn hoàn thành không có tác vụ
+                hủy; lưu trữ không xóa lịch sử.
             </p>
-            <label for="reason">Lý do (không bắt buộc)</label>
-            <textarea id="reason" rows="3"></textarea>
-            <button value="cancel">Giữ yêu cầu</button>
-            <button value="confirm">Hủy yêu cầu</button>
-          </form>
-        </dialog>
-      </main>
 
-      <footer class="foot">
-        CraftLink · BTL-11 / CSE122 · Nội dung và tài khoản minh họa
-      </footer>
+            <!-- Chi tiết: tiến độ đơn đang thực hiện -->
+            <section class="detail" id="order-OR-024" aria-labelledby="progress-title">
+                <header>
+                    <h2 id="progress-title">OR-024 · Bộ 4 cốc khắc tên</h2>
+                    <p>Mộc Studio · Cập nhật <time datetime="2026-10-04">04/10/2026</time></p>
+                    <span class="pill">Chờ duyệt bản mẫu</span>
+                </header>
+
+                <ol class="steps" aria-label="Tiến độ đơn hàng">
+                    <li data-state="done">Đã chấp nhận proposal</li>
+                    <li data-state="done">Đã thanh toán đặt cọc</li>
+                    <li data-state="current">Bản mẫu chờ bạn duyệt</li>
+                    <li data-state="todo">Đang sản xuất</li>
+                    <li data-state="todo">Đang giao hàng</li>
+                    <li data-state="todo">Hoàn thành</li>
+                </ol>
+
+                <article class="sample">
+                    <h3>Bản mẫu từ maker</h3>
+                    <figure>
+                        <img src="" alt="Ảnh bản mẫu cốc khắc tên">
+                        <figcaption>Bản mẫu v1 · Gửi ngày 04/10/2026</figcaption>
+                    </figure>
+                    <p>Ghi chú từ maker: Men màu tro, khắc tên ở đáy cốc.</p>
+                    <div class="actions">
+                        <button type="button">Yêu cầu chỉnh sửa</button>
+                        <button type="button">Duyệt bản mẫu</button>
+                    </div>
+                </article>
+
+                <h3>Trao đổi với maker</h3>
+                <ul class="messages">
+                    <li><b>Mộc Studio</b> <time datetime="2026-10-04T09:30">04/10 09:30</time>
+                        <p>Bản mẫu đã sẵn sàng để bạn xem.</p>
+                    </li>
+                </ul>
+                <form class="msg-form">
+                    <label for="msg">Nhắn cho maker</label>
+                    <input type="text" id="msg" placeholder="Nhập tin nhắn...">
+                    <button type="submit">Gửi</button>
+                </form>
+            </section>
+
+            <!-- Chi tiết: proposal cho BR-028 -->
+            <section class="detail" id="proposals-BR-028" aria-labelledby="prop-28-title">
+                <header>
+                    <h2 id="prop-28-title">BR-028 · Ví da dập tên</h2>
+                    <p>Proposal nhận được: <b>1</b></p>
+                </header>
+
+                <details class="brief-summary">
+                    <summary>Xem lại brief đã gửi</summary>
+                    <dl>
+                        <dt>Loại sản phẩm</dt>
+                        <dd>Đồ da</dd>
+                        <dt>Số lượng</dt>
+                        <dd>1</dd>
+                        <dt>Ngân sách</dt>
+                        <dd>400.000₫ – 900.000₫</dd>
+                        <dt>Cần nhận trước</dt>
+                        <dd>30/10/2026</dd>
+                        <dt>Mô tả</dt>
+                        <dd>Ví da bò dập tên ở mặt trong, màu nâu trầm.</dd>
+                    </dl>
+                </details>
+
+                <article class="proposal">
+                    <header>
+                        <h3>Proposal từ Da Nâu</h3>
+                        <time datetime="2026-10-03">Gửi ngày 03/10/2026</time>
+                    </header>
+                    <dl>
+                        <dt>Báo giá</dt>
+                        <dd>650.000₫</dd>
+                        <dt>Thời gian hoàn thành</dt>
+                        <dd>10 ngày làm việc</dd>
+                        <dt>Chất liệu đề xuất</dt>
+                        <dd>Da bò thật, chỉ sáp</dd>
+                        <dt>Đặt cọc</dt>
+                        <dd>30%</dd>
+                        <dt>Ghi chú</dt>
+                        <dd>Có thể dập tên tối đa 12 ký tự.</dd>
+                    </dl>
+                    <div class="actions">
+                        <button type="button">Nhắn cho maker</button>
+                        <button type="button">Từ chối</button>
+                        <button type="button">Chấp nhận proposal</button>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Chi tiết: proposal cho BR-027 (chưa có) -->
+            <section class="detail" id="proposals-BR-027" aria-labelledby="prop-27-title">
+                <header>
+                    <h2 id="prop-27-title">BR-027 · Khung thêu hoa</h2>
+                    <p>Proposal nhận được: <b>0</b></p>
+                </header>
+                <p class="empty">Chưa có proposal. Maker đang xem yêu cầu của bạn, bạn sẽ nhận thông báo khi có báo giá.
+                </p>
+            </section>
+
+            <!-- Hộp xác nhận hủy yêu cầu -->
+            <dialog id="cancel-dialog" aria-labelledby="cancel-title">
+                <form method="dialog">
+                    <h2 id="cancel-title">Hủy yêu cầu này?</h2>
+                    <p>Maker sẽ không còn thấy yêu cầu của bạn. Lịch sử vẫn được giữ lại.</p>
+                    <label for="reason">Lý do (không bắt buộc)</label>
+                    <textarea id="reason" rows="3"></textarea>
+                    <button value="cancel">Giữ yêu cầu</button>
+                    <button value="confirm">Hủy yêu cầu</button>
+                </form>
+            </dialog>
+
+        </main>
+
+        <footer class="foot">
+            CraftLink · BTL-11 / CSE122 · Nội dung và tài khoản minh họa
+        </footer>
     </div>
-  </body>
+
+</body>
+
 </html>

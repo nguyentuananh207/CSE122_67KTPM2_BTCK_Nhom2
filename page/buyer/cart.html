@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Giỏ hàng của bạn</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ: CHẶN TUYỆT ĐỐI KHÁCH VÃNG LAI TRUY CẬP GIỎ HÀNG -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Bạn đang là khách vãng lai! Vui lòng đăng nhập tài khoản để sử dụng và xem Giỏ hàng.");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body data-page="buyer-cart">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <a href="buyer-custom-brief.html">Yêu cầu tuỳ biến</a>
+      <a href="buyer-orders.html">Đơn & Yêu cầu</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="app-main" style="margin-left: 0; max-width: 1100px; margin: 0 auto; padding-top: 1.5rem;">
+    
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#e0f2fe; border:1px solid #bae6fd; color:#0369a1; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.85rem; font-weight:700; margin-bottom:1rem;">
+      🛒 Không gian làm việc: Khách hàng (Buyer)
+    </div>
+
+    <div class="breadcrumb">
+      <a href="../index.html">Trang chủ</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="buyer-marketplace.html">Khám phá</a>
+      <span class="breadcrumb-separator">/</span>
+      <span>Giỏ hàng</span>
+    </div>
+
+    <div class="section-header">
+      <h1>Giỏ hàng tác phẩm thủ công</h1>
+      <p>Kiểm tra danh sách các món đồ đã chọn và tiến hành thanh toán trước qua mã QR để được miễn phí giao hàng toàn quốc.</p>
+    </div>
+
+    <div class="cart-layout">
+      <!-- CỘT DANH SÁCH SẢN PHẨM -->
+      <section class="cart-items-card">
+        <h3 style="margin-bottom: 1rem; font-size: 1.15rem; border-bottom: 1px solid var(--clr-border-light); padding-bottom: 0.75rem;">
+          Sản phẩm trong giỏ
+        </h3>
+        <div id="cart-items-container">
+          <!-- Nạp động bằng buyer.js -->
+        </div>
+      </section>
+
+      <!-- CỘT TỔNG KẾT ĐƠN HÀNG -->
+      <aside class="order-summary-card" id="order-summary-box">
+        <h3 style="margin-bottom: 1rem; font-size: 1.15rem; border-bottom: 1px solid var(--clr-border-light); padding-bottom: 0.75rem;">
+          Tóm tắt đơn hàng
+        </h3>
+
+        <div class="summary-row">
+          <span>Tạm tính:</span>
+          <strong id="summary-subtotal">0 ₫</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Phí vận chuyển bảo hiểm:</span>
+          <span style="color: var(--clr-success); font-weight: 600;">Miễn phí (Ưu đãi QR)</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Hỗ trợ kỹ thuật:</span>
+          <span>100% thủ công</span>
+        </div>
+
+        <div class="summary-row total">
+          <span>Tổng thanh toán:</span>
+          <span class="total-amount" id="summary-total">0 ₫</span>
+        </div>
+
+        <button id="btn-proceed-checkout" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1.5rem;">
+          ⚡ Tiến hành Thanh toán trước (QR)
+        </button>
+
+        <a href="buyer-marketplace.html" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 0.75rem;">
+          ← Tiếp tục chọn thêm sản phẩm
+        </a>
+
+        <div style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--clr-text-muted); background: #faf6f0; padding: 0.75rem; border-radius: var(--radius);">
+          🔒 <strong>Bảo đảm CraftLink:</strong> Tiền thanh toán trước được giữ an toàn bởi hệ thống và chỉ giải ngân cho nghệ nhân khi bạn đã nhận hàng đúng cam kết!
+        </div>
+      </aside>
+    </div>
+
+  </main>
+
+  <footer class="site-footer" style="padding: 1.5rem; text-align: center; margin-top: 3rem;">
+    &copy; 2026 CraftLink – Nhóm 2 CSE122.
+  </footer>
+
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initCartPage } from "../../js/pages/buyer.js";
+    
+    // Yêu cầu bắt buộc đăng nhập tài khoản Khách hàng hoặc Admin
+    if (requireRole(["buyer", "admin"])) {
+      initCartPage();
+    }
+  </script>
+</body>
+</html>
