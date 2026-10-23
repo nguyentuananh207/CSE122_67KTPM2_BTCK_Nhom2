@@ -1,4 +1,3 @@
-# Unimarket
 # CraftLink – Sàn sản phẩm sáng tạo & Đồ thủ công tùy biến (BTL-11)
 
 Dự án đồ án website bán hàng đồ thủ công với đầy đủ các vai trò: **Khách hàng (Buyer)**, **Người sáng tạo (Maker)**, **Quản trị viên điều hành (Admin)** và **Kiểm duyệt viên (Moderator)**.
