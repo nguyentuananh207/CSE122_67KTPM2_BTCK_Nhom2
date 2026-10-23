@@ -1,138 +1,121 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hộp Thư Brief - E-Commerce</title>
-
-    <!-- CSS dùng chung cho cả dự án -->
-    <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <!-- CSS khung hộp thoại AI, dùng lại ở nhiều trang -->
-    <link rel="stylesheet" href="../../css/components/ai-modal.css">
-    <!-- CSS riêng của khu vực Maker -->
-    <link rel="stylesheet" href="../../css/pages/maker.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLink – Hộp thư Brief của Người sáng tạo</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <!-- BẢO VỆ CHẶT CHẼ TÁC QUYỀN MAKER -->
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem("craftlink_session");
+        var session = raw ? JSON.parse(raw) : null;
+        if (!session || (session.role !== "maker" && session.role !== "admin")) {
+          document.documentElement.style.display = "none";
+          sessionStorage.setItem("craftlink_redirect_reason", "⚠️ Quyền truy cập bị từ chối: Khu vực Hộp thư Brief dành riêng cho Người sáng tạo (Maker)!");
+          window.location.replace("../auth/login.html?redirect=" + encodeURIComponent(window.location.pathname + window.location.search));
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
-<!-- data-role-required: chỉ "maker" được vào trang này -->
-<body data-page="maker-brief-inbox" data-role-required="maker">
+<body data-page="maker-briefs">
 
-    <!-- ===== ĐẦU TRANG (giống nhau ở mọi trang Maker) ===== -->
-    <header class="dau-trang">
-        <div class="dau-trang__thuong-hieu">
-            <a href="maker-listing-management.html" class="dau-trang__logo">E-Commerce</a>
-        </div>
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="header-brand">
+      <img src="../../assets/images/logoCraftlink.png" alt="CraftLink" />
+      <span>CraftLink</span>
+    </a>
 
-        <nav class="thanh-dieu-huong">
-            <a href="maker-listing-management.html" class="thanh-dieu-huong__lien-ket">Bài đăng của tôi</a>
-            <a href="maker-brief-inbox.html" class="thanh-dieu-huong__lien-ket thanh-dieu-huong__lien-ket--dang-chon">Hộp thư Brief</a>
-            <a href="maker-proposal-editor.html" class="thanh-dieu-huong__lien-ket">Soạn báo giá</a>
+    <nav class="header-nav">
+      <a href="../index.html">Trang chủ Marketplace</a>
+      <a href="maker-listing-management.html" class="active">Không gian Người sáng tạo</a>
+    </nav>
+
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="workspace-box">
+        <span class="workspace-label">Không gian làm việc</span>
+        <div class="workspace-title">🎨 Người sáng tạo (Maker)</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Kênh Người sáng tạo</div>
+
+        <nav class="sidebar-nav">
+          <a href="maker-listing-management.html" class="sidebar-link">
+            <span>📦</span> Quản lý Listing
+          </a>
+          <a href="maker-brief-inbox.html" class="sidebar-link active">
+            <span>📥</span> Hộp thư Brief
+          </a>
+          <a href="maker-proposal-editor.html" class="sidebar-link">
+            <span>✍️</span> Soạn Proposal
+          </a>
         </nav>
+      </div>
 
-        <div class="dau-trang__nguoi-dung">
-            <span id="current-user-name" class="dau-trang__ten-nguoi-dung">Maker</span>
-            <button type="button" id="btn-logout" class="nut nut--vien nut--nho">Đăng xuất</button>
-        </div>
-    </header>
+      <div class="sidebar-section" style="margin-top: 1.5rem;">
+        <div class="sidebar-label">Tiện ích</div>
+        <nav class="sidebar-nav">
+          <a href="../moderator/moderator-content-guidelines.html" class="sidebar-link">
+            <span>📝</span> Quy chuẩn nội dung
+          </a>
+          <a href="../index.html" class="sidebar-link">
+            <span>↗</span> Xem gian hàng công khai
+          </a>
+        </nav>
+      </div>
 
-    <!-- ===== NỘI DUNG CHÍNH ===== -->
-    <main class="khung-trang">
+      <div class="sidebar-footer">
+        <div class="sidebar-footer-user">Nghệ nhân</div>
+        <div class="sidebar-footer-role">Người sáng tạo</div>
+      </div>
+    </aside>
 
-        <section class="tieu-de-trang">
-            <div class="tieu-de-trang__noi-dung">
-                <h1 class="tieu-de-trang__ten">Hộp Thư Yêu Cầu (Brief)</h1>
-                <p class="tieu-de-trang__mo-ta">Yêu cầu từ khách hàng gửi tới bạn, kèm điểm phù hợp do AI Style Matcher đánh giá.</p>
-            </div>
-        </section>
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="breadcrumb">
+        <span>Kênh Người sáng tạo</span>
+        <span class="breadcrumb-separator">/</span>
+        <span>Hộp thư Brief</span>
+      </div>
 
-        <!-- Nút lọc Brief -->
-        <section class="thanh-cong-cu">
-            <div class="thanh-cong-cu__bo-loc">
-                <button type="button" class="the-loc the-loc--dang-chon" data-filter="all">Tất cả</button>
-                <button type="button" class="the-loc" data-filter="new">Chưa xem</button>
-                <button type="button" class="the-loc" data-filter="replied">Đã báo giá</button>
-            </div>
-        </section>
+      <div class="section-header">
+        <h1>Hộp thư yêu cầu tùy biến từ Khách hàng</h1>
+        <p>Xem các yêu cầu chế tác theo mong muốn riêng. Sử dụng tính năng <strong>AI Style Matcher</strong> để nhận diện độ phù hợp với phong cách của Xưởng trước khi gửi Proposal.</p>
+      </div>
 
-        <!-- Danh sách Brief: JS sẽ tạo các mục và đưa vào đây -->
-        <section id="brief-list" class="danh-sach-brief">
-
-            <!-- Brief mẫu để xem giao diện. JS sẽ tạo mục giống thế này cho mỗi Brief. -->
-            <article class="muc-brief muc-brief--chua-doc" data-brief-id="B001" data-status="new">
-                <div class="muc-brief__noi-dung">
-                    <div class="muc-brief__dau">
-                        <h3 class="muc-brief__tieu-de">Kệ trang trí gỗ cho phòng khách</h3>
-                        <span class="nhan nhan--thong-tin">Mới</span>
-                    </div>
-                    <p class="muc-brief__khach-hang">Từ khách hàng: <strong>Nguyễn Văn A</strong></p>
-                    <p class="muc-brief__yeu-cau">Yêu cầu: Kệ 3 tầng, gỗ màu sáng, kích thước 80x25x100 cm.</p>
-                    <p class="muc-brief__phong-cach">Phong cách mong muốn: Tối giản</p>
-                    <p class="muc-brief__thong-tin">Ngân sách: 1.500.000đ · Cần nhận trước: 25/11/2026</p>
-                </div>
-
-                <!-- Điểm phù hợp do AI Style Matcher tính -->
-                <div class="muc-brief__do-phu-hop">
-                    <div class="diem-phu-hop">
-                        <span class="diem-phu-hop__gia-tri">--%</span>
-                        <span class="diem-phu-hop__nhan">Độ phù hợp</span>
-                    </div>
-                    <button type="button" class="nut nut--ai nut--nho" data-action="run-matcher">Phân tích AI</button>
-                </div>
-
-                <div class="muc-brief__thao-tac">
-                    <!-- ?brief=B001 để trang báo giá biết đang trả lời Brief nào -->
-                    <a href="maker-proposal-editor.html?brief=B001" class="nut nut--chinh nut--nho">Soạn báo giá</a>
-                </div>
-            </article>
-
-        </section>
+      <!-- BRIEF LIST CONTAINER -->
+      <div id="brief-list"></div>
     </main>
 
-    <!-- ===== HỘP THOẠI AI STYLE MATCHER (ẩn sẵn, JS bật lên khi bấm "Phân tích AI") ===== -->
-    <div id="ai-modal" class="hop-thoai-ai" hidden>
-        <div class="hop-thoai-ai__lop-phu" data-action="close-ai-modal"></div>
-        <div class="hop-thoai-ai__khung">
+  </div>
 
-            <div class="hop-thoai-ai__dau">
-                <h2 class="hop-thoai-ai__tieu-de">AI Style Matcher</h2>
-                <button type="button" class="hop-thoai-ai__dong" data-action="close-ai-modal">&times;</button>
-            </div>
-
-            <div class="hop-thoai-ai__than">
-                <p class="hop-thoai-ai__chu-de">
-                    Brief: <strong id="ai-modal-brief-title">--</strong>
-                </p>
-
-                <!-- Thanh đo % phù hợp: JS đổi chiều rộng của phần "phan-day" -->
-                <div class="thanh-do">
-                    <div class="thanh-do__nen">
-                        <div id="ai-modal-bar-fill" class="thanh-do__phan-day" style="width: 0%;"></div>
-                    </div>
-                    <span id="ai-modal-percent" class="thanh-do__phan-tram">0%</span>
-                </div>
-
-                <!-- Lý do phân tích: JS thêm các dòng <li> vào đây -->
-                <h3 class="hop-thoai-ai__tieu-de-muc">Lý do phân tích</h3>
-                <ul id="ai-modal-reason-list" class="hop-thoai-ai__danh-sach-ly-do"></ul>
-            </div>
-
-            <div class="hop-thoai-ai__chan">
-                <button type="button" class="nut nut--vien" data-action="close-ai-modal">Đóng</button>
-            </div>
-        </div>
+  <!-- MODAL AI STYLE MATCHER -->
+  <div class="modal" id="ai-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-modal-close>✕</button>
+      <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--clr-primary);">🤖 AI Style Matcher</h2>
+      <div id="ai-result"></div>
     </div>
+  </div>
 
-    <!--
-        Thứ tự nạp JS rất quan trọng:
-        1. mock-data.js  : dữ liệu mẫu (phải có trước)
-        2. storage.js    : hàm lưu và đọc dữ liệu
-        3. auth.js       : đăng nhập, đăng xuất, kiểm tra quyền
-        4. ai-services.js: hàm runStyleMatcher() tính độ phù hợp
-        5. maker.js      : xử lý riêng cho trang Maker (dùng cả 4 file trên)
-    -->
-    <script src="../../js/mock-data.js"></script>
-    <script src="../../js/modules/storage.js"></script>
-    <script src="../../js/modules/auth.js"></script>
-    <script src="../../js/modules/ai-services.js"></script>
-    <script src="../../js/pages/maker.js"></script>
+  <script type="module">
+    import { requireRole } from "../../js/main.js";
+    import { initBriefInbox } from "../../js/pages/maker.js";
+
+    if (requireRole(["maker", "admin"])) {
+      initBriefInbox();
+    }
+  </script>
 </body>
 </html>
