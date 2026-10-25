@@ -3,7 +3,7 @@
 Dự án đồ án website bán hàng đồ thủ công với đầy đủ các vai trò: **Khách hàng (Buyer)**, **Người sáng tạo (Maker)**, **Quản trị viên điều hành (Admin)** và **Kiểm duyệt viên (Moderator)**.
 
 ---
-Giao diện demo: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-toi
+Bảng phân chia công việc: https://trello.com/b/5sQKE51c/b%E1%BA%A3ng-trello-c%E1%BB%A7a-toi
 
 ## Bảng phân chia giao diện
 
