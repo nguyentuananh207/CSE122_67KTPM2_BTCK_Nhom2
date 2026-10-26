@@ -1,18 +1,18 @@
 # Bản khai báo sử dụng công cụ AI (AI Usage Report)
 
 **Dự án:** CraftLink – Sàn sản phẩm sáng tạo & Đồ thủ công tùy biến (BTL-11)
-**Môn học:** CSE122 – [Điền tên môn / mã lớp]
-**Sinh viên thực hiện:** [Họ và tên] – MSSV: [Điền] – Lớp: [Điền]
-**Giảng viên hướng dẫn:** [Điền]
-**Hình thức:** [Cá nhân / Nhóm – nếu nhóm, bản khai báo này chỉ tính phần tôi phụ trách]
-**Công cụ AI đã dùng:** Qoder (AI coding assistant, chế độ Agent) – [bổ sung nếu có dùng thêm ChatGPT/Gemini/Copilot]
-**Thời gian thực hiện:** khoảng 20/10/2026 – 26/10/2026
+**Môn học:** CSE122 – phát triển web cơ bản
+**Sinh viên thực hiện:**Nhóm 2:
+- Nguyễn Tuấn Anh – MSSV: 2551170853 – Lớp: 67KTPM2;
+- Trần Đức Anh - MSSV: 2551170858 - Lớp: 67KTPM2;
+- Nguyễn Việt	Anh - MSSV: 2551170855 - Lớp: 67KTPM2;
+
+
+**Công cụ AI đã dùng:** Qoder, Antigravity, Claude code (AI coding assistant, chế độ Agent) 
+**Thời gian thực hiện:** khoảng 15/10/2026 – 26/10/2026
 **Phạm vi:** Toàn bộ phần frontend: 17 màn hình, 3 tính năng AI mô phỏng, design board 20 ảnh, README và video demo.
 **Mức độ sử dụng AI (tự đánh giá):** khoảng **20–30%** khối lượng công việc.
 
-> **Ghi chú:** Các chỗ trong `[ngoặc vuông]` là thông tin cá nhân cần điền. Phần trăm trong báo cáo là **tự đánh giá** theo quá trình thực tế của tôi, không phải số đo tuyệt đối. Nếu có mốc thời gian hoặc commit khác, tôi sẽ chỉnh lại cho đúng trước khi nộp.
-
----
 
 ## 1. Cam kết và phạm vi khai báo
 
